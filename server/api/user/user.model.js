@@ -13,7 +13,17 @@ const UserSchema = new mongoose.Schema({
     lowercase: true,
     required() {
       return authTypes.indexOf(this.provider) === -1;
-    }
+    },
+    index: true
+  },
+  isAgent: {
+    type: Boolean,
+    default: false,
+    index: true
+  },
+  location: {
+    type: String,
+    default: "N/A"
   },
   role: {
     type: String,
@@ -31,7 +41,7 @@ const UserSchema = new mongoose.Schema({
   twitter: {},
   google: {},
   github: {}
-});
+}, {timestamp: true});
 
 /**
  * Virtuals
@@ -42,8 +52,11 @@ UserSchema
   .virtual('profile')
   .get(function() {
     return {
+      _id: this._id,
       name: this.name,
-      role: this.role
+      role: this.role,
+      location: this.location,
+      isAgent: this.isAgent
     };
   });
 
@@ -152,7 +165,6 @@ UserSchema.methods = {
    * @param {String} password
    * @param {Function} callback
    * @return {Boolean}
-   * @api public
    */
   authenticate(password, callback) {
     if(!callback) {
@@ -178,7 +190,6 @@ UserSchema.methods = {
    * @param {Number} [byteSize] - Optional salt byte size, default to 16
    * @param {Function} callback
    * @return {String}
-   * @api public
    */
   makeSalt(...args) {
     let byteSize;
@@ -213,7 +224,6 @@ UserSchema.methods = {
    * @param {String} password
    * @param {Function} callback
    * @return {String}
-   * @api public
    */
   encryptPassword(password, callback) {
     if(!password || !this.salt) {

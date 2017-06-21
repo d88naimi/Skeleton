@@ -19,8 +19,13 @@ function handleError(res, statusCode) {
 }
 
 /**
- * Get list of users
- * restriction: 'admin'
+ * @api {get} /api/users/ Request All User List (restriction: 'admin')
+ * @apiName GetAllUser
+ * @apiGroup Users
+ *
+ *
+ * @apiSuccess {Array} user array.
+ *
  */
 module.exports.index = (req, res) => {
   return User.find({}, '-salt -password').exec()
@@ -31,7 +36,16 @@ module.exports.index = (req, res) => {
 };
 
 /**
- * Creates a new user
+ * @api {post} /api/users Create User
+ * @apiName Create User
+ * @apiGroup Users
+ *
+ * @apiParam (Body) {String} name User name.
+ * @apiParam (Body) {String} email Users email.
+ * @apiParam (Body) {String} password Users email.
+ *
+ * @apiSuccess {String} token json web token.
+ *
  */
 module.exports.create = (req, res) => {
   const newUser = new User(req.body);
@@ -39,7 +53,7 @@ module.exports.create = (req, res) => {
   newUser.role = 'user';
   newUser.save()
     .then(function(user) {
-      const token = jwt.sign({ _id: user._id }, config.secrets.session, {
+      const token = jwt.sign({ _id: user._id, role: user.role }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
       res.json({ token });
@@ -48,7 +62,21 @@ module.exports.create = (req, res) => {
 };
 
 /**
- * Get a single user
+ * @api {get} /api/users/:id Request User's own information
+ * @apiName GetUserInfo
+ * @apiGroup Users
+ *
+ * @apiParam (Params) {String} id Users unique ID.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "name": "John Doe",
+ *       "role": "user",
+ *       "location": "San Diego",
+ *       "isAgent": false,
+ *       "_id": "59483862c27e982e0f84c210"
+ *     }
  */
 module.exports.show = (req, res, next) => {
   const userId = req.params.id;
@@ -64,8 +92,14 @@ module.exports.show = (req, res, next) => {
 };
 
 /**
- * Deletes a user
- * restriction: 'admin'
+ * @api {delete} /api/users/:id Request User's own information (restriction: 'admin')
+ * @apiName DeleteUser
+ * @apiGroup Users
+ *
+ * @apiParam (Params) {String} id Users unique ID.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 204 OK
  */
 module.exports.destroy = (req, res) => {
   return User.findByIdAndRemove(req.params.id).exec()
@@ -76,7 +110,16 @@ module.exports.destroy = (req, res) => {
 };
 
 /**
- * Change a users password
+ * @api {put} /api/users/:id/password Change User Password
+ * @apiName ChangePassword
+ * @apiGroup Users
+ *
+ * @apiParam (Params) {String} id Users unique ID.
+ * @apiParam (Body) {String} oldPassword Users old password.
+ * @apiParam (Body) {String} newPassword Users new password.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 204 OK
  */
 module.exports.changePassword = (req, res) => {
   const userId = req.user._id;
@@ -98,8 +141,24 @@ module.exports.changePassword = (req, res) => {
     });
 };
 
+
 /**
- * Get my info
+ * @api {get} /api/users/me Request User's own information (restriction: 'authorized')
+ * @apiName GetMyInfo
+ * @apiGroup Users
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "email": "example@example.com",
+ *       "google": Object,
+ *       "name": "John Doe",
+ *       "profiver": "google",
+ *       "role": "user",
+ *       "_id": "59483862c27e982e0f84c210"
+ *       "location": "San Diego",
+ *       "isAgent": false
+ *     }
  */
 module.exports.me = (req, res, next) => {
   const userId = req.user._id;
@@ -120,3 +179,5 @@ module.exports.me = (req, res, next) => {
 module.exports.authCallback = (req, res) => {
   res.redirect('/');
 };
+
+
