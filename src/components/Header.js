@@ -14,7 +14,7 @@ class Header extends React.Component {
     return (
       <header className="navbar-fixed">
         <nav>
-          <div className="nav-wrapper">
+          <div className="container nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
             <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google">Google</a></li>}
