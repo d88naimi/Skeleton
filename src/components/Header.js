@@ -17,8 +17,8 @@ class Header extends React.Component {
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
             <ul className="right hide-on-small-only">
-              {!user && <li><a href="/auth/google">Log in</a></li>}
-              {!user && <li><NavLink to="/signup">Sign up</NavLink></li>}
+              {!user && <li><a href="/auth/google">Google</a></li>}
+              {!user && <li><NavLink to="/login">Log In</NavLink></li>}
               {user && 
                 <li>
                   <a href="/dashboard">
@@ -26,7 +26,7 @@ class Header extends React.Component {
                   </a>
                 </li>}
               {user && <li><strong>{user.name}</strong></li>}
-              {user && <li><a onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+              {user && <li><a className="btn red" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
             </ul>
           </div>
         </nav>
