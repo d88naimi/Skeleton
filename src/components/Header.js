@@ -12,18 +12,25 @@ class Header extends React.Component {
     const {user, logout} = this.props;
     console.log(user);
     return (
-      <div className="navbar-fixed">
+      <header className="navbar-fixed">
         <nav>
           <div className="container nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <ul className="right hide-on-small-only">
+              {!user && <li><a href="/auth/google">Google</a></li>}
               {!user && <li><NavLink to="/login">Log In</NavLink></li>}
-              {user && <Userbox user={user} />}
+              {user && 
+                <li>
+                  <a href="/dashboard">
+                    <img className="profilePhoto"  src={user.photoURL} />
+                  </a>
+                </li>}
+              {user && <li><strong>{user.name}</strong></li>}
               {user && <li><a className="btn red" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
             </ul>
           </div>
         </nav>
-      </div>
+      </header>
     );
   }
 }
@@ -32,7 +39,6 @@ Header.propTypes = {
   user: PropTypes.object
 };
 
-//
 export default connect(
   (state) => {
     console.log(state);
