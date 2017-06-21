@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types'
+// components imports
 import Header from './components/Header';
 import Drawer from './components/Drawer';
+import Login from './components/Login';
 import Footer from './components/Footer';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
@@ -23,6 +25,7 @@ class App extends React.Component{
         <Drawer />
         <main>
           <Route exact path="/" component={Search} />
+          <Route path="/login" component={Login} />
         </main>
         <Footer />
       </div>
