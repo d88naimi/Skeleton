@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import 'react-mdl/extra/material';
-import 'react-mdl/extra/material.min.css';
+import 'materialize-css/dist/css/materialize.css';
+import 'materialize-css/dist/js/materialize';
 import './styles/main.scss'
 injectTapEventPlugin();
 

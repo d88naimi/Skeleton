@@ -5,8 +5,9 @@ import Drawer from './components/Drawer';
 import Footer from './components/Footer';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
-import {Content, Layout} from "react-mdl";
-import backgroud from './assets/images/example.jpg';
+// import backgroud from './assets/images/example.jpg';
+import {Search} from "./components/Search";
+import { Route } from 'react-router';
 
 class App extends React.Component{
 
@@ -17,12 +18,14 @@ class App extends React.Component{
 
   render() {
     return (
-      <Layout fixedHeader style={{background: `url(${backgroud}) center / cover`}}>
+      <div>
         <Header />
         <Drawer />
-        <Content />
-        <Footer/>
-      </Layout>
+        <main>
+          <Route exact path="/" component={Search} />
+        </main>
+        <Footer />
+      </div>
     );
   }
 }

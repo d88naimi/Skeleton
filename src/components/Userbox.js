@@ -3,11 +3,12 @@ import './Userbox.scss';
 
 export const Userbox = ({user}) => (
   <div>
-    <div className>
-      <a href="/dashboard">
-        <img className="profilePhoto"  src={user.photoURL} />
-      </a>
-      <p  className="hello"><b>{user.name}</b></p>
-    </div>
+  <li>
+    <a href="/dashboard">
+      <img className="profilePhoto"  src={user.photoURL} />
+    </a>
+  </li>
+    <p><b>{user.name}</b></p>
   </div>
 );
+

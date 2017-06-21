@@ -1,46 +1,9 @@
-html {
-  box-sizing: border-box;
-}
-
-html,
 body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-.notification {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1032;
-}
-
-h3.title {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  line-height: 1.6;
-
-  .label {
-    margin-right: 5px;
-  }
-}
-
-button.pull-right {
-  margin-top: 20px;
-}
-
-.panel-title {
-  font-size: 25px;
-}
-
-.hello {
-  color: red;
+main {
+  flex: 1 0 auto;
 }

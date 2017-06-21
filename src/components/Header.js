@@ -2,30 +2,34 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Header, Navigation} from "react-mdl";
 import {Userbox} from "./Userbox";
 import {logout} from "../actions/auth";
 import './Header.scss';
 
-class HeaderWrapper extends React.Component {
+class Header extends React.Component {
 
   render() {
     const {user, logout} = this.props;
+    console.log(user);
     return (
-      <Header transparent title={<span><strong>VIIP</strong></span>} style={{color: 'white'}}>
-        {!user &&
-        <Navigation>
-          <a href="/auth/google">Log in</a>
-          <NavLink to="/signup">Sign up</NavLink>
-        </Navigation>}
-        {user && <Userbox user={user} />}
-        {user && <a onClick={logout} style={{cursor: 'pointer'}}>Log Out</a>}
-      </Header>
+      <div className="navbar-fixed">
+        <nav>
+          <div className="nav-wrapper">
+            <a href="#" className="brand-logo">VIIP</a>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              {!user && <li><a href="/auth/google">Log in</a></li>}
+              {!user && <li><NavLink to="/signup">Sign up</NavLink></li>}
+              {user && <Userbox user={user} />}
+              {user && <li><a onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+            </ul>
+          </div>
+        </nav>
+      </div>
     );
   }
 }
 
-HeaderWrapper.propTypes = {
+Header.propTypes = {
   user: PropTypes.object
 };
 
@@ -36,4 +40,4 @@ export default connect(
     return { user: state.auth.user }
   },
   { logout }
-)(HeaderWrapper);
+)(Header);
