@@ -60,7 +60,8 @@
     "socket.io": "^2.0.3",
     "socketio-jwt": "^4.5.0",
     "universal-cookie": "^2.0.8",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
