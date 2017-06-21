@@ -16,10 +16,16 @@ class Header extends React.Component {
         <nav>
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google">Log in</a></li>}
               {!user && <li><NavLink to="/signup">Sign up</NavLink></li>}
-              {user && <Userbox user={user} />}
+              {user && 
+                <li>
+                  <a href="/dashboard">
+                    <img className="profilePhoto"  src={user.photoURL} />
+                  </a>
+                </li>}
+              {user && <li><strong>{user.name}</strong></li>}
               {user && <li><a onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
             </ul>
           </div>
@@ -33,7 +39,6 @@ Header.propTypes = {
   user: PropTypes.object
 };
 
-//
 export default connect(
   (state) => {
     console.log(state);
