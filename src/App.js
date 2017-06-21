@@ -18,11 +18,12 @@ class App extends React.Component{
 
   render() {
     return (
-      <div>
+      <div className='root'>
         <Header />
-        <Drawer />
         <main>
+          <Drawer />
           <Route exact path="/" component={Search} />
+          {/*<Route path="/login" component={Login} />*/}
         </main>
         <Footer />
       </div>

@@ -12,7 +12,7 @@ class Header extends React.Component {
     const {user, logout} = this.props;
     console.log(user);
     return (
-      <div className="navbar-fixed">
+      <header className="navbar-fixed">
         <nav>
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
@@ -24,7 +24,7 @@ class Header extends React.Component {
             </ul>
           </div>
         </nav>
-      </div>
+      </header>
     );
   }
 }
