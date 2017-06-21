@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
+import Results from './components/Results';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 // import backgroud from './assets/images/example.jpg';
