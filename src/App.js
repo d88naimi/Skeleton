@@ -7,6 +7,7 @@ import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 // import backgroud from './assets/images/example.jpg';
 import {Search} from "./components/Search";
+import Agent from "./components/Agent/Agent";
 import { Route } from 'react-router';
 
 class App extends React.Component{
@@ -23,6 +24,7 @@ class App extends React.Component{
         <Drawer />
         <main>
           <Route exact path="/" component={Search} />
+          <Agent />
         </main>
         <Footer />
       </div>
