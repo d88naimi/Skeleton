@@ -1,15 +1,17 @@
 {
   "name": "viip",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
     "compile": "node build/compile",
     "build": "npm run clean && NODE_ENV=production npm run compile",
     "start": "NODE_ENV=production node server/server.js",
-    "serve": "NODE_ENV=development nodemon server/server.js"
+    "serve": "NODE_ENV=development nodemon server/server.js",
+    "api-doc": "apidoc -i server/api -o apidoc/"
   },
   "dependencies": {
+    "apidoc": "^0.17.6",
     "axios": "^0.16.2",
     "bluebird": "^3.4.7",
     "body-parser": "^1.17.2",
@@ -60,7 +62,8 @@
     "socket.io": "^2.0.3",
     "socketio-jwt": "^4.5.0",
     "universal-cookie": "^2.0.8",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

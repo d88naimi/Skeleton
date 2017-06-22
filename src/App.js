@@ -5,9 +5,12 @@ import Header from './components/Header';
 import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
+import Results from './components/Results';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 // import backgroud from './assets/images/example.jpg';
+import {Search} from "./components/Search";
+import Agent from "./components/Agent/Agent";
 import {Home} from "./components/Home";
 import { Route } from 'react-router';
 
@@ -26,6 +29,7 @@ class App extends React.Component{
           <Drawer />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/agents" component={Agent} />
         </main>
         <Footer />
       </div>

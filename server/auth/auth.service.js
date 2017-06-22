@@ -13,7 +13,7 @@ const validateJwt = expressJwt({
  * Attaches the user object to the request if authenticated
  * Otherwise returns 403
  */
-function isAuthenticated () {
+const isAuthenticated = () => {
   return compose()
     // Validate jwt
     .use(function(req, res, next) {
@@ -70,7 +70,7 @@ function signToken (id, role) {
     expiresIn: 60 * 60 * 5
   });
 }
-module.exports.signToken = signToken;
+module.exports.signToken = signToken
 
 /**
  * Set token cookie directly for oAuth strategies
