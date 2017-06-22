@@ -26,6 +26,10 @@ export function fetchUserInfo (jwt) {
   return axios.get('/api/users/me', { headers })
 }
 
+export function saveJWT(jwt) {
+  (new Cookies).set('token', jwt);
+  return Promise.resolve();
+}
 
 /**
  * Actions
@@ -36,6 +40,29 @@ export function loadJWT (jwt) {
     payload: jwt
   }
 }
+
+export function signup (secret) { //email, name, password
+  return dispatch => {
+    axios.post('/api/users', secret)
+      .then(
+        res => saveJWT(res.data.token),
+        err => console.log("something went wrong. Try again")
+      )
+      .then(() => dispatch(checkLoginStatus()));
+  }
+}
+
+export function login (secret) { //email, password
+  return dispatch => {
+    axios.post('/auth/local', secret)
+      .then(
+        res => saveJWT(res.data.token),
+        err => console.log("something went wrong. Try again")
+      )
+      .then(() => dispatch(checkLoginStatus()));
+  }
+}
+
 
 export const fetchJWT = () => {
   return function (dispatch) {// eslint-disable-next-line

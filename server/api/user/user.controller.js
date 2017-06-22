@@ -3,6 +3,8 @@
 const User = require('./user.model');
 const config = require('../../config/environment');
 const jwt = require('jsonwebtoken');
+const md5 = require('md5');
+
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -102,13 +104,15 @@ module.exports.showAgents = (req, res) => {
 module.exports.create = (req, res) => {
   const newUser = new User(req.body);
   newUser.provider = 'local';
+  newUser.photoURL = `https://gravatar.com/avatar/${md5(newUser.email)}?s=200&d=retro`;
+
   if(newUser.role !== 'agent') newUser.role = 'user';
   newUser.save()
     .then(function(user) {
       const token = jwt.sign({ _id: user._id, role: user.role }, config.secrets.session, {
         expiresIn: 60 * 60 * 5
       });
-      res.json({ token });
+      return res.json({ token });
     })
     .catch(validationError(res));
 };
