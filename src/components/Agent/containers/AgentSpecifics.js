@@ -4,7 +4,7 @@ export default class AgentSpecifics extends React.Component {
 
   render() {
     return (
-		<div className="agent-specifics col s12 blue lighten-5">
+		<div className="agent-specifics col s12 m12 blue lighten-5">
             <div className="card-panel grey lighten-5 z-depth-1">
               <div className="row valign-wrapper">
 

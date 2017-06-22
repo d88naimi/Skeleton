@@ -16,7 +16,7 @@ class AgentBio extends React.Component {
 
   render() {
     return (
-          <div className="agent-bio col s8 blue lighten-5">
+          <div className="agent-bio col s12 m8 blue lighten-5">
             <div className="card-panel grey lighten-5 z-depth-1">
 
               <div className="row valign-wrapper">
