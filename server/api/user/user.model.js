@@ -5,7 +5,9 @@ const mongoose  = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const authTypes = ['twitter', 'facebook', 'google'];
-
+const LANGUAGE = ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 
+                  'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German',
+                   'Punjabi/Lahnda', 'Javanese', 'Telugu']
 const UserSchema = new mongoose.Schema({
   name: String,
   email: {
@@ -16,18 +18,25 @@ const UserSchema = new mongoose.Schema({
     },
     index: true
   },
-  isAgent: {
-    type: Boolean,
-    default: false,
-    index: true
-  },
   location: {
     type: String,
     default: "N/A"
   },
+  languages: [{
+    type: String,
+    enum: LANGUAGE
+  }],
+  phone: {
+    type: String
+  },
+  text: {
+    type: String,
+    default: ''
+  },
   role: {
     type: String,
-    default: 'user'
+    default: 'user',
+    index: true
   },
   password: {
     type: String,
@@ -55,10 +64,24 @@ UserSchema
       _id: this._id,
       name: this.name,
       role: this.role,
-      location: this.location,
-      isAgent: this.isAgent
+      text: this.text      
     };
   });
+
+// Agent profile information
+UserSchema
+  .virtual('agentProfile')
+  .get(function() {
+    return {
+      _id: this._id,
+      name: this.name,
+      role: this.role,
+      location: this.location,
+      phone: this.phone,
+      languages: this.language,
+      text: this.text
+    };
+  });  
 
 // Non-sensitive info we'll be putting in the token
 UserSchema

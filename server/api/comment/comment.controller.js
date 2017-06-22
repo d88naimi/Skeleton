@@ -55,12 +55,12 @@ function handleError(res, statusCode) {
 }
 
 /**
- * @api {get} /api/comments/agent/:agentId?page=:pageNumber Request Comment List of an Agent
+ * @api {get} /api/comments/agent/:agentId?page=:page Request Comment List of an Agent
  * @apiName GetCommentListOfAgent
  * @apiGroup Comment
  *
- * @apiParam (Query) {Number} page Page number(integer). Default value is 0
- * @apiParam (Params) {String} agentId Agent(User) unique ID.
+ * @apiParam (query params) {Number} page Page number(integer). Default value is 0
+ * @apiParam (route params) {String} agentId Agent(User) unique ID.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -82,7 +82,7 @@ function handleError(res, statusCode) {
  *
  */
 module.exports.index = (req, res) => {
-  const page = req.query.page || 0;
+  const page = +req.query.page || 0;
   return Comment.find(req.params.agentId)
     .skip(page * 10)
     .limit(10)
@@ -97,7 +97,7 @@ module.exports.index = (req, res) => {
  * @apiName GetSingleComment
  * @apiGroup Comment
  *
- * @apiParam (Params) {String} id Comment Unique ID.
+ * @apiParam (route params) {String} id Comment Unique ID.
  *
  * @apiSuccess {Object} comment comment object
  * @apiSuccessExample Success-Response:
@@ -128,9 +128,9 @@ module.exports.show = (req, res) => {
  * @apiName PostComment
  * @apiGroup Comment
  *
- * @apiParam (Body) {String} agentId Agent(User) unique ID.
- * @apiParam (Body) {String} text comment text
- * @apiParam (Body) {String} rate star rate (integer from 0 to 5)
+ * @apiParam (request body) {String} agentId Agent(User) unique ID.
+ * @apiParam (request body) {String} text comment text
+ * @apiParam (request body) {String} rate star rate (integer from 0 to 5)
  *
  * @apiSuccess {Object} comment comment object
  * @apiSuccessExample Success-Response:
@@ -166,10 +166,10 @@ module.exports.create = (req, res) => {
  * @apiName UpdateComment
  * @apiGroup Comment
  *
- * @apiParam (Params) {String} id Comment unique ID.
- * @apiParam (Body) {String} agentId (Optional) Agent(User) unique ID.
- * @apiParam (Body) {String} text (Optional) comment text
- * @apiParam (Body) {String} rate (Optional) star rate (integer from 0 to 5)
+ * @apiParam (route params) {String} id Comment unique ID.
+ * @apiParam (request body) {String} agentId (Optional) Agent(User) unique ID.
+ * @apiParam (request body) {String} text (Optional) comment text
+ * @apiParam (request body) {String} rate (Optional) star rate (integer from 0 to 5)
  *
  * @apiSuccess {Object} comment comment object
 
@@ -205,7 +205,7 @@ module.exports.update = (req, res) => {
  * @apiName DeleteComment
  * @apiGroup Comment
  *
- * @apiParam (Params) {String} id Comment unique ID.
+ * @apiParam (route params) {String} id Comment unique ID.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 204 OK
