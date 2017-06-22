@@ -25,8 +25,8 @@ export function reducer(state = initialState, action) {
     }
 
     case fromAuth.LOAD_USER_INFO: {
-      const rawUser = action.payload;
-      const user = Object.assign(rawUser, {photoURL: rawUser[rawUser['provider']].image.url});
+      const user = action.payload;
+      // const user = Object.assign({}, rawUser, {photoURL: rawUser[rawUser['provider']].image.url});
       return Object.assign({}, state, {user});
       // Object.assign({a:2, b:2, c:3}, {a: 1, c:10, d:2}) = {a:1, b:2, c:10, d:2}
     }

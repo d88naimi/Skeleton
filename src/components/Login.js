@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Login.scss';
+import { signup, login } from '../actions/auth'
 
 function mapStateToProps(state) {
   return {
@@ -14,19 +15,27 @@ export class Login extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    console.log(props);
+    this.handleSignup = this.handleSignup.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
-  handleSubmit(event){
-
-  event.preventDefault();
-
+  handleSignup(event){
+	  event.preventDefault();
+		const { signup } = this.props;
+		//currently this is signup.
+		signup({name: 'Micky Mouse', email: "example@viip.com", password: 'password'});
   }
+
+  handleLogin(someEvent) {
+  	const { login } = this.props;
+  	login({email: "example@viip.com", password: 'password'});
+	}
 
   render() {
     return (
       <div className="container center-align whiteBackground" style={{backgroundColor:'#f2f2f2', padding:'10px'}}>
-	      <form onClick={this.handleSubmit}>
+	      <form onSubmit={this.handleSignup}>
 		    <div className="row">
 			    <div className="input-field col s12">
 			      <input  placeholder="johnnyPotatoes" id="Username" type="text" className="validate"></input>
@@ -41,10 +50,14 @@ export class Login extends React.Component {
 			    </div>
 			    </div>
 			</div>
-			    <button className="btn waves-effect waves-light themeButton" type="submit" name="action">Submit
+			    <button className="btn waves-effect waves-light themeButton" type="submit" name="action">SignupFake
 			    <i className="material-icons right">send</i>
-			  </button><br/><br/>
+			  </button>
+					<br/><br/>
 		  </form>
+				<button className="btn waves-effect waves-light themeButton" type="button" onClick={this.handleLogin} name="action">LoginFake
+					<i className="material-icons right">send</i>
+				</button>
 		  <hr/>
 		  <div className="container center-align transparentWhiteOutline" style={{padding:'10px'}}>
 		  		<h5>or</h5>
@@ -62,5 +75,5 @@ export class Login extends React.Component {
 
 export default connect(
   mapStateToProps,
-// Implement map dispatch to props
+	{ signup, login }
 )(Login)
