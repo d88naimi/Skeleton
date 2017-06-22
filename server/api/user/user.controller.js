@@ -267,11 +267,11 @@ module.exports.me = (req, res, next) => {
     .catch(err => next(err));
 };
 
-/**
- * Authentication callback
- */
-module.exports.authCallback = (req, res) => {
-  res.redirect('/');
-};
+// /**
+//  * Authentication callback
+//  */
+// module.exports.authCallback = (req, res) => {
+//   res.redirect('/');
+// };
 
 

@@ -59,7 +59,7 @@ module.exports = function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if(env !== 'test' && !process.env.SAUCE_USERNAME) {
+  if(env !== 'test') {
     app.use(lusca({
       csrf: true,
       xframe: 'SAMEORIGIN',
