@@ -8,10 +8,11 @@ const errors = require('./components/errors');
 const path = require('path');
 const project = require('../project.config');
 const compiler = require('./config/compiler');
+const config = require('./config/environment');
 
 module.exports = function(app) {
-  // Insert routes below
-  app.use('/api/things', require('./api/thing'));
+
+  app.use('/api/comments', require('./api/comment'));
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth'));

@@ -1,15 +1,17 @@
 {
   "name": "viip",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
     "compile": "node build/compile",
     "build": "npm run clean && NODE_ENV=production npm run compile",
     "start": "NODE_ENV=production node server/server.js",
-    "serve": "NODE_ENV=development nodemon server/server.js"
+    "serve": "NODE_ENV=development nodemon server/server.js",
+    "api-doc": "apidoc -i server/api -o apidoc/"
   },
   "dependencies": {
+    "apidoc": "^0.17.6",
     "axios": "^0.16.2",
     "bluebird": "^3.4.7",
     "body-parser": "^1.17.2",

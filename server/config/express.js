@@ -24,16 +24,14 @@ const MongoStore = connectMongo(session);
 module.exports = function(app) {
   const env = app.get('env');
 
-  if(env === 'development' || env === 'test') {
-    app.use(express.static(path.join(config.root, '.tmp')));
-  }
+  // if(env === 'development' || env === 'test') {
+  //   app.use(express.static(path.join(config.root, '.tmp')));
+  // }
 
-  if(env === 'production') {
+  // if(env === 'production') {
     // app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
-  }
-
-  app.set('appPath', path.join(config.root, 'app/public'));
-  app.use(express.static(app.get('appPath')));
+  // }
+  app.use(express.static(path.join(config.root, 'public')));
   app.use(morgan('dev'));
 
   app.use(shrinkRay());
@@ -61,10 +59,9 @@ module.exports = function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if(env !== 'test' && !process.env.SAUCE_USERNAME) {
+  if(env !== 'test') {
     app.use(lusca({
-      csrf: {
-      },
+      csrf: true,
       xframe: 'SAMEORIGIN',
       hsts: {
         maxAge: 31536000, //1 year, in seconds
