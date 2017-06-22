@@ -7,15 +7,20 @@ import './Agent.scss';
 class Agent extends React.Component {
 render(){
   return(
-  <div  className="agent">
+  <div  className="agent container">
     <div className="row">
       <div className="col s12">
         <div className="row">
 
         <AgentBio />
-        <AgentSpecifics />
         <Opportunity />
 
+        </div>
+      </div>
+
+      <div className="col s12">
+        <div className="row">
+          <AgentSpecifics />
         </div>
       </div>
     </div>
