@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {getAgentsNearby} from '../helpers/agent';
+import './Search.scss';
 
 function mapStateToProps(state) {
   return {
@@ -45,10 +46,10 @@ export class Search extends React.Component {
         <div className="row">
           <div className="input-field col s6">
             <input type="text" className="validate" onChange={this.getQuery}/>
-              <label htmlFor="last_name">City name</label>
+              <label htmlFor="last_name">Search For Agents</label>
           </div>
         </div>
-        <button className="btn waves-effect waves-light red" type="submit" name="action" onSubmit={this.handleSubmit}>Search
+        <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>Search
             <i className="material-icons right">search</i>
         </button><br/>
       </form>

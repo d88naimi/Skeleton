@@ -1,3 +1,11 @@
+$Main-Red: #cc1818;
+$Main-Blue: #185392;
+$Main-DarkGray: #333333;
+
+
+.blueFont{
+	color: $Main-Blue;
+}
 
 .themeButton{
 	background-color: rgba(0,0,0,.5);
@@ -24,7 +32,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 }
 
-.transparentWhiteOutline{
-	background-color: transparent;
-	border: 2px solid white;
+.homeBackground{
+	padding: 20px;
 }
+
+.homeImage{
+	width:100%;
+	border-radius: 10px;
+
+}
+
