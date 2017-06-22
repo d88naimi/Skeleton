@@ -25,7 +25,7 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <div className="container center-align" style={{backgroundColor:'#f2f2f2', padding:'10px'}}>
+      <div className="container center-align whiteBackground" style={{backgroundColor:'#f2f2f2', padding:'10px'}}>
 	      <form onClick={this.handleSubmit}>
 		    <div className="row">
 			    <div className="input-field col s12">
@@ -36,22 +36,22 @@ export class Login extends React.Component {
 			<div>
 		       <div className="row">
 			    <div className="input-field col s12">
-			      <input  placeholder="password123" id="Password" type="text" className="validate"></input>
+			      <input  placeholder="password123" id="Password" type="password" className="validate"></input>
 			      <label className="active" htmlFor="Password">Password</label>
 			    </div>
 			    </div>
 			</div>
-			    <button className="btn waves-effect waves-light red" type="submit" name="action">Submit
+			    <button className="btn waves-effect waves-light themeButton" type="submit" name="action">Submit
 			    <i className="material-icons right">send</i>
 			  </button><br/><br/>
 		  </form>
 		  <hr/>
-		  <div className="container center-align" style={{backgroundColor:'lightgrey', padding:'10px'}}>
-		  		<p>or</p>
-		  		<h5>Sign in with</h5><br/>
-			  <a href="/auth/google" className="waves-effect waves-light btn blue"><i className="material-icons left">vpn_key</i>Google</a><br/><br/>
-			  <a className="waves-effect waves-light btn blue"><i className="material-icons left">vpn_key</i>Facebook</a><br/><br/>
-			  <a className="waves-effect waves-light btn blue"><i className="material-icons left">vpn_key</i>Twitter</a>
+		  <div className="container center-align transparentWhiteOutline" style={{padding:'10px'}}>
+		  		<h5>or</h5>
+		  		<h5>Log in with</h5><br/>
+			  <a href="/auth/google" className="waves-effect waves-light btn themeButton"><i className="material-icons left">vpn_key</i>Google</a><br/><br/>
+			  <a className="waves-effect waves-light btn themeButton"><i className="material-icons left">vpn_key</i>Facebook</a><br/><br/>
+			  <a className="waves-effect waves-light btn themeButton"><i className="material-icons left">vpn_key</i>Twitter</a>
 	      </div>
 	     
       </div>

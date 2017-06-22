@@ -1,3 +1,42 @@
 .profilePhoto {
   border-radius: 50%;
 }
+
+$Main-Red: #cc1818;
+$Main-Blue: #185392;
+$Main-DarkGray: #333333;
+
+nav{
+	background-color: $Main-Blue;
+}
+
+.themeButton{
+	background-color: rgba(0,0,0,.5);
+	color: white;
+	border: 2px solid white;
+	text-decoration: none;
+}
+
+
+.themeButton:hover{
+	background-color: rgba(0,0,0,.8);
+	color: white;
+	border: 2px solid white;
+	text-decoration: none;	
+}
+
+.logoutButton{
+	background-color: rgba(206,13,13,.5);
+	color: white;
+	border: 2px solid white;
+	text-decoration: none;
+}
+
+
+.logoutButton:hover{
+	background-color: rgba(206,13,13,.8);
+	color: white;
+	border: 2px solid red;
+	text-decoration: none;	
+}
+
