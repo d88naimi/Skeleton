@@ -29,6 +29,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "fast-json-patch": "^2.0.2",
     "html-webpack-plugin": "^2.28.0",
+    "jquery": "^3.2.1",
     "jsonwebtoken": "^7.4.1",
     "lodash": "^4.17.4",
     "lusca": "^1.4.1",
