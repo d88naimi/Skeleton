@@ -33,6 +33,7 @@
     "lodash": "^4.17.4",
     "lusca": "^1.4.1",
     "materialize-css": "^0.98.2",
+    "md5": "^2.2.1",
     "method-override": "^2.3.5",
     "mongoose": "^4.10.6",
     "morgan": "^1.8.2",
