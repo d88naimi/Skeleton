@@ -6,9 +6,10 @@ import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Results from './components/Results';
+import Agents from './components/Agents';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
-// import backgroud from './assets/images/example.jpg';
+// import background from './assets/images/example.jpg';
 import {Search} from "./components/Search";
 import Agent from "./components/Agent/Agent";
 import {Home} from "./components/Home";
@@ -29,7 +30,10 @@ class App extends React.Component{
           <Drawer />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-          <Route path="/agents" component={Agent} />
+
+          <Route path="/results" component={Results} />
+          <Route path="/agents" component={Agents} />
+
         </main>
         <Footer />
       </div>

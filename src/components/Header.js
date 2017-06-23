@@ -19,6 +19,8 @@ class Header extends React.Component {
             <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google">Google</a></li>}
               {!user && <li><NavLink to="/login">Log In</NavLink></li>}
+              <li><NavLink to="/results">Results</NavLink></li>
+
               {user && 
                 <li>
                   <a href="/dashboard">
