@@ -30,7 +30,7 @@ class App extends React.Component{
           <Drawer />
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
-
+          <Route path="/signup" component={Login} />
           <Route path="/results" component={Results} />
           <Route path="/agents" component={Agents} />
 

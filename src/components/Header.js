@@ -13,12 +13,13 @@ class Header extends React.Component {
     console.log(user);
     return (
       <header className="navbar-fixed">
-        <nav className="blue darken-4">
+        <nav className="darken-4">
           <div className="container nav-wrapper">
-            <a href="#" className="brand-logo">VIIP</a>
+            <a href="#" className="brand-logo"><span className="t">T</span><span className="u">U</span></a>
             <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google">Google</a></li>}
               {!user && <li><NavLink to="/login">Log In</NavLink></li>}
+              {!user && <li><NavLink to="/signup">Sign Up</NavLink></li>}
               <li><NavLink to="/results">Results</NavLink></li>
 
               {user && 
@@ -27,7 +28,7 @@ class Header extends React.Component {
                     <img className="profilePhoto"  src={user.photoURL} />
                   </a>
                 </li>}
-              {user && <li><strong>{user.name}</strong></li>}
+              {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong>{user.name}</strong></li>}
               {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
             </ul>
           </div>

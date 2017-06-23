@@ -1,13 +1,36 @@
-.profilePhoto {
-  border-radius: 50%;
-}
-
 $Main-Red: #cc1818;
-//$Main-Blue: #185392;
+$Main-Blue: #185392;
 $Main-DarkGray: #333333;
 
+.t{
+	color: $Main-Blue;
+	font-weight: bold;
+		&:hover{
+		color:white;
+	}
+}
+
+.u{
+	color: $Main-Red;
+	font-weight: bold;
+	&:hover{
+		color:white;
+	}
+}
+
+
+.profilePhoto {
+margin-top: 10px;
+  border-radius: 50%;
+  height: 40px;
+  border: $Main-Red 2px solid;
+  &:hover{
+  	border: white 2px solid;
+  }
+}
+
 nav{
-	//background-color: $Main-Blue;
+	background-color: $Main-DarkGray;
 }
 
 .themeButton{
