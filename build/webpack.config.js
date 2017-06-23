@@ -90,13 +90,13 @@ config.module.rules.push({
 
 // Styles
 // ------------------------------------
-config.module.rules.push({
-  test: /\.css$/,
-  use: ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [ 'css-loader' ]
-  })
-});
+// config.module.rules.push({
+//   test: /\.css$/,
+//   use: ExtractTextPlugin.extract({
+//     fallback: 'style-loader',
+//     use: [ 'css-loader' ]
+//   })
+// });
 
 const extractStyles = new ExtractTextPlugin({
   filename: 'styles/[name].[contenthash].css',

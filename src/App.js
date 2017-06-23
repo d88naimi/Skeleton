@@ -12,8 +12,9 @@ import { connect } from 'react-redux';
 // import background from './assets/images/example.jpg';
 import {Search} from "./components/Search";
 import Agent from "./components/Agent/Agent";
+import AgentResults from "./components/AgentResults";
 import {Home} from "./components/Home";
-import { Route } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
 class App extends React.Component{
 
@@ -32,8 +33,11 @@ class App extends React.Component{
           <Route path="/login" component={Login} />
 
           <Route path="/results" component={Results} />
-          <Route path="/agents" component={Agents} />
-          <Route path="/agent" component={Agent} />
+
+          <Route path="/agents" component={Agents}>
+            <IndexRoute component={AgentResults}></IndexRoute>
+            <Route path="/agent/:id"></Route>
+          </Route>
 
         </main>
         <Footer />
