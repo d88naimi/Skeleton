@@ -43,9 +43,9 @@ module.exports.index = (req, res) => {
  * @apiName GetAgentsInfo
  * @apiGroup Agent
  *
- * @apiParam (query params) {String} location Name of city.
- * @apiParam (query params) {String} language Name of language. Should be one of these: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Javanese', 'Telugu'].
- * @apiParam (query params) {Number} page (OPTIONAL)page of list.. (10 agents per page, default value 0)
+ * @apiParam (query params) {String} location (OPTIONAL) Name of city. At least one of location or languate are needed 
+ * @apiParam (query params) {String} language (OPTIONAL) Name of language. At least one of location or languate are needed. Should be one of these: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].
+ * @apiParam (query params) {Number} page (OPTIONAL) page of list.. (10 agents per page, default value 0)
  * 
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -73,11 +73,17 @@ module.exports.index = (req, res) => {
 module.exports.showAgents = (req, res) => {
   const location = req.query.location;
   const language = req.query.language;
-  const page = +req.query.page;
+  const page = +req.query.page || 0;
 
-  return User.find({location, language, role: 'agent'})
+  let queryObj = {};
+  if(location) queryObj.location = location;
+  if(language) queryObj.languages = language;
+  if(Object.keys(queryObj).length === 0) return res.status(400).end();
+
+  return User.find(queryObj)
     .skip(page * 10)
     .limit(10)
+    .select('-salt -password -provider')    
     .lean()
     .exec()
     .then(agents => {
@@ -96,7 +102,7 @@ module.exports.showAgents = (req, res) => {
  *
  * @apiParam (request body) {String} name User name.
  * @apiParam (request body) {String} email Users email.
- * @apiParam (request body) {String} password Users email.
+ * @apiParam (request body) {String} password Users password.
  * @apiParam (request body) {String} role (OPTIONAL) "user" or "agent", default is "user"
  * @apiSuccess {String} token json web token.
  *
@@ -156,6 +162,7 @@ module.exports.showUser = (req, res, next) => {
  *
  * @apiSuccess {String} name Name of the Agent(User).
  * @apiSuccess {String} role "user", "agent", "admin".
+ * @apiSuccess {String} photoURL profile photo url
  * @apiSuccess {String} location Name of city,
  * @apiSuccess {String} languages Names of language (array)
  * @apiSuccess {String} text Simple profile text,
@@ -165,13 +172,17 @@ module.exports.showUser = (req, res, next) => {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
+ *       "email": "example@example.com",
+ *       "facebook": Object,
  *       "name": "John Doe",
+ *       "provider": "google",
  *       "role": "agent",
- *       "location": "San Diego",
- *       "languages": [ "Spanish", "Korean", ...],
- *       "text": "I am from Korea and live here 30 years. I am good at searching a good apartment."
- *       "phone": "213-378-2134"
  *       "_id": "59483862c27e982e0f84c210"
+ *       "photoURL": "https://sokaspdo.asodkasd.asdasd/soks.jpg"
+ *       "location": "San Diego",
+ *       "languages": [ "Korean", "Spanish"],
+ *       "phone": "858-211-1111",
+ *       "text": "I am ......................."
  *     }
  */
 module.exports.showAgent = (req, res, next) => {
@@ -208,7 +219,7 @@ module.exports.destroy = (req, res) => {
 };
 
 /**
- * @api {put} /api/users/:id/password Change User Password
+ * @api {put} /api/users/:id/password Change User Password (restriction: 'authorized')
  * @apiName ChangePassword
  * @apiGroup Users
  *
@@ -219,7 +230,7 @@ module.exports.destroy = (req, res) => {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 204 OK
  */
-module.exports.changePassword = (req, res) => {
+module.exports.changePassword = (req, res, next) => {
   const userId = req.user._id;
   const oldPass = String(req.body.oldPassword);
   const newPass = String(req.body.newPassword);
@@ -251,11 +262,10 @@ module.exports.changePassword = (req, res) => {
  *       "email": "example@example.com",
  *       "google": Object,
  *       "name": "John Doe",
- *       "profiver": "google",
+ *       "provider": "google",
+ *       "photoURL": "https://sokaspdo.asodkasd.asdasd/soks.jpg"
  *       "role": "user",
  *       "_id": "59483862c27e982e0f84c210"
- *       "location": "San Diego",
- *       "isAgent": false
  *     }
  */
 module.exports.me = (req, res, next) => {
@@ -278,4 +288,61 @@ module.exports.me = (req, res, next) => {
 //   res.redirect('/');
 // };
 
+/**
+ * @api {put} /api/users/agent/:id Edit User infomation (restriction: 'authorized')
+ * @apiName EditAgent
+ * @apiGroup Agent
+ *
+ * @apiParam (route params) {String} id (OPTIONAL) User's unique ID.
+ * @apiParam (request body) {String} name (OPTIONAL) User's new name.
+ * @apiParam (request body) {Array[String]} languages (OPTIONAL) User's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].
+ * @apiParam (request body) {String} location (OPTIONAL) User's city name ('New York City', 'Chicago', 'San Diego')
+ * @apiParam (request body) {String} phone (OPTIONAL) User's phone number
+ * @apiParam (request body) {String} text (OPTIONAL) User's introduction text
+ * 
+ * @apiSuccess {String} name Name of the Agent(User).
+ * @apiSuccess {String} role "user", "agent", "admin".
+ * @apiSuccess {String} photoURL profile photo url
+ * @apiSuccess {String} location Name of city,
+ * @apiSuccess {String} languages JSON.stringify(Array of lanaguageName) ex) "["Korean", "Spanish"]"
+ * @apiSuccess {String} text Simple profile text,
+ * @apiSuccess {String} phone Phone number,
+ * @apiSuccess {String} _id user(agent) unique id, * 
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "email": "example@example.com",
+ *       "facebook": Object,
+ *       "name": "John Doe",
+ *       "provider": "google",
+ *       "role": "agent",
+ *       "_id": "59483862c27e982e0f84c210"
+ *       "photoURL": "https://sokaspdo.asodkasd.asdasd/soks.jpg"
+ *       "location": "San Diego",
+ *       "languages": [ "Korean", "Spanish"],
+ *       "phone": "858-211-1111",
+ *       "text": "I am ......................."
+ *     }
+ */
+
+module.exports.editAgent = (req, res, next) => {
+  const agentId = req.user._id;
+  return User.findOne({_id: agentId, role: 'agent'}).exec()
+    .then(agent => {  
+      const newInfo = req.body;
+      if(newInfo.location) agent.location = newInfo.location;
+      if(newInfo.languages) agent.languages = JSON.parse(newInfo.languages);
+      if(newInfo.phone) agent.phone = newInfo.phone;
+      if(newInfo.text) agent.text = newInfo.text;
+      if(newInfo.name) agent.name = newInfo.name;
+      agent.save()
+        .then(updatedAgent => {
+          let agent = updatedAgent.toObject();
+          Reflect.deleteProperty(agent, 'salt');
+          Reflect.deleteProperty(agent, 'password');
+          return res.json(agent);
+        })
+        .catch(err => next(err));
+    });
+};
 
