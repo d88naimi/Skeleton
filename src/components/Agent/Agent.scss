@@ -8,3 +8,11 @@
 .card-panel {
 	height:100%;
 }
+a{
+	cursor:pointer;
+}
+@media (max-width: 600px) {
+  .opportunity {
+    display: none;
+  }
+}

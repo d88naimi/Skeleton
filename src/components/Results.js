@@ -1,30 +1,26 @@
 import React from 'react';
+import photo from '../assets/images/cafe.jpg';
 const Results = () => (
-  <footer className="page-footer">
-    <div className="container">
-      <div className="row">
-        <div className="col l6 s12">
-          <h5 className="white-text">David's Page</h5>
-          <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+ <div className="row">
+    <div className="col s12 m6">
+        <div className="card ">
+        
+        <div className="card-image waves-effect waves-block waves-light">
+          <img className="activator" src={photo}/>
         </div>
-        <div className="col l4 offset-l2 s12">
-          <h5 className="white-text">Links</h5>
-          <ul>
-            <li><a className="grey-text text-lighten-3" href="#!">test</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Hello 2</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">dude 3</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
-          </ul>
+        <div className="card-content">
+          <span className="card-title activator grey-text text-darken-4">Agent David <i className="material-icons right">United States</i></span>
+          <p><a href="#">This is a link</a></p>
+        </div>
+        <div className="card-reveal">
+          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
+          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        </div>
         </div>
       </div>
-    </div>
-    <div className="footer-copyright">
-      <div className="container">
-        © 2017 Copyright Text
-        <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
       </div>
-    </div>
-  </footer>
+  
+
 );
 
 export default Results;
