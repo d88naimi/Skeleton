@@ -4,11 +4,17 @@ const router = express.Router();
 const controller = require('./user.controller');
 const auth = require('../../auth/auth.service');
 
-router.get('/', controller.index);
-router.delete('/:id', auth.hasRole('admin'), controller.destroy);
+//get list of user(agent)
+router.get('/', auth.hasRole('admin'), controller.index);
+router.get('/agents', controller.showAgents);
+
+//get single user(agent)
 router.get('/me', auth.isAuthenticated(), controller.me);
+router.get('/:id', auth.isAuthenticated(), controller.showUser);
+router.get('/agent:id', auth.isAuthenticated(), controller.showAgent);
+
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
-router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
+router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 
 module.exports = router;

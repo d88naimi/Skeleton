@@ -14,7 +14,7 @@ class Header extends React.Component {
     return (
       <header className="navbar-fixed">
         <nav>
-          <div className="nav-wrapper">
+          <div className="container nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
             <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google">Google</a></li>}
@@ -28,7 +28,7 @@ class Header extends React.Component {
                   </a>
                 </li>}
               {user && <li><strong>{user.name}</strong></li>}
-              {user && <li><a className="btn red" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+              {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
             </ul>
           </div>
         </nav>

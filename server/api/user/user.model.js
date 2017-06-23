@@ -5,7 +5,9 @@ const mongoose  = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const authTypes = ['twitter', 'facebook', 'google'];
-
+const LANGUAGE = ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 
+                  'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German',
+                   'Punjabi/Lahnda', 'Javanese', 'Telugu']
 const UserSchema = new mongoose.Schema({
   name: String,
   email: {
@@ -13,11 +15,28 @@ const UserSchema = new mongoose.Schema({
     lowercase: true,
     required() {
       return authTypes.indexOf(this.provider) === -1;
-    }
+    },
+    index: true
+  },
+  location: {
+    type: String,
+    default: "N/A"
+  },
+  languages: [{
+    type: String,
+    enum: LANGUAGE
+  }],
+  phone: {
+    type: String
+  },
+  text: {
+    type: String,
+    default: ''
   },
   role: {
     type: String,
-    default: 'user'
+    default: 'user',
+    index: true
   },
   password: {
     type: String,
@@ -31,7 +50,7 @@ const UserSchema = new mongoose.Schema({
   twitter: {},
   google: {},
   github: {}
-});
+}, {timestamp: true});
 
 /**
  * Virtuals
@@ -42,10 +61,27 @@ UserSchema
   .virtual('profile')
   .get(function() {
     return {
+      _id: this._id,
       name: this.name,
-      role: this.role
+      role: this.role,
+      text: this.text      
     };
   });
+
+// Agent profile information
+UserSchema
+  .virtual('agentProfile')
+  .get(function() {
+    return {
+      _id: this._id,
+      name: this.name,
+      role: this.role,
+      location: this.location,
+      phone: this.phone,
+      languages: this.language,
+      text: this.text
+    };
+  });  
 
 // Non-sensitive info we'll be putting in the token
 UserSchema
@@ -152,7 +188,6 @@ UserSchema.methods = {
    * @param {String} password
    * @param {Function} callback
    * @return {Boolean}
-   * @api public
    */
   authenticate(password, callback) {
     if(!callback) {
@@ -178,7 +213,6 @@ UserSchema.methods = {
    * @param {Number} [byteSize] - Optional salt byte size, default to 16
    * @param {Function} callback
    * @return {String}
-   * @api public
    */
   makeSalt(...args) {
     let byteSize;
@@ -213,7 +247,6 @@ UserSchema.methods = {
    * @param {String} password
    * @param {Function} callback
    * @return {String}
-   * @api public
    */
   encryptPassword(password, callback) {
     if(!password || !this.salt) {
