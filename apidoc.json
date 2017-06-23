@@ -1,7 +1,7 @@
 {
-  "name": "VIIP",
+  "name": "TransUnited",
   "version": "0.0.0",
-  "description": "VIIP APIs",
-  "title": "VIIP API Docs",
-  "url" : "localhost:3000"
+  "description": "TransUnited APIs",
+  "title": "TransUnited API Docs",
+  "url" : ""
 }

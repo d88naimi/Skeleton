@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const webpackConfig = require('../build/webpack.config');
 const compiler = require('./config/compiler');
-const compress = require('compression');
+// const compress = require('compression');
 const app = express();
 const mongoose = require('mongoose');
 const config = require('./config/environment');
@@ -13,7 +13,7 @@ const server = http.createServer(app);
 const io = require('socket.io')(server);
 const project = require('../project.config');
 
-app.use(compress());
+// app.use(compress());
 app.set('port', process.env.PORT || 3000);
 
 //middleware for use of socket.io

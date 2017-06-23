@@ -10,9 +10,11 @@ router.get('/agents', controller.showAgents);
 
 //get single user(agent)
 router.get('/me', auth.isAuthenticated(), controller.me);
-router.get('/:id', auth.isAuthenticated(), controller.showUser);
-router.get('/agent:id', auth.isAuthenticated(), controller.showAgent);
+router.get('/:id', controller.showUser);
+router.get('/agent:id', controller.showAgent);
 
+// router.put('/:id', auth.isAuthenticated(), controller.editUser);
+router.put('/agent/:id', auth.isAuthenticated(), controller.editAgent);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.post('/', controller.create);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
