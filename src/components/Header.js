@@ -13,7 +13,7 @@ class Header extends React.Component {
     console.log(user);
     return (
       <header className="navbar-fixed">
-        <nav>
+        <nav className="blue darken-4">
           <div className="container nav-wrapper">
             <a href="#" className="brand-logo">VIIP</a>
             <ul className="right hide-on-small-only">
@@ -40,9 +40,6 @@ Header.propTypes = {
 };
 
 export default connect(
-  (state) => {
-    console.log(state);
-    return { user: state.auth.user }
-  },
+  ({auth}) => ({ user: auth.user }),
   { logout }
 )(Header);

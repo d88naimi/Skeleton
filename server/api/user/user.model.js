@@ -44,6 +44,9 @@ const UserSchema = new mongoose.Schema({
       return authTypes.indexOf(this.provider) === -1;
     }
   },
+  photoURL: {
+    type: String
+  },
   provider: String,
   salt: String,
   facebook: {},

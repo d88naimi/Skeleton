@@ -61,7 +61,10 @@ module.exports = function(app) {
    */
   if(env !== 'test') {
     app.use(lusca({
-      csrf: true,
+      csrf: {
+        header: 'X-XSRF-TOKEN',
+        cookie: 'XSRF-TOKEN'
+      },
       xframe: 'SAMEORIGIN',
       hsts: {
         maxAge: 31536000, //1 year, in seconds
