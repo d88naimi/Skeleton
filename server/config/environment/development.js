@@ -7,12 +7,8 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-<<<<<<< HEAD
-    uri: process.env.MONGOLAB_URI
-=======
     // uri: process.env.MONGOLAB_URI
     uri: 'mongodb://127.0.0.1:27017/viip'    
->>>>>>> master
   },
 
   // Seed database on startup

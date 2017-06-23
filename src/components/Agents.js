@@ -32,13 +32,13 @@ const Agents = () => (
 export default Agents;
 
 
-function Agents ({agents}) => (
-  <div>
-    {agents.map(agent => <Agent something={agent}/>)} this.props.somehthing
-  </div>
-)
+// function Agents ({agents}) => (
+//   <div>
+//     {agents.map(agent => <Agent something={agent}/>)} this.props.somehthing
+//   </div>
+// )
 
-agents = [
+const agents = [
   {
     name: "Bill Gates",
     location: "San Francisco" ,
