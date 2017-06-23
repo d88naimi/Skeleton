@@ -1,4 +1,5 @@
 import React from 'react';
+import './ModalWrapper.scss';
  
  class ModalWrapper extends React.Component {
  
