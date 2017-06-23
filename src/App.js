@@ -33,6 +33,7 @@ class App extends React.Component{
 
           <Route path="/results" component={Results} />
           <Route path="/agents" component={Agents} />
+          <Route path="/agent" component={Agent} />
 
         </main>
         <Footer />
