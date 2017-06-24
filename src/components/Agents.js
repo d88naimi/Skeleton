@@ -1,5 +1,5 @@
 import React from 'react';
-import photo from '../assets/images/cafe.jpg';
+import photo from '../assets/images/cafe2.jpg';
 import { connect } from 'react-redux';
 
 
@@ -18,20 +18,23 @@ export class Agents extends React.Component {
 
   render() {
     return (
-        <div className="col s12 m4 l3 xl2">
-          <div className="card">
-            <div className="card-image">
-              <img src="images/sample-1.jpg"></img>
-              <span className="card-title">{this.props.name}</span>
-            </div>
-            <div className="card-content">
-              <p>{this.props.name}</p>
-            </div>
-            <div className="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
+      
+        <div className="col s12 m4 l3 xl3 offset-xl1">
+      <div class="card">
+        <div class="card-image">
+          <img src={photo}></img>
+          <span class="card-title"></span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red">{this.props.name}<i class="material-icons"></i></a>
         </div>
+        <div class="card-content">
+          <ul>
+            <li>{this.props.languages.join(', ')}</li>
+            <li>{this.props.location}</li>
+            <li>Summary of Agent </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     );
   }

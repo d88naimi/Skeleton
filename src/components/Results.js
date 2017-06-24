@@ -23,7 +23,7 @@ export class Results extends React.Component {
             return <Agents 
             key={index} 
             name={agent.name}
-            languages={agent.languages}
+            languages={agent.languages }
             location= {agent.location}
             />
         })}
@@ -121,6 +121,16 @@ const agents = [
     location: "Long Beach",
     languages: ["Hindi", "English"]
   },
+    {
+    name: "Stefen Awesome ",
+    location: "Long Beach",
+    languages: ["Hindi", "English"]
+  },
+    {
+    name: "Stefen Awesome ",
+    location: "Long Beach",
+    languages: ["Hindi", "English"]
+  }
   
   
 ]
