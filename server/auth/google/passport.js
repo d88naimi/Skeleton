@@ -5,9 +5,11 @@ module.exports.setup = (User, config) => {
   passport.use(new GoogleStrategy({
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
-    callbackURL: config.google.callbackURL
+    callbackURL: config.google.callbackURL,
+    passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, done) {
+  function(req, accessToken, refreshToken, profile, done) {
+    console.log(Object.keys(req));
     User.findOne({'google.id': profile.id}).exec()
       .then(user => {
         if(user) {
