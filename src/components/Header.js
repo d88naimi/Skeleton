@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import {Userbox} from "./Userbox";
 import {logout} from "../actions/auth";
 import './Header.scss';
-
 class Header extends React.Component {
 
   render() {
