@@ -10,7 +10,7 @@ import Results from './components/Results';
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import AgentSingle from "./components/AgentSingle";
+import AgentSingle from "./components/Agent/Agent";
 
 
 import {checkLoginStatus} from './actions/auth';
@@ -40,8 +40,8 @@ class App extends React.Component{
 
           <Route path="/agents" component={AgentResults}>
             <IndexRoute component={AgentGrid}></IndexRoute>
-            <Route path="/agent/:id" component={AgentSingle}></Route>
           </Route>
+          <Route path="/agent" component={AgentSingle}></Route>
 
         </main>
         <Footer />
