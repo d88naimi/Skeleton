@@ -6,13 +6,17 @@ import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Results from './components/Results';
-import Agents from './components/Agents';
+
+//import AgentResults 
+import AgentResults from './components/AgentResults';
+import AgentGrid from './components/AgentGrid';
+import AgentSingle from "./components/AgentSingle";
+
+
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 // import background from './assets/images/example.jpg';
 import {Search} from "./components/Search";
-import Agent from "./components/Agent/Agent";
-import AgentResults from "./components/AgentResults";
 import {Home} from "./components/Home";
 import { Route, IndexRoute } from 'react-router';
 
@@ -34,9 +38,9 @@ class App extends React.Component{
 
           <Route path="/results" component={Results} />
 
-          <Route path="/agents" component={Agents}>
-            <IndexRoute component={AgentResults}></IndexRoute>
-            <Route path="/agent/:id"></Route>
+          <Route path="/agents" component={AgentResults}>
+            <IndexRoute component={AgentGrid}></IndexRoute>
+            <Route path="/agent/:id" component={AgentSingle}></Route>
           </Route>
 
         </main>

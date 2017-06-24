@@ -5,7 +5,7 @@ class AgentResults extends React.Component {
   render() {
     return(
       <div className="container">
-          {React.cloneElement(this.props.children, this.props)}
+		{React.cloneElement(this.props.children, this.props)}
       </div>
     )
   }
