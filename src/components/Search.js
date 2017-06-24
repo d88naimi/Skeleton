@@ -46,7 +46,7 @@ export class Search extends React.Component {
         <div className="row">
           <div className="input-field col s6">
             <input type="text" className="validate" onChange={this.getQuery}/>
-              <label htmlFor="last_name">Search For Agents</label>
+              <label htmlFor="last_name">Search For Agents <i class="material-icons">search</i></label>
           </div>
         </div>
         <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>Search
