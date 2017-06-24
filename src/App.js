@@ -6,13 +6,18 @@ import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Results from './components/Results';
-import Agents from './components/Agents';
+
+//import AgentResults 
+import AgentResults from './components/AgentResults';
+import AgentGrid from './components/AgentGrid';
+import AgentSingle from "./components/Agent/Agent";
+
+
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 import {Search} from "./components/Search";
-import Agent from "./components/Agent/Agent";
-import Home from "./components/Home";
-import { Route } from 'react-router';
+import {Home} from "./components/Home";
+import { Route, IndexRoute } from 'react-router';
 
 import {addLocaleData, IntlProvider} from 'react-intl';
 import en from 'react-intl/locale-data/en';

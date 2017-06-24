@@ -1,5 +1,5 @@
 import React from 'react';
-import ModalWrapper from "../../Modals/ModalWrapper";
+import ModalWrapper from "../Modals/ModalWrapper";
 
 class AgentBio extends React.Component {
     constructor(props) {
