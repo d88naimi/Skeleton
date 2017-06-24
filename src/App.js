@@ -6,17 +6,18 @@ import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import Results from './components/Results';
+import FAQ from './components/FAQ';
+import About from './components/About';
 
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import AgentSingle from "./components/Agent/Agent";
-
+import Agents from "./components/Agents";
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 import {Search} from "./components/Search";
-import {Home} from "./components/Home";
+import Home from "./components/Home";
 import { Route, IndexRoute } from 'react-router';
 
 import {addLocaleData, IntlProvider} from 'react-intl';
@@ -36,6 +37,7 @@ class App extends React.Component{
     console.log(this.props);
     const {language, messages} = this.props;
     return (
+
       <IntlProvider locale={language} messages={messages}>
         <div className='root'>
           <Header />
@@ -43,9 +45,11 @@ class App extends React.Component{
             <Drawer />
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
-
+            <Route path="/signup" component={Login} />
             <Route path="/results" component={Results} />
             <Route path="/agents" component={Agents} />
+            <Route path="/faq" component={FAQ} />
+            <Route path="/about" component={About} />
 
           </main>
           <Footer />
