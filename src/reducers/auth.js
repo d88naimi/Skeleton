@@ -45,15 +45,3 @@ export function reducer(state = initialState, action) {
  */
 // const getUser = state => state.user;
 
-var a = 1;
-function xxx (input) {
-  var output = input * a;
-
-  return output;
-}
-xxx(3); // 3
-
-a = 2;
-
-xxx(3)
-

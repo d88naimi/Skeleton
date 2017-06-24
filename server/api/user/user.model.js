@@ -7,7 +7,7 @@ mongoose.Promise = require('bluebird');
 const authTypes = ['twitter', 'facebook', 'google'];
 const LANGUAGE = ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 
                   'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German',
-                   'Punjabi/Lahnda', 'Javanese', 'Telugu']
+                   'Punjabi/Lahnda', 'Telugu']
 const UserSchema = new mongoose.Schema({
   name: String,
   email: {
@@ -81,8 +81,9 @@ UserSchema
       role: this.role,
       location: this.location,
       phone: this.phone,
-      languages: this.language,
-      text: this.text
+      languages: this.languages,
+      text: this.text,
+      photoURL: this.photoURL
     };
   });  
 
