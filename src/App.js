@@ -10,7 +10,7 @@ import Results from './components/Results';
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import AgentSingle from "./components/Agent/Agent";
+import AgentProfile from "./components/Agent/Agent";
 
 
 import {checkLoginStatus} from './actions/auth';
