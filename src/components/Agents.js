@@ -42,7 +42,8 @@ const agents = [
   {
     name: "Bill Gates",
     location: "San Francisco" ,
-    languages: ["English","Spanish"]
+    languages: ["English","Spanish",
+     "display_src":"https://images.pexels.com/photos/14644/pexels-photo-14644.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"]
   },
   {
     name: "Hyungwu Genius",
