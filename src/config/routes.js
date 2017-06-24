@@ -7,12 +7,11 @@ import { ConnectedRouter } from 'react-router-redux'
 
 const store = configureStore();
 
+
 const routes = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
         <Route path="/" component={App} />
-      </div>
     </ConnectedRouter>
   </Provider>
 );

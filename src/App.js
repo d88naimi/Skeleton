@@ -9,11 +9,16 @@ import Results from './components/Results';
 import Agents from './components/Agents';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
-// import background from './assets/images/example.jpg';
 import {Search} from "./components/Search";
 import Agent from "./components/Agent/Agent";
-import {Home} from "./components/Home";
+import Home from "./components/Home";
 import { Route } from 'react-router';
+
+import {addLocaleData, IntlProvider} from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import fr from 'react-intl/locale-data/fr';
+import es from 'react-intl/locale-data/es';
+addLocaleData([...en, ...fr, ...es]);
 
 class App extends React.Component{
 
@@ -23,20 +28,24 @@ class App extends React.Component{
   }
 
   render() {
+    console.log(this.props);
+    const {language, messages} = this.props;
     return (
-      <div className='root'>
-        <Header />
-        <main>
-          <Drawer />
-          <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
+      <IntlProvider locale={language} messages={messages}>
+        <div className='root'>
+          <Header />
+          <main>
+            <Drawer />
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
 
-          <Route path="/results" component={Results} />
-          <Route path="/agents" component={Agents} />
+            <Route path="/results" component={Results} />
+            <Route path="/agents" component={Agents} />
 
-        </main>
-        <Footer />
-      </div>
+          </main>
+          <Footer />
+        </div>
+      </IntlProvider>
     );
   }
 }
@@ -46,6 +55,6 @@ App.propTypes = {
 
 export default connect(
   // ({routing}) => ({location: routing.location}), // NavLink update
-  null,
+  ({lang}) => ({language: lang.language, messages: lang.messages}),
   { checkLoginStatus }
 )(App);
