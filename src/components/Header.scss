@@ -5,23 +5,20 @@ $Main-DarkGray: #333333;
 .t{
 	color: $Main-Blue;
 	font-weight: bold;
-		&:hover{
-		color:white;
-	}
 }
 
 .u{
 	color: $Main-Red;
 	font-weight: bold;
-	&:hover{
-		color:white;
-	}
+
 }
 
 
-.profilePhoto {
-margin-top: 10px;
+
+#profilePhoto {
+	margin-top: 10px;
   border-radius: 50%;
+  width: 40px;
   height: 40px;
   border: $Main-Red 2px solid;
   &:hover{

@@ -15,17 +15,16 @@ class Header extends React.Component {
       <header className="navbar-fixed">
         <nav className="darken-4">
           <div className="container nav-wrapper">
-            <a href="#" className="brand-logo"><span className="t">T</span><span className="u">U</span></a>
+            <NavLink to="/" className="brand-logo left navLogo"><span className="t">T</span><span className="u">U</span></NavLink>
             <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google">Google</a></li>}
               {!user && <li><NavLink to="/login">Log In</NavLink></li>}
               {!user && <li><NavLink to="/signup">Sign Up</NavLink></li>}
               <li><NavLink to="/results">Results</NavLink></li>
-
               {user && 
                 <li>
                   <a href="/dashboard">
-                    <img className="profilePhoto"  src={user.photoURL} />
+                    <img id="profilePhoto"  src={user.photoURL} />
                   </a>
                 </li>}
               {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong>{user.name}</strong></li>}
