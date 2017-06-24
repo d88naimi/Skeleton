@@ -10,13 +10,13 @@ import Results from './components/Results';
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import AgentSingle from "./components/Agent/Agent";
+import Agents from "./components/Agents";
 
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 import {Search} from "./components/Search";
-import {Home} from "./components/Home";
+import Home from "./components/Home";
 import { Route, IndexRoute } from 'react-router';
 
 import {addLocaleData, IntlProvider} from 'react-intl';
