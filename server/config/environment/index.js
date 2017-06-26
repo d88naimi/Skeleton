@@ -49,7 +49,8 @@ const all = {
   google: {
     clientID: process.env.GOOGLE_ID || 'id',
     clientSecret: process.env.GOOGLE_SECRET || 'secret',
-    callbackURL: `${process.env.DOMAIN || ''}/auth/google/callback`
+    callbackURL: `${process.env.DOMAIN || ''}/auth/google/callback`,
+    callbackURLForAgent: `${process.env.DOMAIN || ''}/auth/google/agent/callback`    
   }
 };
 

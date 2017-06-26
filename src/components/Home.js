@@ -24,6 +24,7 @@ class Home extends React.Component {
 	      	<h4 className="blueFont">
             <FormattedMessage id="app.intro" defaultMessage="WOW"/>
           </h4>
+          <p><FormattedMessage id='food' defaultMessage="I don;t know" /></p>
           <p><FormattedDate value={time} /></p>
 	      	<Search />
       	</div>
