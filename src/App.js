@@ -13,7 +13,7 @@ import PhotoTest from './components/PhotoTest';
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import Agents from "./components/Agents";
+import Agents from "./components/Agent/Agent";
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';

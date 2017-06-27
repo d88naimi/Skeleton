@@ -2,7 +2,7 @@ import React from "react";
 import AgentBio from "./AgentBio";
 import AgentSpecifics from "./AgentSpecifics";
 import Opportunity from "./Opportunity";
-import './AgentSingle.scss';
+import './Agent.scss';
 
 
 
