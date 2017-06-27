@@ -2,7 +2,7 @@
   {
     "type": "put",
     "url": "/api/users/agent/:id",
-    "title": "Edit User infomation (restriction: 'authorized')",
+    "title": "Edit Agent infomation (restriction: 'authorized')",
     "name": "EditAgent",
     "group": "Agent",
     "parameter": {
@@ -13,7 +13,7 @@
             "type": "String",
             "optional": false,
             "field": "id",
-            "description": "<p>(OPTIONAL) User's unique ID.</p>"
+            "description": "<p>(OPTIONAL) Agent's unique ID.</p>"
           }
         ],
         "request body": [
@@ -22,35 +22,42 @@
             "type": "String",
             "optional": false,
             "field": "name",
-            "description": "<p>(OPTIONAL) User's new name.</p>"
+            "description": "<p>(OPTIONAL) Agent's new name.</p>"
           },
           {
             "group": "request body",
             "type": "Array[String]",
             "optional": false,
             "field": "languages",
-            "description": "<p>(OPTIONAL) User's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].</p>"
+            "description": "<p>(OPTIONAL) Agent's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].</p>"
           },
           {
             "group": "request body",
             "type": "String",
             "optional": false,
             "field": "location",
-            "description": "<p>(OPTIONAL) User's city name ('New York City', 'Chicago', 'San Diego')</p>"
+            "description": "<p>(OPTIONAL) Agent's city name ('New York City', 'Chicago', 'San Diego')</p>"
           },
           {
             "group": "request body",
             "type": "String",
             "optional": false,
             "field": "phone",
-            "description": "<p>(OPTIONAL) User's phone number</p>"
+            "description": "<p>(OPTIONAL) Agent's phone number</p>"
           },
           {
             "group": "request body",
             "type": "String",
             "optional": false,
             "field": "text",
-            "description": "<p>(OPTIONAL) User's introduction text</p>"
+            "description": "<p>(OPTIONAL) Agent's introduction text</p>"
+          },
+          {
+            "group": "request body",
+            "type": "String",
+            "optional": false,
+            "field": "photoURL",
+            "description": "<p>(OPTIONAL) Agent's photoURL</p>"
           }
         ]
       }
@@ -504,6 +511,181 @@
     "version": "0.0.0",
     "filename": "server/api/comment/comment.controller.js",
     "groupTitle": "Comment"
+  },
+  {
+    "type": "get",
+    "url": "/api/photo/s3-signed-req",
+    "title": "Request signed s3 url for photo upload",
+    "name": "GetS3SignedUrl",
+    "group": "Photo",
+    "parameter": {
+      "fields": {
+        "query params": [
+          {
+            "group": "query params",
+            "type": "String",
+            "optional": false,
+            "field": "file-name",
+            "description": "<p>filename</p>"
+          },
+          {
+            "group": "query params",
+            "type": "String",
+            "optional": false,
+            "field": "file-type",
+            "description": "<p>filetype</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n  filename: \"skylinelogo.jpg\",\n  signedRequest: \"https://ooops.s3.amazonaws.com/skylinelogo.jpg?AWSAccessKeyId=AKIAIFZTKXQ6JEZKFDQA.....\",\n  url: \"https://ooops.s3.amazonaws.com/skylinelogo.jpg\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/api/photo/photo.controller.js",
+    "groupTitle": "Photo"
+  },
+  {
+    "type": "put",
+    "url": "/api/users/:id",
+    "title": "Edit User infomation (restriction: 'authorized')",
+    "name": "EditUser",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "route params": [
+          {
+            "group": "route params",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>(OPTIONAL) User's unique ID.</p>"
+          }
+        ],
+        "request body": [
+          {
+            "group": "request body",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>(OPTIONAL) User's new name.</p>"
+          },
+          {
+            "group": "request body",
+            "type": "Array[String]",
+            "optional": false,
+            "field": "languages",
+            "description": "<p>(OPTIONAL) User's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].</p>"
+          },
+          {
+            "group": "request body",
+            "type": "String",
+            "optional": false,
+            "field": "location",
+            "description": "<p>(OPTIONAL) User's city name ('New York City', 'Chicago', 'San Diego')</p>"
+          },
+          {
+            "group": "request body",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>(OPTIONAL) User's phone number</p>"
+          },
+          {
+            "group": "request body",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>(OPTIONAL) User's introduction text</p>"
+          },
+          {
+            "group": "request body",
+            "type": "String",
+            "optional": false,
+            "field": "photoURL",
+            "description": "<p>(OPTIONAL) User's photoURL</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the Agent(User).</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "role",
+            "description": "<p>&quot;user&quot;, &quot;agent&quot;, &quot;admin&quot;.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "photoURL",
+            "description": "<p>profile photo url</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "location",
+            "description": "<p>Name of city,</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "languages",
+            "description": "<p>JSON.stringify(Array of lanaguageName) ex) &quot;[&quot;Korean&quot;, &quot;Spanish&quot;]&quot;</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": "<p>Simple profile text,</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": "<p>Phone number,</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>user(agent) unique id, *</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"email\": \"example@example.com\",\n  \"facebook\": Object,\n  \"name\": \"John Doe\",\n  \"provider\": \"google\",\n  \"role\": \"agent\",\n  \"_id\": \"59483862c27e982e0f84c210\"\n  \"photoURL\": \"https://sokaspdo.asodkasd.asdasd/soks.jpg\"\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Korean\", \"Spanish\"],\n  \"phone\": \"858-211-1111\",\n  \"text\": \"I am .......................\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/api/user/user.controller.js",
+    "groupTitle": "User"
   },
   {
     "type": "put",

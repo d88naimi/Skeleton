@@ -13,7 +13,7 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.get('/:id', controller.showUser);
 router.get('/agent:id', controller.showAgent);
 
-// router.put('/:id', auth.isAuthenticated(), controller.editUser);
+router.put('/:id', auth.isAuthenticated(), controller.editUser);
 router.put('/agent/:id', auth.isAuthenticated(), controller.editAgent);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.post('/', controller.create);

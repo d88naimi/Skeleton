@@ -5,7 +5,14 @@ const passport = require('passport');
 const signToken = require('../auth.service').signToken;
 const router = express.Router();
 
-
+/**
+ * @api {post} /auth/local Local signup for user/agent
+ * @apiName LocalSignIn
+ * @apiGroup Auth
+ *
+ * @apiParam (request body) {String} email Users email.
+ * @apiParam (request body) {String} password Users password.
+ */
 router.post('/', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     const error = err || info;
