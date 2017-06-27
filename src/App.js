@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Results from './components/Results';
 import FAQ from './components/FAQ';
 import About from './components/About';
+import Dashboard from './components/Dashboard';
 
 //import AgentResults 
 import AgentResults from './components/AgentResults';
@@ -50,6 +51,7 @@ class App extends React.Component{
             <Route path="/agents" component={Agents} />
             <Route path="/faq" component={FAQ} />
             <Route path="/about" component={About} />
+            <Route path="/dashboard"component={Dashboard}/>
 
           </main>
           <Footer />
