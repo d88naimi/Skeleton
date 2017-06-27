@@ -20,13 +20,13 @@ export class Agents extends React.Component {
     return (
       
         <div className="col s12 m4 l3 xl3 offset-xl1">
-      <div class="card">
-        <div class="card-image">
+      <div className="card">
+        <div className="card-image">
           <img src={photo}></img>
-          <span class="card-title"></span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red">{this.props.name}<i class="material-icons"></i></a>
+          <span className="card-title">{this.props.name}</span>
+          <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
         </div>
-        <div class="card-content">
+        <div className="card-content">
           <ul>
             <li>{this.props.languages.join(', ')}</li>
             <li>{this.props.location}</li>

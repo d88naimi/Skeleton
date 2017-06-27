@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import Results from './components/Results';
 import Agents from './components/Agents';
+import Plans from './components/Plans';
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
 // import background from './assets/images/example.jpg';
@@ -33,6 +34,7 @@ class App extends React.Component{
 
           <Route path="/results" component={Results} />
           <Route path="/agents" component={Agents} />
+           <Route path="/plans" component={Plans} />
 
         </main>
         <Footer />
