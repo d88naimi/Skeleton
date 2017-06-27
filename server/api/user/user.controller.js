@@ -289,16 +289,17 @@ module.exports.me = (req, res, next) => {
 // };
 
 /**
- * @api {put} /api/users/agent/:id Edit User infomation (restriction: 'authorized')
+ * @api {put} /api/users/agent/:id Edit Agent infomation (restriction: 'authorized')
  * @apiName EditAgent
  * @apiGroup Agent
  *
- * @apiParam (route params) {String} id (OPTIONAL) User's unique ID.
- * @apiParam (request body) {String} name (OPTIONAL) User's new name.
- * @apiParam (request body) {Array[String]} languages (OPTIONAL) User's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].
- * @apiParam (request body) {String} location (OPTIONAL) User's city name ('New York City', 'Chicago', 'San Diego')
- * @apiParam (request body) {String} phone (OPTIONAL) User's phone number
- * @apiParam (request body) {String} text (OPTIONAL) User's introduction text
+ * @apiParam (route params) {String} id (OPTIONAL) Agent's unique ID.
+ * @apiParam (request body) {String} name (OPTIONAL) Agent's new name.
+ * @apiParam (request body) {Array[String]} languages (OPTIONAL) Agent's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].
+ * @apiParam (request body) {String} location (OPTIONAL) Agent's city name ('New York City', 'Chicago', 'San Diego')
+ * @apiParam (request body) {String} phone (OPTIONAL) Agent's phone number
+ * @apiParam (request body) {String} text (OPTIONAL) Agent's introduction text
+ * @apiParam (request body) {String} photoURL (OPTIONAL) Agent's photoURL 
  * 
  * @apiSuccess {String} name Name of the Agent(User).
  * @apiSuccess {String} role "user", "agent", "admin".
@@ -335,6 +336,7 @@ module.exports.editAgent = (req, res, next) => {
       if(newInfo.phone) agent.phone = newInfo.phone;
       if(newInfo.text) agent.text = newInfo.text;
       if(newInfo.name) agent.name = newInfo.name;
+      if(newInfo.photoURL) agent.photoURL = newInfo.photoURL;      
       agent.save()
         .then(updatedAgent => {
           let agent = updatedAgent.toObject();
@@ -345,4 +347,65 @@ module.exports.editAgent = (req, res, next) => {
         .catch(err => next(err));
     });
 };
+
+/**
+ * @api {put} /api/users/:id Edit User infomation (restriction: 'authorized')
+ * @apiName EditUser
+ * @apiGroup User
+ *
+ * @apiParam (route params) {String} id (OPTIONAL) User's unique ID.
+ * @apiParam (request body) {String} name (OPTIONAL) User's new name.
+ * @apiParam (request body) {Array[String]} languages (OPTIONAL) User's languages (Should be an array of these languages: ['Chinese', 'Spanish', 'English', 'Hindi', 'Arabic', 'Malay/Indonesian', 'Portuguese', 'Bengali', 'Russian', 'Japanese', 'Korean', 'German','Punjabi/Lahnda', 'Telugu'].
+ * @apiParam (request body) {String} location (OPTIONAL) User's city name ('New York City', 'Chicago', 'San Diego')
+ * @apiParam (request body) {String} phone (OPTIONAL) User's phone number
+ * @apiParam (request body) {String} text (OPTIONAL) User's introduction text
+ * @apiParam (request body) {String} photoURL (OPTIONAL) User's photoURL 
+ * 
+ * @apiSuccess {String} name Name of the Agent(User).
+ * @apiSuccess {String} role "user", "agent", "admin".
+ * @apiSuccess {String} photoURL profile photo url
+ * @apiSuccess {String} location Name of city,
+ * @apiSuccess {String} languages JSON.stringify(Array of lanaguageName) ex) "["Korean", "Spanish"]"
+ * @apiSuccess {String} text Simple profile text,
+ * @apiSuccess {String} phone Phone number,
+ * @apiSuccess {String} _id user(agent) unique id, * 
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "email": "example@example.com",
+ *       "facebook": Object,
+ *       "name": "John Doe",
+ *       "provider": "google",
+ *       "role": "agent",
+ *       "_id": "59483862c27e982e0f84c210"
+ *       "photoURL": "https://sokaspdo.asodkasd.asdasd/soks.jpg"
+ *       "location": "San Diego",
+ *       "languages": [ "Korean", "Spanish"],
+ *       "phone": "858-211-1111",
+ *       "text": "I am ......................."
+ *     }
+ */
+
+module.exports.editUser = (req, res, next) => {
+  const userId = req.user._id;
+  return User.findById(userId).exec()
+    .then(user => {  
+      const newInfo = req.body;
+      if(newInfo.location) user.location = newInfo.location;
+      if(newInfo.languages) user.languages = JSON.parse(newInfo.languages);
+      if(newInfo.phone) user.phone = newInfo.phone;
+      if(newInfo.text) user.text = newInfo.text;
+      if(newInfo.name) user.name = newInfo.name;
+      if(newInfo.photoURL) user.photoURL = newInfo.photoURL;      
+      user.save()
+        .then(updatedUser => {
+          let user = updatedUser.toObject();
+          Reflect.deleteProperty(user, 'salt');
+          Reflect.deleteProperty(user, 'password');
+          return res.json(user);
+        })
+        .catch(err => next(err));
+    });
+};
+
 

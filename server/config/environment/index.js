@@ -51,6 +51,10 @@ const all = {
     clientSecret: process.env.GOOGLE_SECRET || 'secret',
     callbackURL: `${process.env.DOMAIN || ''}/auth/google/callback`,
     callbackURLForAgent: `${process.env.DOMAIN || ''}/auth/google/agent/callback`    
+  },
+  amazon: {
+    accessID: process.env.AWS_ACCESS_KEY_ID || 'id',
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || 'secret'
   }
 };
 

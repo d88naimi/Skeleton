@@ -4,6 +4,7 @@ import {Search} from './Search';
 import './Home.scss';
 import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang'
+import { Link } from 'react-router-dom'
 class Home extends React.Component {
 
   constructor(props) {
@@ -27,6 +28,7 @@ class Home extends React.Component {
           <p><FormattedMessage id='food' defaultMessage="I don;t know" /></p>
           <p><FormattedDate value={time} /></p>
 	      	<Search />
+          <p><Link to='/photo-test'>Photo Upload test page</Link></p>
       	</div>
 
       </div>
