@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 import './Footer.scss';
 
 
@@ -8,8 +9,16 @@ const Footer = () => (
       
     <div className="footer-copyright">
       <div className="container">
-        © 2017 Copyright 
-        <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2017 Copyright
+        <hr/>
+        <nav>
+          <div className="nav-wrapper">
+            <ul className="left">
+              <li><NavLink className="grey-text text-lighten-4" to="/faq">FAQ</NavLink></li>
+              <li><NavLink className="grey-text text-lighten-4" to="/about">About Us</NavLink></li>
+            </ul>
+          </div>
+        </nav>
       </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin';
 // import 'materialize-css/dist/css/materialize.css';
+import 'jquery';
 import 'materialize-css/dist/js/materialize';
 import './styles/main.scss'
 injectTapEventPlugin();

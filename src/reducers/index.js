@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import * as fromAuth from './auth';
+import * as fromLang from './lang';
+
 // import { createSelector } from 'reselect'
 
 /**
@@ -8,7 +10,8 @@ import * as fromAuth from './auth';
  */
 export default combineReducers({
   auth: fromAuth.reducer,
-  routing: routerReducer
+  routing: routerReducer,
+  lang: fromLang.reducer
 });
 
 

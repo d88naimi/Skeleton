@@ -1,10 +1,12 @@
 import React from "react";
-import AgentBio from "./containers/AgentBio";
-import AgentSpecifics from "./containers/AgentSpecifics";
-import Opportunity from "./containers/Opportunity";
+import AgentBio from "./AgentBio";
+import AgentSpecifics from "./AgentSpecifics";
+import Opportunity from "./Opportunity";
 import './Agent.scss';
 
-class Agent extends React.Component {
+
+
+class AgentSingle extends React.Component {
 render(){
   return(
   <div  className="agent container">
@@ -29,5 +31,5 @@ render(){
   }
 }
 
-export default Agent;
+export default AgentSingle;
 

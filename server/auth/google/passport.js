@@ -2,21 +2,19 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 module.exports.setup = (User, config) => {
-  passport.use(new GoogleStrategy({
+  passport.use('google', new GoogleStrategy({
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
     callbackURL: config.google.callbackURL,
     passReqToCallback: true
   },
   function(req, accessToken, refreshToken, profile, done) {
-    console.log(Object.keys(req));
     User.findOne({'google.id': profile.id}).exec()
       .then(user => {
         if(user) {
           done(null, user);
           return null;
         }
-
         user = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
@@ -32,4 +30,34 @@ module.exports.setup = (User, config) => {
       })
       .catch(err => done(err));
   }));
+
+  passport.use('google-agent', new GoogleStrategy({
+    clientID: config.google.clientID,
+    clientSecret: config.google.clientSecret,
+    callbackURL: config.google.callbackURLForAgent,
+    passReqToCallback: true
+  },
+  function(req, accessToken, refreshToken, profile, done) {
+    User.findOne({'google.id': profile.id}).exec()
+      .then(agent => {
+        if(agent) {
+          done(null, agent);
+          return null;
+        }
+        agent = new User({
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          role: 'agent',
+          photoURL: profile.photos[0].value,
+          username: profile.emails[0].value.split('@')[0],
+          provider: 'google',
+          google: profile._json,
+        });
+        agent.save()
+          .then(savedAgent => done(null, savedAgent))
+          .catch(err => done(err));
+      })
+      .catch(err => done(err));
+  }));
+
 };

@@ -1,18 +1,26 @@
+$Main-Red: #cc1818;
+$Main-Blue: #185392;
+$Main-DarkGray: #333333;
+
+h5{
+	color: $Main-Blue;
+}
+
 
 .themeButton{
 	background-color: rgba(0,0,0,.5);
 	color: white;
 	border: 2px solid white;
 	text-decoration: none;
+	&:hover{
+		background-color: rgba(0,0,0,.8);
+		color: white;
+		border: 2px solid white;
+		text-decoration: none;	
+	}
 }
 
 
-.themeButton:hover{
-	background-color: rgba(0,0,0,.8);
-	color: white;
-	border: 2px solid white;
-	text-decoration: none;	
-}
 
 .whiteBackground{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232 */
@@ -25,6 +33,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 .transparentWhiteOutline{
-	background-color: transparent;
+	font-family: sans-serif;
+	background-color: rgba(0,0,0,.1);
 	border: 2px solid white;
+	&:hover{
+		background-color: rgba(0,0,0,.2);
+	}
 }
