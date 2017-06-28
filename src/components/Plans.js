@@ -87,12 +87,7 @@ export class Plans extends React.Component {
           </div>
        </div>
 </div>
-
-
-
-   
-      
-    
+ 
     );
   }
 }

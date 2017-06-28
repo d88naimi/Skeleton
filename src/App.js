@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
+import ContactUs from './components/ContactUs';
+
 import Results from './components/Results';
 
 import FAQ from './components/FAQ';
@@ -58,6 +60,7 @@ class App extends React.Component{
             <Route path="/about" component={About} />
             <Route path="/photo-test" component={PhotoTest} />
             <Route path="/plans" component={Plans} />
+            <Route path="/contact-us" component={ContactUs} />
           </main>
           <Footer />
         </div>

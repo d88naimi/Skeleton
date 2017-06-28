@@ -16,6 +16,7 @@ const Footer = () => (
             <ul className="left">
               <li><NavLink className="grey-text text-lighten-4" to="/faq">FAQ</NavLink></li>
               <li><NavLink className="grey-text text-lighten-4" to="/about">About Us</NavLink></li>
+              <li><NavLink className="grey-text text-lighten-4" to="/contact-us">Contact Us</NavLink></li>
             </ul>
           </div>
         </nav>
