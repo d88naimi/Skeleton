@@ -12,6 +12,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const {time, loadLanguage} = this.props;
     return (
       <div className="container homeBackground whiteBackground">
@@ -23,7 +24,7 @@ class Home extends React.Component {
           <button onClick={loadLanguage.bind(null, 'es')}>Spanish</button>
           
 	      	<h4 className="blueFont">
-            <FormattedMessage id="app.intro" defaultMessage="WOW"/>
+            <FormattedMessage id="app.home.intro"/>
           </h4>
           <p><FormattedMessage id='food' defaultMessage="I don;t know" /></p>
           <p><FormattedDate value={time} /></p>

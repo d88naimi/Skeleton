@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {getAgentsNearby} from '../helpers/agent';
+import {FormattedMessage, FormattedDate} from 'react-intl';
 import './Search.scss';
 
 function mapStateToProps(state) {
@@ -50,7 +51,7 @@ export class Search extends React.Component {
           </div>
         </div>
         <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>Search
-            <i className="material-icons right">search</i>
+            <i className="material-icons right"> <FormattedMessage id="app.search.searchBtn" /> </i>
         </button><br/>
       </form>
     </div>
