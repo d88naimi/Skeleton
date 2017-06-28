@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Login.scss';
-import { signup, login } from '../actions/auth'
+import { signup, login } from '../actions/auth';
+import {FormattedMessage, FormattedDate} from 'react-intl';
 
 // function mapStateToProps(state) {
 //   return {
@@ -78,7 +79,9 @@ export class Login extends React.Component {
 				<div className="row">
 				    <div className="input-field col s12">
 				      <input  placeholder="Johnny Boy" id="Name" type="text" className="validate" onChange={this.getName}></input>
-				      <label className="active" htmlFor="Username">Name</label>
+				      <label className="active" htmlFor="Username">
+				      	<FormattedMessage id="app.login.name" />
+				      </label>
 				    </div>
 				</div>
 				);
@@ -104,40 +107,48 @@ export class Login extends React.Component {
 
     <div className="container center-align whiteBackground" style={{border: this.state.color+" 2px solid", padding:'10px'}}>
 	      <form onSubmit={this.handleSignup}>
-	      	{this.props.location.pathname === "/login" && <h5>WELCOME BACK</h5>}
-	      	{this.props.location.pathname === "/signup" && <h5>PLEASE FILL THIS OUT</h5>}
+	      	{this.props.location.pathname === "/login" && <h5><FormattedMessage id="app.login.header1" /></h5>}
+	      	{this.props.location.pathname === "/signup" && <h5><FormattedMessage id="app.login.header2" /></h5>}
 	      	{this.props.location.pathname === "/signup" && this.renderSignupForm()}
 
 		    <div className="row">
 			    <div className="input-field col s12">
 			      <input  placeholder="johnnyPotatoes@email.com" id="Email" type="text" className="validate" onChange={this.getEmail}></input>
-			      <label className="active" htmlFor="Email">Email</label>
+			      <label className="active" htmlFor="Email">
+			     	 <FormattedMessage id="app.login.email" />
+			      </label>
 			    </div>
 			</div>
 			<div>
 		       <div className="row">
 			    <div className="input-field col s12">
 			      <input  placeholder="password123" id="Password" type="password" className="validate" onChange={this.getPassword}></input>
-			      <label className="active" htmlFor="Password">Password</label>
+			      <label className="active" htmlFor="Password">
+			      	<FormattedMessage id="app.login.password" />
+			      </label>
 			    </div>
 			    </div>
 			</div>
 
 
-			   {this.props.location.pathname === "/signup" && <button className="btn waves-effect waves-light themeButton" type="submit" name="action">Sign Up
+			   {this.props.location.pathname === "/signup" && <button className="btn waves-effect waves-light themeButton" type="submit" name="action">
+			   	   <FormattedMessage id="app.login.btn1" />
 			    <i className="material-icons right">send</i>
 			  </button>}
 
 				
 		  </form>
-				{this.props.location.pathname === "/login" && <button className="btn waves-effect waves-light themeButton" type="button" onClick={this.handleLogin} name="action">Submit
+				{this.props.location.pathname === "/login" && <button className="btn waves-effect waves-light themeButton" type="button" onClick={this.handleLogin} name="action">
+					<FormattedMessage id="app.login.btn2" />
 					<i className="material-icons right">send</i>
 				</button> }
 
 		  <hr/>
 		  {this.props.location.pathname === "/signup" && <div className="container center-align transparentWhiteOutline" style={{padding:'10px'}}>
 		  		<h5>or</h5>
-		  		<h5>Sign Up with</h5><br/>
+		  		<h5>
+		  			<FormattedMessage id="app.login.anchor1" />
+		  		</h5><br/>
 			  <a href="/auth/google" className="waves-effect waves-light btn themeButton"><i className="material-icons left">vpn_key</i>Google</a><br/><br/>
 			  <a className="waves-effect waves-light btn themeButton"><i className="material-icons left">vpn_key</i>Facebook</a><br/><br/>
 			  <a className="waves-effect waves-light btn themeButton"><i className="material-icons left">vpn_key</i>Twitter</a>
