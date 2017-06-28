@@ -13,7 +13,7 @@ const Footer = () => (
         © 2017 Copyright
         <hr/>
         <nav>
-          <div class="nav-wrapper">
+          <div className="nav-wrapper">
             <ul className="left">
               <li><NavLink className="grey-text text-lighten-4" to="/faq"><FormattedMessage id="app.footer.faqs" /></NavLink></li>
               <li><NavLink className="grey-text text-lighten-4" to="/about"><FormattedMessage id="app.footer.about" /></NavLink></li>
