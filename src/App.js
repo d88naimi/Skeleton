@@ -51,7 +51,7 @@ class App extends React.Component{
             <Route path="/agents" component={Agents} />
             <Route path="/faq" component={FAQ} />
             <Route path="/about" component={About} />
-            <Route path="/dashboard"component={Dashboard}/>
+            <Route path="/dashboard" component={Dashboard}/>
 
           </main>
           <Footer />
