@@ -19,8 +19,8 @@ class Header extends React.Component {
               {!user && <li><a href="/auth/google/agent">Google</a></li>}
               {!user && <li><NavLink to="/login">Log In</NavLink></li>}
               {!user && <li><NavLink to="/signup">Sign Up</NavLink></li>}
-              <li><NavLink to="/results">Results</NavLink></li>}
-              <li><NavLink to="/plans">Plans</NavLink></li>}
+              <li><NavLink to="/results">Results</NavLink></li>
+              <li><NavLink to="/plans">Plans</NavLink></li>
               
 
               {user && 

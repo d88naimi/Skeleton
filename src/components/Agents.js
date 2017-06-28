@@ -9,7 +9,7 @@ function mapStateToProps(state) {
   };
 }
 
-export class AgentsDavid extends React.Component {
+export class Agents extends React.Component {
 
 
   constructor(props) {
@@ -43,5 +43,5 @@ export class AgentsDavid extends React.Component {
 export default connect(
   mapStateToProps,
 // Implement map dispatch to props
-)(AgentsDavid)
+)(Agents)
 

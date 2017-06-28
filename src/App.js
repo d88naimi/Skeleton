@@ -14,9 +14,10 @@ import PhotoTest from './components/PhotoTest';
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import Agents from "./components/Agent/Agent";
-// David original Agents
-import AgentsDavid from './components/AgentsDavid';
+// import Agents from "./components/Agent/Agent";
+import Agents from './components/Agents';
+import Plans from './components/Plans';
+
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
@@ -56,7 +57,7 @@ class App extends React.Component{
             <Route path="/faq" component={FAQ} />
             <Route path="/about" component={About} />
             <Route path="/photo-test" component={PhotoTest} />
-             <Route path="/plans" component={Plans} />
+            <Route path="/plans" component={Plans} />
           </main>
           <Footer />
         </div>
