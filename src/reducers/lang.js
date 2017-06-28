@@ -4,7 +4,9 @@
 import * as fromLang from '../actions/lang';
 import * as languages from '../config/messages'
 
-const userDefaultLang = window.navigator.userLanguage || (window.navigator.languages && window.navigator.languages[0]) || window.navigator.language;
+const browserLang = window.navigator.userLanguage || (window.navigator.languages && window.navigator.languages[0]) || window.navigator.language;
+const userDefaultLang = browserLang.split('-')[0];
+
 const initialState = {
   language: userDefaultLang,
   messages: languages[userDefaultLang]
