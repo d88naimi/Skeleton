@@ -18,6 +18,7 @@ class Header extends React.Component {
         <nav className="darken-4">
           <div className="container nav-wrapper">
             <NavLink to="/" className="brand-logo left navLogo"><span className="t">T</span><span className="u">U</span></NavLink>
+            <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google/agent">Google</a></li>}
               {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}
               {!user && <li><NavLink to="/signup"><FormattedMessage id="app.header.signup"/></NavLink></li>}
