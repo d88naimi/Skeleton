@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 import DashboardSidebar from './DashboardSidebar';
 import DashboardEditInfo from './DashboardEditInfo';
 import DashboardPayment from './DashboardPayment';
+import DashboardDefault from './DashboardDefault';
+import DashboardAgents from './DashboardAgents';
 import { NavLink } from 'react-router-dom'
 import './Dashboard.scss';
 
-function mapStateToProps(state) {
-  return {
-
-  };
-}
 
 export class Dashboard extends React.Component {
 
@@ -21,20 +18,27 @@ export class Dashboard extends React.Component {
 
 
   render() {
+
+  	const user = this.props.user;
     return (
     <div className="container row">
 	      
 	      <DashboardSidebar/>
-	      {this.props.location.pathname === "/dashboard" && <div className="container col s12 m9 l9 center-align defaultBox"><h1>Hello</h1></div>} 
+	      {this.props.location.pathname === "/dashboard" && <DashboardDefault/>} 
 	      {this.props.location.pathname === "/dashboard/edit-info" && <DashboardEditInfo/>}
 	      {this.props.location.pathname === "/dashboard/payments" && <DashboardPayment/>}
+	      {this.props.location.pathname === "/dashboard/my-agents" && <DashboardAgents/>}
       </div>
     );
   }
 }
 
 export default connect(
-  mapStateToProps,
+    ({auth}) => {
+    console.log(auth);
+    return ({ user: auth.user })
+  },
+  null
 // Implement map dispatch to props
 )(Dashboard)
 

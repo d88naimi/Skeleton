@@ -63,6 +63,12 @@ $Main-DarkGray: #333333;
 .defaultBox{
 	background-color: #f2f2f2;
 	color: $Main-DarkGray;
+	height: 500px;
+}
+
+.defaultBox img{
+	width: 100%;
+	border-radius: 5px;
 }
 
 .photo{
@@ -86,6 +92,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', end
 }
 
 .payments{
+	background-color: #f2f2f2;
+	color: &Main-DarkGray;
+}
+
+.agents{
 	background-color: #f2f2f2;
 	color: &Main-DarkGray;
 }
