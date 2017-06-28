@@ -47,13 +47,21 @@ const UserSchema = new mongoose.Schema({
   photoURL: {
     type: String
   },
+  avgRate: {
+    type: Number,
+    default: 0
+  },
+  numOfComment: {
+    type: Number,
+    default: 0
+  },
   provider: String,
   salt: String,
   facebook: {},
   twitter: {},
   google: {},
   github: {}
-}, {timestamp: true});
+}, {timestamps: true});
 
 /**
  * Virtuals
@@ -67,7 +75,8 @@ UserSchema
       _id: this._id,
       name: this.name,
       role: this.role,
-      text: this.text      
+      text: this.text,
+      createdAt: this.createdAt      
     };
   });
 
@@ -83,7 +92,8 @@ UserSchema
       phone: this.phone,
       languages: this.languages,
       text: this.text,
-      photoURL: this.photoURL
+      photoURL: this.photoURL,
+      createdAt: this.createdAt
     };
   });  
 

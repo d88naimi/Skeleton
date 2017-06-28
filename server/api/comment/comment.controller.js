@@ -2,6 +2,7 @@
 
 const jsonpatch = require('fast-json-patch')
 const Comment = require('./comment.model');
+const User = require('../user/user.model');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -51,6 +52,7 @@ function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
     res.status(statusCode).send(err);
+    return null;
   };
 }
 
@@ -155,9 +157,28 @@ module.exports.create = (req, res) => {
   };
   req.body.author = author;
 
-  return Comment.create(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
+  const agentId = req.body.agentId;
+
+  return Comment.findOne({'author._id': author._id})
+    .then(comment => {
+      if(comment) return handleError(res, 400)(new Error("You've already written a comment"));
+      return Comment.create(req.body)
+        .then(comment => {
+          return User.findById(agentId).exec()
+            .then(agent => {
+              const newAvgRate = (agent.avgRate * agent.numOfComment + comment.rate) / (agent.numOfComment + 1);
+              agent.avgRate = newAvgRate;
+              agent.numOfComment += 1;
+              agent.save();
+              return res.status(200).json(comment);
+            })
+            .catch(handleError(res));
+        })
+        .catch(handleError(res)); 
+        })
+     
+
+
 };
 
 
