@@ -9,11 +9,12 @@ import Results from './components/Results';
 import FAQ from './components/FAQ';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
+import PhotoTest from './components/PhotoTest';
 
 //import AgentResults 
 import AgentResults from './components/AgentResults';
 import AgentGrid from './components/AgentGrid';
-import Agents from "./components/Agents";
+import Agents from "./components/Agent/Agent";
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
@@ -52,7 +53,7 @@ class App extends React.Component{
             <Route path="/faq" component={FAQ} />
             <Route path="/about" component={About} />
             <Route path="/dashboard"component={Dashboard}/>
-
+            <Route path="/photo-test" component={PhotoTest} />
           </main>
           <Footer />
         </div>
