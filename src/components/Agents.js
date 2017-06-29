@@ -44,4 +44,3 @@ export default connect(
   mapStateToProps,
 // Implement map dispatch to props
 )(Agents)
-

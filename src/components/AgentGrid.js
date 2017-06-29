@@ -10,5 +10,4 @@ class AgentGrid extends React.Component {
     )
   }
 }
-
 export default AgentGrid;
