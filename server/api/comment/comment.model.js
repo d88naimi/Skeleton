@@ -30,6 +30,6 @@ const CommentSchema = new mongoose.Schema({
     type: Number,
     default: 3
   }
-}, {timestamp: true});
+}, {timestamps: true});
 
-module.exports = mongoose.model('Thing', CommentSchema);
+module.exports = mongoose.model('Comment', CommentSchema);

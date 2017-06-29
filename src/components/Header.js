@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Userbox} from "./Userbox";
 import {logout} from "../actions/auth";
+import {FormattedMessage, FormattedDate} from 'react-intl';
+import { loadLanguage } from '../actions/lang'
 import './Header.scss';
 class Header extends React.Component {
 
   render() {
-    const {user, logout} = this.props;
-    console.log(user);
+    const {user, logout, loadLanguage} = this.props;
+    console.log(this.props);
+
     return (
       <header className="navbar-fixed">
         <nav className="darken-4">
@@ -17,12 +20,10 @@ class Header extends React.Component {
             <NavLink to="/" className="brand-logo left navLogo"><span className="t">T</span><span className="u">U</span></NavLink>
             <ul className="right hide-on-small-only">
               {!user && <li><a href="/auth/google/agent">Google</a></li>}
-              {!user && <li><NavLink to="/login">Log In</NavLink></li>}
-              {!user && <li><NavLink to="/signup">Sign Up</NavLink></li>}
-              <li><NavLink to="/results">Results</NavLink></li>
-              <li><NavLink to="/plans">Plans</NavLink></li>
-              
-
+              {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}
+              {!user && <li><NavLink to="/signup"><FormattedMessage id="app.header.signup"/></NavLink></li>}
+              <li><NavLink to="/results"><FormattedMessage id="app.header.results" /></NavLink></li>
+              <li><NavLink to="/plans">Plans</NavLink></li>      
               {user && 
                 <li>
                   <a href="/dashboard">
@@ -44,6 +45,6 @@ Header.propTypes = {
 };
 
 export default connect(
-  ({auth}) => ({ user: auth.user }),
+  ({auth, lang}) => ({ user: auth.user, language: lang.language }),
   { logout }
-)(Header);
+) (Header);

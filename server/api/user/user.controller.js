@@ -1,6 +1,7 @@
 'use strict';
 
 const User = require('./user.model');
+const Comment = require('../comment/comment.model');
 const config = require('../../config/environment');
 const jwt = require('jsonwebtoken');
 const md5 = require('md5');
@@ -56,7 +57,8 @@ module.exports.index = (req, res) => {
  *       "languages": [ "Spanish", "Korean", ...],
  *       "text": "I am from Korea and live here 30 years. I am good at searching a good apartment."
  *       "phone": "213-378-2134"
- *       "_id": "59483862c27e982e0f84c210"
+ *       "_id": "59483862c27e982e0f84c210",
+ *       "avgRate": 4.1
  *     },
  *      ...
  *      ...
@@ -67,7 +69,8 @@ module.exports.index = (req, res) => {
  *       "languages": [ "Spanish", "Korean", ...],
  *       "text": "I am from Spain and live here 30 years. I am good at searching a good apartment."
  *       "phone": "213-221-2134"
- *       "_id": "59483dddd86e982e0f84c210"
+ *       "_id": "59483dddd86e982e0f84c210",
+ *       "avgRate": 4.2
  *     }]
  */
 module.exports.showAgents = (req, res) => {
@@ -182,11 +185,14 @@ module.exports.showUser = (req, res, next) => {
  *       "location": "San Diego",
  *       "languages": [ "Korean", "Spanish"],
  *       "phone": "858-211-1111",
- *       "text": "I am ......................."
+ *       "text": "I am .......................",
+ *       "avgRate": 4.6
  *     }
  */
 module.exports.showAgent = (req, res, next) => {
   const agentId = req.params.id;
+
+
 
   return User.findOne({_id: agentId, role: 'agent'}).exec()
     .then(agent => {

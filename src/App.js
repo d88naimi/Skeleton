@@ -11,6 +11,7 @@ import Results from './components/Results';
 
 import FAQ from './components/FAQ';
 import About from './components/About';
+import Dashboard from './components/Dashboard';
 import PhotoTest from './components/PhotoTest';
 
 //import AgentResults 
@@ -58,6 +59,7 @@ class App extends React.Component{
             <Route path="/agents" component={Agents} />
             <Route path="/faq" component={FAQ} />
             <Route path="/about" component={About} />
+            <Route path="/dashboard"component={Dashboard}/>
             <Route path="/photo-test" component={PhotoTest} />
             <Route path="/plans" component={Plans} />
             <Route path="/contact-us" component={ContactUs} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {getAgentsNearby} from '../helpers/agent';
+import {FormattedMessage, FormattedDate} from 'react-intl';
 import './Search.scss';
 
 function mapStateToProps(state) {
@@ -46,11 +47,12 @@ export class Search extends React.Component {
         <div className="row">
           <div className="input-field col s6">
             <input type="text" className="validate" onChange={this.getQuery}/>
-              <label htmlFor="last_name">Search For Agents <i className="material-icons">search</i></label>
+              <label htmlFor="last_name"><FormattedMessage id="app.search.search" /> <i className="material-icons">search</i></label>
           </div>
         </div>
-        <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>Search
-            <i className="material-icons right">search</i>
+        <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>
+        <FormattedMessage id="app.search.searchBtn" />
+            <i className="material-icons right"></i>
         </button><br/>
       </form>
     </div>
