@@ -357,7 +357,7 @@ module.exports.editAgent = (req, res, next) => {
 /**
  * @api {put} /api/users/:id Edit User infomation (restriction: 'authorized')
  * @apiName EditUser
- * @apiGroup User
+ * @apiGroup Users
  *
  * @apiParam (route params) {String} id (OPTIONAL) User's unique ID.
  * @apiParam (request body) {String} name (OPTIONAL) User's new name.

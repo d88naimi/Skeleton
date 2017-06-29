@@ -32,10 +32,10 @@ export const en = {
   "app.login.email": "Email",
   "app.login.password": "Password",
   "app.login.name": "Name",
-  "app.login.header1": "WELCOME BACK",
-  "app.login.header2": "PLEASE FILL THIS OUT",
-  "app.login.btn1": "Sign Up",
-  "app.login.btn2": "Submit",
+  "app.login.header1": "Welcome back",
+  "app.login.header2": "Create Account",
+  "app.login.signupBtn": "Sign Up",
+  "app.login.loginBtn": "Log In",
   "app.login.anchor1": "Sign Up with"
 
 
@@ -77,8 +77,8 @@ export const es = {
   "app.login.name": "Nombre",
   "app.login.header1": "Bienvenido de nuevo!",
   "app.login.header2": "Por favor llene esto",
-  "app.login.btn1": "Regístrate",
-  "app.login.btn2": "Someter",
+  "app.login.signupBtn": "Regístrate",
+  "app.login.loginBtn": "Iniciar Sesión",
   "app.login.anchor1": "Regístrese con"
 
 

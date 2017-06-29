@@ -1,6 +1,7 @@
 /**
  * Created by Hyungwu Pae on 6/12/17.
  */
+import {push} from 'react-router-redux';
 import Cookies from 'universal-cookie';
 import axios from "axios"; // eslint-disable-next-line
 // (new Cookies).set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTQ4Mzg2MmMyN2U5ODJlMGY4NGMyMTAiLCJyb2xlIjoidXNlciIsImlhdCI6MTQ5NzkwNTI1MSwiZXhwIjoxNDk3OTIzMjUxfQ.rKCh_rgxO22y8HNpvuetwT_ql1MxlbNzm9CmZJKE5bs')
@@ -72,7 +73,10 @@ export function signup (secret) { //email, name, password
         res => saveJWT(res.data.token),
         err => console.log("something went wrong. Try again")
       )
-      .then(() => dispatch(checkLoginStatus()));
+      .then(() => {
+        dispatch(checkLoginStatus());
+        dispatch(push('/dashboard'))
+      });
   }
 }
 
@@ -83,7 +87,10 @@ export function login (secret) { //email, password
         res => saveJWT(res.data.token),
         err => console.log("something went wrong. Try again")
       )
-      .then(() => dispatch(checkLoginStatus()));
+      .then(() => {
+        dispatch(checkLoginStatus());
+        dispatch(push('/dashboard'))
+      });
   }
 }
 
