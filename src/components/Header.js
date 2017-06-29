@@ -18,23 +18,20 @@ class Header extends React.Component {
         <nav className="darken-4">
           <div className="container nav-wrapper">
             <NavLink to="/" className="brand-logo left navLogo"><span className="t">T</span><span className="u">U</span></NavLink>
-            <ul className="right hide-on-small-only">
-              {!user && <li><a href="/auth/google/agent">Google</a></li>}
-              {!user && <li><NavLink to="/login">Log In</NavLink></li>}
-              {!user && <li><NavLink to="/signup">Sign Up</NavLink></li>}
-              <li><NavLink to="/results">Results</NavLink></li>
-              <li><NavLink to="/plans">Plans</NavLink></li>
-              
-
-
-              {user && 
-                <li>
-                  <a href="/dashboard">
-                    <img id="profilePhoto"  src={user.photoURL} />
-                  </a>
-                </li>}
-              {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong>{user.name}</strong></li>}
-              {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+              <ul className="right hide-on-small-only">
+                {!user && <li><a href="/auth/google/agent">Google</a></li>}
+                {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}
+                {!user && <li><NavLink to="/signup"><FormattedMessage id="app.header.signup"/></NavLink></li>}
+                <li><NavLink to="/results"><FormattedMessage id="app.header.results" /></NavLink></li>
+                <li><NavLink to="/plans">Plans</NavLink></li>      
+                {user && 
+                  <li>
+                    <a href="/dashboard">
+                      <img id="profilePhoto"  src={user.photoURL} />
+                    </a>
+                  </li>}
+                {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong>{user.name}</strong></li>}
+                {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
             </ul>
           </div>
         </nav>

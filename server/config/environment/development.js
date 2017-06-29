@@ -7,7 +7,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    // uri: process.env.MONGOLAB_URI
+    // uri: process.env.MONGODB_URI
     uri: 'mongodb://127.0.0.1:27017/transunited'    
   },
 
