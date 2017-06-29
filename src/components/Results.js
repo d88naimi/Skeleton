@@ -2,7 +2,7 @@ import React from 'react';
 import photo from '../assets/images/cafe.jpg';
 import Agents from './Agents';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 function mapStateToProps(state) {
   return {
 
@@ -14,6 +14,15 @@ export class Results extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    axios.get('/api/users/agents?location=LA').then(res => res.data).then(
+      res => {
+        this.setState({agents: res});
+        console.log(this.state);
+      }
+    )
   }
 
   render() {

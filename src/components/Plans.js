@@ -54,6 +54,7 @@ export class Plans extends React.Component {
                 <li>Bank Account</li>
                 <li>Cell phone</li>
                 <li>Apartment</li>
+                
                 </ul>
             </div>
             <div className="card-action">
@@ -77,6 +78,8 @@ export class Plans extends React.Component {
                 <li>Cell phone</li>
                 <li>Apartment</li>
                 <li>School</li>
+                <li>Citizenship</li>
+                <li>Vehicle</li>
                 
                 </ul>
             </div>
