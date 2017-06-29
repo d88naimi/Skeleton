@@ -1,7 +1,8 @@
 export const en = {
   "app.home.intro": "Hello, TransUnited!",
-  "app.search.search": "Search For Agents",
-  "app.search.searchBtn": "Search", 
+  "app.search.language": "Search by language",
+  "app.search.location": "Search by City",
+  "app.search.searchBtn": "Search for Agents", 
 
   "app.header.login": "Log In",
   "app.header.signup": "Sign Up",
@@ -43,8 +44,9 @@ export const en = {
 
 export const es = {
   "app.home.intro": "¡Hola, TransUnited!",
-  "app.search.search": "Búsqueda de agentes",
-  "app.search.searchBtn": "Buscar",
+  "app.search.language": "Búsqueda por idioma",
+  "app.search.location": "Buscar por ciudad",
+  "app.search.searchBtn": "Búsqueda de agentes",
 
   "app.header.login": "Iniciar Sesión",
   "app.header.signup": "Regístrate",

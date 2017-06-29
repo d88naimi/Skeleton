@@ -3,10 +3,16 @@ import AgentBio from "./AgentBio";
 import AgentSpecifics from "./AgentSpecifics";
 import Opportunity from "./Opportunity";
 import './Agent.scss';
-
+import helpers from "../../helpers/agent";
 
 
 class AgentSingle extends React.Component {
+
+  constructor(props) {
+    super(props);
+  
+    
+  }
 render(){
   return(
   <div  className="agent container">

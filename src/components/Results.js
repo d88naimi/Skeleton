@@ -53,17 +53,17 @@ const agents = [
   },
   {
     name: "John Smith",
-    location: "Los Angelos",
+    location: "Los Angeles",
     languages: ["Korean", "Spanish"]
   },
   {
     name: "David Skeleton",
-    location: "Los Angelos",
+    location: "Los Angeles",
     languages: ["Korean", "Spanish"]
   },
   {
     name: "Cindy Chan",
-    location: "Los Angelos",
+    location: "Los Angeles",
     languages: ["Korean", "Chinese"]
   },
   {
@@ -73,12 +73,12 @@ const agents = [
   },
   {
     name: "Eric Song",
-    location: "Los Angelos",
+    location: "Los Angeles",
     languages: ["Italian", "Spanish"]
   },
   {
     name: "Java Script",
-    location: "Los Angelos",
+    location: "Los Angeles",
     languages: ["Persian", "Farsi"]
   },
   {

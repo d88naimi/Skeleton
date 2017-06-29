@@ -15,44 +15,71 @@ export class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state={
-      city:""
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.getQuery = this.getQuery.bind(this);
+      this.state={
+        value: ''
+      };
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.getQuery = this.getQuery.bind(this);
   }
 
   getQuery(event){
 
-    let query = event.target.value.trim();
+    const target = event.target;
+    const value = target.value;
+    let name = target.name.trim();
 
-      this.setState({
-        city: query
-      });
+    this.setState({
+      [name]: value
+    })
 
-      event.target.reset();
+      // event.target.reset();
   }
 
 
   handleSubmit(e){
 
     e.preventDefault();
+    console.log("CLICK");
+    console.log(this.state.language);
+    console.log(this.state.location);
 
   }
 
   render() {
     return (
       <div>
-        <form className="col s12">
-        <div className="row">
-          <div className="input-field col s6">
-            <input type="text" className="validate" onChange={this.getQuery}/>
-              <label htmlFor="last_name"><FormattedMessage id="app.search.search" /> <i className="material-icons">search</i></label>
+        <form className="col s12" onSubmit={this.handleSubmit}>
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                name="language"
+                type="text" 
+                className="validate" 
+                onChange={this.getQuery}
+                />
+                <label htmlFor="by_language"><i className="material-icons">search</i>
+                 <FormattedMessage id="app.search.language" />
+                </label>
+            </div>
+
+            <div className="input-field col s6">
+              <input 
+                name="location"
+                type="text" 
+                className="validate" 
+                onChange={this.getQuery}
+                />
+                <label htmlFor="by_location"><i className="material-icons">location_on</i>
+                  <FormattedMessage id="app.search.location" />
+                </label>
+            </div>
+
           </div>
-        </div>
-        <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>
-        <FormattedMessage id="app.search.searchBtn" />
-            <i className="material-icons right"></i>
+        <button 
+          className="btn waves-effect waves-light themeButton" 
+          type="submit" 
+          >
+          <FormattedMessage id="app.search.searchBtn" />
         </button><br/>
       </form>
     </div>
