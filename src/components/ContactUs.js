@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import "./ContactUs.scss";
 
 function mapStateToProps(state) {
   return {
@@ -34,21 +35,17 @@ export class ContactUs extends React.Component {
 		      </div>
 		    </div>
 		  </div>
-      
-      <h3> </h3>
-      <h5> Get in Touch </h5>
-     <div className="col s12 m6 xl4">
-          <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
+
+     <div  className= "col s12 m6 xl4">
+          <div className="card center-align">
+            <div id="contactUs" className="card-content ">
              
               <h1> <em>Contact Us </em> </h1>
-              <h3> <em>Have a question? </em> </h3>
-                
-              
+              <h4> <em>Have a question? </em> </h4>
             </div>
             <div className="card-action">
-              <a href="#"><em>Call</em></a>
-              <a href="d88naimi@gmail.com"><em>Email</em></a>
+              <a href="#"><em>Call: (1800)transUS</em></a>
+              <a href="mailto:widgets@abcwidgets.com"><em>Email: </em></a>
             </div>
           </div>
         </div>

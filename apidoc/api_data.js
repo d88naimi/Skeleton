@@ -218,7 +218,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"email\": \"example@example.com\",\n  \"facebook\": Object,\n  \"name\": \"John Doe\",\n  \"provider\": \"google\",\n  \"role\": \"agent\",\n  \"_id\": \"59483862c27e982e0f84c210\"\n  \"photoURL\": \"https://sokaspdo.asodkasd.asdasd/soks.jpg\"\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Korean\", \"Spanish\"],\n  \"phone\": \"858-211-1111\",\n  \"text\": \"I am .......................\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"email\": \"example@example.com\",\n  \"facebook\": Object,\n  \"name\": \"John Doe\",\n  \"provider\": \"google\",\n  \"role\": \"agent\",\n  \"_id\": \"59483862c27e982e0f84c210\"\n  \"photoURL\": \"https://sokaspdo.asodkasd.asdasd/soks.jpg\"\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Korean\", \"Spanish\"],\n  \"phone\": \"858-211-1111\",\n  \"text\": \"I am .......................\",\n  \"avgRate\": 4.6\n}",
           "type": "json"
         }
       ]
@@ -264,7 +264,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n[{\n  \"name\": \"John Doe\",\n  \"role\": \"agent\",\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Spanish\", \"Korean\", ...],\n  \"text\": \"I am from Korea and live here 30 years. I am good at searching a good apartment.\"\n  \"phone\": \"213-378-2134\"\n  \"_id\": \"59483862c27e982e0f84c210\"\n},\n ...\n ...\n{\n  \"name\": \"Jane Doe\",\n  \"role\": \"agent\",\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Spanish\", \"Korean\", ...],\n  \"text\": \"I am from Spain and live here 30 years. I am good at searching a good apartment.\"\n  \"phone\": \"213-221-2134\"\n  \"_id\": \"59483dddd86e982e0f84c210\"\n}]",
+          "content": "HTTP/1.1 200 OK\n[{\n  \"name\": \"John Doe\",\n  \"role\": \"agent\",\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Spanish\", \"Korean\", ...],\n  \"text\": \"I am from Korea and live here 30 years. I am good at searching a good apartment.\"\n  \"phone\": \"213-378-2134\"\n  \"_id\": \"59483862c27e982e0f84c210\",\n  \"avgRate\": 4.1\n},\n ...\n ...\n{\n  \"name\": \"Jane Doe\",\n  \"role\": \"agent\",\n  \"location\": \"San Diego\",\n  \"languages\": [ \"Spanish\", \"Korean\", ...],\n  \"text\": \"I am from Spain and live here 30 years. I am good at searching a good apartment.\"\n  \"phone\": \"213-221-2134\"\n  \"_id\": \"59483dddd86e982e0f84c210\",\n  \"avgRate\": 4.2\n}]",
           "type": "json"
         }
       ]

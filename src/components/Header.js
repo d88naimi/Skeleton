@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Userbox} from "./Userbox";
 import {logout} from "../actions/auth";
+import {FormattedMessage, FormattedDate} from 'react-intl';
+import { loadLanguage } from '../actions/lang'
 import './Header.scss';
 class Header extends React.Component {
 
   render() {
-    const {user, logout} = this.props;
-    console.log(user);
+    const {user, logout, loadLanguage} = this.props;
+    console.log(this.props);
+
     return (
       <header className="navbar-fixed">
         <nav className="darken-4">
@@ -22,6 +25,7 @@ class Header extends React.Component {
               <li><NavLink to="/results">Results</NavLink></li>
               <li><NavLink to="/plans">Plans</NavLink></li>
               
+
 
               {user && 
                 <li>
@@ -44,6 +48,6 @@ Header.propTypes = {
 };
 
 export default connect(
-  ({auth}) => ({ user: auth.user }),
+  ({auth, lang}) => ({ user: auth.user, language: lang.language }),
   { logout }
-)(Header);
+) (Header);

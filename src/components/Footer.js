@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
+import {FormattedMessage, FormattedDate} from 'react-intl';
 import './Footer.scss';
 
 
@@ -17,6 +18,7 @@ const Footer = () => (
               <li><NavLink className="grey-text text-lighten-4" to="/faq">FAQ</NavLink></li>
               <li><NavLink className="grey-text text-lighten-4" to="/about">About Us</NavLink></li>
               <li><NavLink className="grey-text text-lighten-4" to="/contact-us">Contact Us</NavLink></li>
+
             </ul>
           </div>
         </nav>
