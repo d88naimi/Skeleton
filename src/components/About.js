@@ -101,9 +101,11 @@ export default class About extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          	<h5>
-					<FormattedMessage id="app.about.link2" />
-		          	</h5>
+		          <h5>Full Stack Developer</h5>
+		          <p> I was born and raised in Encinitas, my father is Persian and Mother is Mexican so my friends call me the Persiacan. Graduated with a Marketing degree but explored my entrepreneurial spirit  and opened a coffee shop at the San Diego County fairgrounds. Although it was enjoyable I wanted a new challenge and was always passionate about Software Development so I joined the UCSD Coding Bootcamp.</p>
+		          <h5>
+					      <FormattedMessage id="app.about.link2" />
+		          </h5>
 		          <p> Something About you </p>
 		        </div>
 		        <div className="card-action">
