@@ -26,11 +26,16 @@ export class Agents extends React.Component {
           <span className="card-title">{this.props.name}</span>
           <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
         </div>
-        <div className="card-content">
+        <div className="card-content center-align">
           <ul>
+          <li><em>{this.props.role}</em></li>
+          <li><em>{this.props.name}</em></li>
             <li>{this.props.languages.join(', ')}</li>
-            <li>{this.props.location}</li>
-            <li>Summary of Agent </li>
+            <li><em>{this.props.location}</em></li>
+            <li><em>{this.props.email}</em></li>
+            <li><em>{this.props.phone}</em></li>
+            
+            
           </ul>
         </div>
       </div>
