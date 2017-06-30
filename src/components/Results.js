@@ -39,6 +39,7 @@ export class Results extends React.Component {
             email={agent.email}
             phone={agent.phone}
              text={agent.text}
+            avgRate={agent.avgRate}
             />
         })}
     </div>

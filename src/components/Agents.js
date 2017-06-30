@@ -34,6 +34,7 @@ export class Agents extends React.Component {
             <li><em>{this.props.location}</em></li>
             <li><em>{this.props.email}</em></li>
             <li><em>{this.props.phone}</em></li>
+            <li><em>{this.props.avgRate}</em></li>
             
             
           </ul>
