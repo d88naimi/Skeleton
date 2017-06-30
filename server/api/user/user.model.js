@@ -45,7 +45,8 @@ const UserSchema = new mongoose.Schema({
     }
   },
   photoURL: {
-    type: String
+    type: String,
+    // default: 
   },
   avgRate: {
     type: Number,

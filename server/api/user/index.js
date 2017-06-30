@@ -12,7 +12,7 @@ router.get('/agents', controller.showAgents);
 //get single user(agent)
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.get('/:id', controller.showUser);
-router.get('/agent:id', controller.showAgent);
+router.get('/agent/:id', controller.showAgent);
 
 router.put('/:id', auth.isAuthenticated(), controller.editUser);
 router.put('/agent/:id', auth.isAuthenticated(), controller.editAgent);

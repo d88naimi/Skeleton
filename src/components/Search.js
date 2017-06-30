@@ -1,16 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getAgentsNearby} from '../helpers/agent';
+import {moveToSearchResult} from '../actions/agent';
 import {FormattedMessage, FormattedDate} from 'react-intl';
 import './Search.scss';
 
-function mapStateToProps(state) {
-  return {
 
-  };
-}
-
-export class Search extends React.Component {
+class Search extends React.Component {
 
 
   constructor(props) {
@@ -37,18 +32,13 @@ export class Search extends React.Component {
 
 
   handleSubmit(e){
-
+    const {moveToSearchResult} = this.props;
+    console.log(moveToSearchResult);
     e.preventDefault();
     console.log("CLICK");
     console.log(this.state.language);
     console.log(this.state.location);
-
-    getAgentsNearby(this.state.city).then(results=>{
-
-      console.log("Search Results",results);
-
-    });
-
+    moveToSearchResult({location: this.state.location, language: this.state.language});
   }
 
   render() {
@@ -95,6 +85,6 @@ export class Search extends React.Component {
 }
 
 export default connect(
-  mapStateToProps,
-// Implement map dispatch to props
+  null,
+  { moveToSearchResult }
 )(Search)
