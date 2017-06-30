@@ -78,4 +78,19 @@ module.exports = function(app) {
   if(env === 'development' || env === 'test') {
     app.use(errorHandler()); // Error handler - has to be last
   }
+  const User = require('../api/user/user.model');
+  const agents = require('./environment/seed');
+  if(env === 'development') {
+    console.log("DEVELOPMENT!!!");
+    agents.forEach(agent => {
+      User.findOne({email: agent.email}).exec()
+        .then(user => {
+          if(!user) {
+            agent.languages = JSON.parse(agent.languages);
+            (new User(agent)).save();
+          }
+        });
+    });
+  }
+
 }
