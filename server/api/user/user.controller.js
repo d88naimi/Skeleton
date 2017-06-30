@@ -39,6 +39,15 @@ module.exports.index = (req, res) => {
 };
 
 
+module.exports.showAllAgents = (req, res) => {
+  return User.find({role: 'agent'}, '-salt -password').exec()
+    .then(users => {
+      res.status(200).json(users);
+    })
+    .catch(handleError(res));
+}
+
+
 /**
  * @api {get} /api/users/agents?location=:location&language=:language&page=:page Request Agents list
  * @apiName GetAgentsInfo
