@@ -23,7 +23,7 @@ export class Plans extends React.Component {
     return (
     <div className="row">
 
-        <div className="col s12 m6 xl4">
+        <div className="col s12 m6 xl4 ">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <span className="card-title"><FormattedMessage id="app.plans.silverHeader" /></span>
@@ -70,7 +70,6 @@ export class Plans extends React.Component {
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <span className="card-title"><FormattedMessage id="app.plans.platinumHeader" /></span>
-              
               <h2>
                   <em>$4000</em>
                 </h2>

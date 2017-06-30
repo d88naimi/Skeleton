@@ -3,6 +3,7 @@ import photo from '../assets/images/cafe.jpg';
 import Agents from './Agents';
 import { connect } from 'react-redux';
 import axios from 'axios';
+
 function mapStateToProps(state) {
   return {
 
