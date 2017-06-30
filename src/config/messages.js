@@ -7,9 +7,15 @@ export const en = {
   "app.header.login": "Log In",
   "app.header.signup": "Sign Up",
   "app.header.results": "Results",
+  "app.header.plans": "Plans",
 
   "app.footer.faqs": "FAQ",
   "app.footer.about": "About Us",
+  "app.footer.contact": "Contact Us",
+  "app.footer.question": "Have a question?",
+    "app.footer.email": "Email: ",
+  "app.footer.call": "Call: ",
+  "app.footer.number": "(1800)",
 
   "app.about.link1": "Repository",
   "app.about.link2": "Full Stack Developer",
@@ -33,11 +39,22 @@ export const en = {
   "app.login.email": "Email",
   "app.login.password": "Password",
   "app.login.name": "Name",
-  "app.login.header1": "Welcome back",
-  "app.login.header2": "Create Account",
-  "app.login.signupBtn": "Sign Up",
+  "app.login.loginHeader": "Sign in with email",
+  "app.login.signupHeader": "Create Account",
+  "app.login.signupBtn": "Sign Up with",
   "app.login.loginBtn": "Log In",
-  "app.login.anchor1": "Sign Up with"
+
+  "app.plans.silverHeader": "Package Silver",
+  "app.plans.goldheader": "Package Gold",
+  "app.plans.platinumHeader": "Package Silver",
+  "app.plans.dl": "Driver License",
+  "app.plans.ba": "Bank Account",
+  "app.plans.cellPhone": "Cell phone",
+  "app.plans.residence": "Apartment",
+  "app.plans.school": "School",
+  "app.plans.citizenship": "Citizenship",
+  "app.plans.car": "Vehicle"
+
 
 
 }
@@ -45,15 +62,21 @@ export const en = {
 export const es = {
   "app.home.intro": "¡Hola, TransUnited!",
   "app.search.language": "Búsqueda por idioma",
-  "app.search.location": "Buscar por ciudad",
+  "app.search.location": "Búsqueda por ciudad",
   "app.search.searchBtn": "Búsqueda de agentes",
 
   "app.header.login": "Iniciar Sesión",
   "app.header.signup": "Regístrate",
   "app.header.results": "Resultados",
+  "app.header.plans": "Planes",
 
   "app.footer.faqs": "Preguntas frecuentes",
   "app.footer.about": "Sobre Nosotros",
+  "app.footer.contact": "Contáctenos",
+  "app.footer.question": "¿Tiene una pregunta?",
+  "app.footer.email": "Correo electrónico: ",
+  "app.footer.call": "Llama: ",
+  "app.footer.number": "001+(800)",
 
   "app.about.link1": "Repositorio",
   "app.about.link2": "Desarrollador 'Full Stack'",
@@ -77,11 +100,21 @@ export const es = {
   "app.login.email": "Correo electrónico",
   "app.login.password": "Contraseña",
   "app.login.name": "Nombre",
-  "app.login.header1": "Bienvenido de nuevo!",
-  "app.login.header2": "Por favor llene esto",
-  "app.login.signupBtn": "Regístrate",
+  "app.login.loginHeader": "Iniciar sesión con correo electrónico",
+  "app.login.signupHeader": "Por favor llene esto",
+  "app.login.signupBtn": "Regístrate con",
   "app.login.loginBtn": "Iniciar Sesión",
-  "app.login.anchor1": "Regístrese con"
+
+  "app.plans.silverHeader": "Paquete Plata",
+  "app.plans.goldheader": "Paquete Oro",
+  "app.plans.platinumHeader": "Paquete Platino",
+  "app.plans.dl": "Licencia de conducir",
+  "app.plans.ba": "Cuenta Bancaria",
+  "app.plans.cellPhone": "Teléfono celular",
+  "app.plans.residence": "Departamento",
+  "app.plans.school": "Escuela",
+  "app.plans.citizenship": "Ciudadanía",
+  "app.plans.car": "Vehículo"
 
 
 

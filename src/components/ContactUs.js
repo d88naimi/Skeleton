@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import "./ContactUs.scss";
+import {FormattedMessage, FormattedDate} from 'react-intl';
 
 function mapStateToProps(state) {
   return {
@@ -27,10 +28,12 @@ export class ContactUs extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          <p><i>TransUnited</i> helps the thousands of immigrants make the transition to the United States smoother by connecting them to a selection of agents handpicked that can offer them a number of services to assist them with their transfer.  Services can include translation, helping opening a bank account, finding a car, finding a place to live in, etc.  Our app is easy to use and it can be displayed in other languages for easy access and peace of mind so you know you’re contacting the right agent. </p>
+		          <p><i>TransUnited</i>
+                <FormattedMessage id="app.faqs.a1" />
+              </p>
 		        </div>
 		        <div className="card-action">
-		          <a href="https://github.com/d88naimi/Skeleton" target="_blank">Repository</a>
+		          <a href="https://github.com/d88naimi/Skeleton" target="_blank"><FormattedMessage id="app.about.link1" /></a>
 		        </div>
 		      </div>
 		    </div>
@@ -40,12 +43,22 @@ export class ContactUs extends React.Component {
           <div className="card center-align">
             <div id="contactUs" className="card-content ">
              
-              <h1> <em>Contact Us </em> </h1>
-              <h4> <em>Have a question? </em> </h4>
+              <h1> 
+              <em>
+                <FormattedMessage id="app.footer.contact" />
+              </em> </h1>
+              <h4> 
+                <em>
+                  <FormattedMessage id="app.footer.question" />
+                </em> 
+              </h4>
             </div>
             <div className="card-action">
-              <a href="#"><em>Call: (1800)transUS</em></a>
-              <a href="mailto:widgets@abcwidgets.com"><em>Email: </em></a>
+              <a href="#"><em>
+              <FormattedMessage id="app.footer.call" /> 
+              <FormattedMessage id="app.footer.number" />
+              transUS</em></a>
+              <a href="mailto:widgets@abcwidgets.com"><em><FormattedMessage id="app.footer.email" /> </em></a>
             </div>
           </div>
         </div>
