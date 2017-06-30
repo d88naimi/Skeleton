@@ -91,7 +91,6 @@ module.exports.showAgents = (req, res) => {
   if(location) queryObj.location = location;
   if(language) queryObj.languages = language;
   // if(Object.keys(queryObj).length === 0) return res.status(400).end();
-  console.log(location);
   return User.find(queryObj)
     .skip(page * 10)
     .limit(10)

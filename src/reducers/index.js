@@ -20,3 +20,4 @@ export default combineReducers({
  */
 const getAgentState = state => state.agents;
 export const getAgentList = createSelector(getAgentState, fromAgent.getAgentList);
+export const getSelectedAgent = createSelector(getAgentState, fromAgent.getSelectedAgent);

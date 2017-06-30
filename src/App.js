@@ -20,7 +20,7 @@ import AgentGrid from './components/AgentGrid';
 // import Agents from "./components/Agent/Agent";
 import Agents from './components/Agents';
 import Plans from './components/Plans';
-
+import AgentDetail from './components/AgentDetail'
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
@@ -56,14 +56,13 @@ class App extends React.Component{
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Login} />
             <Route path="/results" component={Results} />
-            <Route path="/agents" component={Agents} />
             <Route path="/faq" component={FAQ} />
             <Route path="/about" component={About} />
             <Route path="/dashboard"component={Dashboard}/>
             <Route path="/photo-test" component={PhotoTest} />
             <Route path="/plans" component={Plans} />
             <Route path="/contact-us" component={ContactUs} />
-            
+            <Route path="/agents/:id" component={AgentDetail} />
           </main>
           <Footer />
         </div>

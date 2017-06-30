@@ -36,11 +36,11 @@ export function moveToSearchResult ({language, location, page}) {
 export function searchAgents ({language, location, page}) {
   return function (dispatch, getState) {
     fetchAgents({language, location, page})
-      .then(res => dispatch(loadAgent(res.data)));
+      .then(res => dispatch(loadAgents(res.data)));
   } 
 }
 
-export function loadAgent (agents) {
+export function loadAgents (agents) {
   return {
     type: LOAD_AGENTS,
     payload: agents
@@ -48,8 +48,18 @@ export function loadAgent (agents) {
 }
 
 export function selectAgent (agentId) {
-  return {
-    type: SELECT_AGENT,
-    payload: agentId
+  return function(dispatch, getState) {
+    const { agents } = getState();
+    if(agents.entities[agentId]) dispatch({
+      type: SELECT_AGENT,
+      payload: agentId
+    });
+    else {
+      axios.get('/api/users/agent/' + agentId)
+        .then(res => {
+          dispatch(loadAgents([res.data]));
+          dispatch({type: SELECT_AGENT, payload: agentId});
+        });
+    }
   }
 }

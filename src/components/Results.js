@@ -31,15 +31,17 @@ class Results extends React.Component {
 
   render() {
     const {agents} = this.props;
+    console.log(this.props);
     return (
       <div className="container row">
         {agents && agents.map( (agent,index) =>{
-            return <Agents 
+            return <Agents
+            id={agent._id}
             key={index} 
             role={agent.role}
             name={agent.name}
             languages={agent.languages }
-            location={agent.location}
+            city={agent.location}
             email={agent.email}
             phone={agent.phone}
              text={agent.text}
