@@ -21,9 +21,9 @@ export class Plans extends React.Component {
     return (
     <div className="row">
 
-        <div className="col s12 m6 xl4">
+        <div className="col s12 m6 xl4 ">
           <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
+            <div className="card-content white-text center-align">
               <span className="card-title">Package Silver</span>
                <h2>
                 <em>$1700</em>
@@ -44,7 +44,7 @@ export class Plans extends React.Component {
     
         <div className="col s12 m6 xl4">
           <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
+            <div className="card-content white-text center-align">
               <span className="card-title">Package Gold</span>
               <h2>
                   <em>$3000</em>
@@ -66,7 +66,7 @@ export class Plans extends React.Component {
     
         <div className="col s12 m6 xl4">
           <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
+            <div className="card-content white-text center-align">
               <span className="card-title">Package Platinum</span>
               
               <h2>
