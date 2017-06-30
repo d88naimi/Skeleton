@@ -1,0 +1,117 @@
+$Main-Red: #cc1818;
+$Main-Blue: #185392;
+$Main-DarkGray: #333333;
+
+/* label color */
+.input-field label {
+ color: $Main-Red;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: $Main-Red;
+}
+
+.input-field input[type=password]:focus + label {
+ color: $Main-Red;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid $Main-Red;
+ box-shadow: 0 1px 0 0 $Main-Red;
+}
+
+/* label underline focus color */
+.input-field input[type=password]:focus {
+ border-bottom: 1px solid $Main-Red;
+ box-shadow: 0 1px 0 0 $Main-Red;
+}
+/* valid color */
+.input-field input[type=text].valid {
+ border-bottom: 1px solid $Main-Red;
+ box-shadow: 0 1px 0 0 $Main-Red;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+ border-bottom: 1px solid $Main-Red;
+ box-shadow: 0 1px 0 0 $Main-Red;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: $Main-Red;
+}
+
+.editProfileInfoBox{
+	box-sizing: border-box;
+	padding: 5px;
+	background-color: #f2f2f2;
+	
+}
+
+.themeButton{
+	background-color: rgba(0,0,0,.5);
+	color: white;
+	border: 2px solid white;
+	text-decoration: none;
+	&:hover{
+		background-color: rgba(0,0,0,.8);
+		color: white;
+		border: 2px solid white;
+		text-decoration: none;	
+	}
+}
+
+.defaultBox{
+	background-color: #f2f2f2;
+	color: $Main-DarkGray;
+	height: 500px;
+}
+
+.defaultBox img{
+	width: 100%;
+	border-radius: 5px;
+}
+
+.photo{
+	border-radius: 100%;
+	border: 2px $Main-Red solid;
+	&:hover{
+		border: 2px white solid;
+	}
+}
+
+.sidebar{
+	box-sizing: border-box;
+	border-radius: 5px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b679e+0,2b88d9+50,207cca+77,207cca+100 */
+background: rgb(59,103,158); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 50%, rgba(32,124,202,1) 77%, rgba(32,124,202,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 77%,rgba(32,124,202,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 77%,rgba(32,124,202,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
+
+}
+
+.payments{
+	background-color: #f2f2f2;
+	color: &Main-DarkGray;
+}
+
+.agents{
+	background-color: #f2f2f2;
+	color: &Main-DarkGray;
+}
+
+.collection{
+	box-sizing: border-box;
+	border: none;
+	border-radius: 4px;
+}
+
+.collection li{
+	background-color: rgba(0,0,0,.2);
+	color: white;
+	&:hover{
+	background-color: rgba(0,0,0,.4);
+	color: white;
+	}
+}

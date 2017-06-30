@@ -8,7 +8,7 @@
     "build": "npm run clean && NODE_ENV=production npm run compile",
     "start": "NODE_ENV=production node server/server.js",
     "serve": "NODE_ENV=development nodemon server/server.js",
-    "api-doc": "apidoc -i server/api -o apidoc/"
+    "api-doc": "apidoc -i server -o apidoc/"
   },
   "dependencies": {
     "apidoc": "^0.17.6",
