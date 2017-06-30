@@ -3,14 +3,9 @@ import photo from '../assets/images/cafe.jpg';
 import Agents from './Agents';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
-function mapStateToProps(state) {
-  return {
-
-  };
-}
-
-export class Results extends React.Component {
+import {searchAgents} from '../actions/agent'
+import {getAgentList} from '../reducers';
+class Results extends React.Component {
 
 
   constructor(props) {
@@ -18,18 +13,27 @@ export class Results extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/users/allAgents').then(res => res.data).then(
-      res => {
-        this.setState({agents: res});
-        console.log(this.state);
-      }
-    )
+   const {searchAgents} = this.props;
+    
+    if(this.props.location.search === '') searchAgents({});
+    else {
+      let search = this.props.location.search.split('?')[1]; // ?language=Korean&location=San%20Diego&
+      console.log(search.split('&'));
+      const queryParams = search.split('&').reduce((acc, text) => {
+        if(text) {
+          acc[text.split('=')[0]] = text.split('=')[1];
+        }
+        return acc;
+      }, {});
+      searchAgents(queryParams);
+    }
   }
 
   render() {
+    const {agents} = this.props;
     return (
       <div className="container row">
-        {this.state && this.state.agents.map( (agent,index) =>{
+        {agents && agents.map( (agent,index) =>{
             return <Agents 
             key={index} 
             role={agent.role}
@@ -48,6 +52,6 @@ export class Results extends React.Component {
 }
 
 export default connect(
-  mapStateToProps,
-// Implement map dispatch to props
+  state => ({agents: getAgentList(state)}),
+  { searchAgents } 
 )(Results);

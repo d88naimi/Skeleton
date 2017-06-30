@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Search} from './Search';
+import Search from './Search';
 import './Home.scss';
 import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang'

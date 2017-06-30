@@ -83,15 +83,15 @@ module.exports.showAllAgents = (req, res) => {
  *     }]
  */
 module.exports.showAgents = (req, res) => {
-  const location = req.query.location;
-  const language = req.query.language;
+  const location = decodeURI(req.query.location);
+  const language = decodeURI(req.query.language);
   const page = +req.query.page || 0;
 
   let queryObj = {};
   if(location) queryObj.location = location;
   if(language) queryObj.languages = language;
-  if(Object.keys(queryObj).length === 0) return res.status(400).end();
-
+  // if(Object.keys(queryObj).length === 0) return res.status(400).end();
+  console.log(location);
   return User.find(queryObj)
     .skip(page * 10)
     .limit(10)

@@ -4,7 +4,6 @@ import * as fromAuth from './auth';
 import * as fromLang from './lang';
 import * as fromAgent from './agent';
 import { createSelector } from 'reselect'
-import getAgentList from './agent'
 /**
  * root reduces
  */
@@ -20,4 +19,4 @@ export default combineReducers({
  * selectors
  */
 const getAgentState = state => state.agents;
-const getAgentList = createSelector(getAgentState, getAgentList);
+export const getAgentList = createSelector(getAgentState, fromAgent.getAgentList);

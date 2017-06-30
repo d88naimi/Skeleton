@@ -24,7 +24,7 @@ import Plans from './components/Plans';
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
-import {Search} from "./components/Search";
+import Search from "./components/Search";
 import Home from "./components/Home";
 import { Route, IndexRoute } from 'react-router';
 

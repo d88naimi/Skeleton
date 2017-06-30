@@ -31,4 +31,7 @@ export function reducer(state = initialState, action) {
 /**
  * Selectors
  */
-const getAgentList = state => state.ids.map(id => state.entities[id]);
+export const getAgentList = state => {
+  console.log(state.ids.map(id => state.entities[id]));
+  return state.ids.map(id => state.entities[id]);
+};

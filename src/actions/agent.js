@@ -23,8 +23,17 @@ export function fetchAgents ({language, location, page}) {
 /**
  * Actions
  */
+export function moveToSearchResult ({language, location, page}) {
+  return function (dispatch) {
+    let path = '/results?';
+    if(language) path += `language=${language}&`;
+    if(location) path += `location=${location}&`;
+    if(page) path += `page=${page}`;
+    dispatch(push(path));
+  }
+}
 
-export function getAgents ({language, location, page}) {
+export function searchAgents ({language, location, page}) {
   return function (dispatch, getState) {
     fetchAgents({language, location, page})
       .then(res => dispatch(loadAgent(res.data)));
