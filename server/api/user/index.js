@@ -6,6 +6,7 @@ const auth = require('../../auth/auth.service');
 
 //get list of user(agent)
 router.get('/', auth.hasRole('admin'), controller.index);
+router.get('/allAgents', controller.showAllAgents);
 router.get('/agents', controller.showAgents);
 
 //get single user(agent)
