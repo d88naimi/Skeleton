@@ -75,7 +75,7 @@ export class Login extends React.Component {
   render() {
 		const {formatMessage} = this.props.intl;
 		const {pathname} = this.props.location;
-		const headerTitle = formatMessage({id: pathname === "/signup" ? 'app.login.header2' : 'app.login.header1'});
+		const headerTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupHeader' : 'app.login.loginHeader'});
     const signBtnTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupBtn' : 'app.login.loginBtn'});
 		return (
 			<div className="container center-align" style={{maxWidth:'400px', padding:'10px'}}>
@@ -84,17 +84,17 @@ export class Login extends React.Component {
 					<h4>{signBtnTitle + ' with'}</h4>
 					<div className="row">
 						<a href='/auth/google/agent' className="waves-effect waves-light btn-large social google col s12">
-							<i className="fa fa-google"></i> {signBtnTitle} with google
+							<i className="fa fa-google"></i> {signBtnTitle} google
 						</a>
 					</div>
 					<div className="row">
 						<a href='/auth/facebook/agent' className="waves-effect waves-light btn-large social facebook col s12">
-							<i className="fa fa-facebook"></i> {signBtnTitle} with facebook
+							<i className="fa fa-facebook"></i> {signBtnTitle} facebook
 						</a>
 					</div>
 					<div className="row">
 						<a href='/auth/twitter/agent' className="waves-effect waves-light btn-large social twitter col s12">
-							<i className="fa fa-twitter"></i> {signBtnTitle} with twitter
+							<i className="fa fa-twitter"></i> {signBtnTitle} twitter
 						</a>
 					</div>
 				</div>
