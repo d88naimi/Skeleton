@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './About.scss';
+import {FormattedMessage, FormattedDate} from 'react-intl';
 
 
 export default class About extends React.Component {
@@ -22,10 +23,12 @@ export default class About extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          <p><i>TransUnited</i> helps the thousands of immigrants make the transition to the United States smoother by connecting them to a selection of agents handpicked that can offer them a number of services to assist them with their transfer.  Services can include translation, helping opening a bank account, finding a car, finding a place to live in, etc.  Our app is easy to use and it can be displayed in other languages for easy access and peace of mind so you know you’re contacting the right agent. </p>
+		          <p><i>TransUnited</i> <FormattedMessage id="app.faqs.a1" /> </p>
 		        </div>
 		        <div className="card-action">
-		          <a href="https://github.com/d88naimi/Skeleton" target="_blank">Repository</a>
+		          <a href="https://github.com/d88naimi/Skeleton" target="_blank">
+		          <FormattedMessage id="app.about.link1" />
+		          </a>
 		        </div>
 		      </div>
 		    </div>
@@ -41,7 +44,9 @@ export default class About extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		        	<h5>Full Stack Developer</h5>
+		        	<h5>
+		        		<FormattedMessage id="app.about.link2" />
+		        	</h5>
 		          <p> Something About you </p>
 		        </div>
 		        <div className="card-action">
@@ -58,7 +63,9 @@ export default class About extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          	<h5>Full Stack Developer</h5>
+		        	<h5>
+		          	<FormattedMessage id="app.about.link2" />
+		          	</h5>
 		          <p> Something About you </p>
 		        </div>
 		        <div className="card-action">
@@ -75,7 +82,9 @@ export default class About extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          	<h5>Full Stack Developer</h5>
+		          	<h5>
+		          	<FormattedMessage id="app.about.link2" />
+		          	</h5>
 		          <p> Something About you </p>
 		        </div>
 		        <div className="card-action">
@@ -92,8 +101,14 @@ export default class About extends React.Component {
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          	<h5>Full Stack Developer</h5>
+
+		          <h5>Full Stack Developer</h5>
+		          <p> I was born and raised in Encinitas, my father is Persian and Mother is Mexican so my friends call me the Persiacan. Graduated with a Marketing degree but explored my entrepreneurial spirit  and opened a coffee shop at the San Diego County fairgrounds. Although it was enjoyable I wanted a new challenge and was always passionate about Software Development so I joined the UCSD Coding Bootcamp.</p>
+		          <h5>
+					      <FormattedMessage id="app.about.link2" />
+		          </h5>
 		          <p> Something About you </p>
+
 		        </div>
 		        <div className="card-action">
 		          <a href="https://github.com/d88naimi/Skeleton" target="_blank">Github</a>

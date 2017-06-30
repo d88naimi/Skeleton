@@ -10,5 +10,4 @@ class AgentSingle extends React.Component {
     )
   }
 }
-
 export default AgentSingle;

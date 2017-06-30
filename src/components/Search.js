@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {getAgentsNearby} from '../helpers/agent';
+import {FormattedMessage, FormattedDate} from 'react-intl';
 import './Search.scss';
 
 function mapStateToProps(state) {
@@ -14,20 +15,23 @@ export class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state={
-      city:""
-    }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.getQuery = this.getQuery.bind(this);
+      this.state={
+        value: ''
+      };
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.getQuery = this.getQuery.bind(this);
   }
 
   getQuery(event){
 
-    let query = event.target.value.trim();
+    const target = event.target;
+    const value = target.value;
+    let name = target.name.trim();
 
-      this.setState({
-        city: query
-      });
+    this.setState({
+      [name]: value
+    })
+
 
   }
 
@@ -35,6 +39,9 @@ export class Search extends React.Component {
   handleSubmit(e){
 
     e.preventDefault();
+    console.log("CLICK");
+    console.log(this.state.language);
+    console.log(this.state.location);
 
     getAgentsNearby(this.state.city).then(results=>{
 
@@ -47,15 +54,39 @@ export class Search extends React.Component {
   render() {
     return (
       <div>
-        <form className="col s12">
-        <div className="row">
-          <div className="input-field col s6">
-            <input type="text" className="validate" onChange={this.getQuery}/>
-              <label htmlFor="last_name">Search For Agents</label>
+        <form className="col s12" onSubmit={this.handleSubmit}>
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                name="language"
+                type="text" 
+                className="validate" 
+                onChange={this.getQuery}
+                />
+                <label htmlFor="by_language"><i className="material-icons">search</i>
+                 <FormattedMessage id="app.search.language" />
+                </label>
+            </div>
+
+            <div className="input-field col s6">
+              <input 
+                name="location"
+                type="text" 
+                className="validate" 
+                onChange={this.getQuery}
+                />
+                <label htmlFor="by_location"><i className="material-icons">location_on</i>
+                  <FormattedMessage id="app.search.location" />
+                </label>
+            </div>
+
+
           </div>
-        </div>
-        <button className="btn waves-effect waves-light themeButton" type="submit" name="action" onSubmit={this.handleSubmit}>Search
-            <i className="material-icons right">search</i>
+        <button 
+          className="btn waves-effect waves-light themeButton" 
+          type="submit" 
+          >
+          <FormattedMessage id="app.search.searchBtn" />
         </button><br/>
       </form>
     </div>

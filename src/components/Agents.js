@@ -1,125 +1,46 @@
 import React from 'react';
-import photo from '../assets/images/cafe.jpg';
-const Agents = () => (
+import photo from '../assets/images/cafe2.jpg';
+import { connect } from 'react-redux';
 
-    <div className="row">
-    <div className="col s4 m4">
-        <div className="card ">
-        
-        <div className="card-image waves-effect waves-block waves-light">
-          <img className="activator" src={photo}/>
+
+function mapStateToProps(state) {
+  return {
+
+  };
+}
+
+export class Agents extends React.Component {
+
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      
+        <div className="col s12 m4 l3 xl3 offset-xl1">
+      <div className="card">
+        <div className="card-image">
+          <img src={photo}></img>
+          <span className="card-title">{this.props.name}</span>
+          <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
         </div>
         <div className="card-content">
-          <span className="card-title activator grey-text text-darken-4">Agent David <i className="material-icons right">United States</i></span>
-          <p><a href="#">United States</a></p>
-        </div>
-        <div className="card-reveal">
-          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
-        </div>
+          <ul>
+            <li>{this.props.languages.join(', ')}</li>
+            <li>{this.props.location}</li>
+            <li>Summary of Agent </li>
+          </ul>
         </div>
       </div>
-      </div>
-    
-       
-      // <div className="photo-grid" >
-      //   {this.props.posts.map((post, i) => <Photo {...this.props} key={i} i={i} post={post}/>)}
-      // </div>
-    
-   
-);
+    </div>
 
-export default Agents;
+    );
+  }
+}
 
-
-// function Agents ({agents}) => (
-//   <div>
-//     {agents.map(agent => <Agent something={agent}/>)} this.props.somehthing
-//   </div>
-// )
-
-const agents = [
-  {
-    name: "Bill Gates",
-    location: "San Francisco" ,
-    languages: ["English","Spanish",
-     "display_src":"https://images.pexels.com/photos/14644/pexels-photo-14644.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"]
-  },
-  {
-    name: "Hyungwu Genius",
-    location: "San Diego",
-    languages: ["Korean", "Spanish"]
-  },
-  {
-    name: "John Smith",
-    location: "Los Angelos",
-    languages: ["Korean", "Spanish"]
-  },
-  {
-    name: "David Skeleton",
-    location: "Los Angelos",
-    languages: ["Korean", "Spanish"]
-  },
-  {
-    name: "Cindy Chan",
-    location: "Los Angelos",
-    languages: ["Korean", "Chinese"]
-  },
-  {
-    name: "Sarah Lee",
-    location: "Palo Alto",
-    languages: ["Japanese", "Spanish"]
-  },
-  {
-    name: "Eric Song",
-    location: "Los Angelos",
-    languages: ["Italian", "Spanish"]
-  },
-  {
-    name: "Java Script",
-    location: "Los Angelos",
-    languages: ["Persian", "Farsi"]
-  },
-  {
-    name: "Eliza Funny",
-    location: "San Diego",
-    languages: ["Hebrew", "German"]
-  },
-  {
-    name: "Marko Darko",
-    location: "Anaheim",
-    languages: ["Hebrew", "German"]
-  },
-  {
-    name: "Pilar Humphrey ",
-    location: "Sacramento",
-    languages: ["Portuguese", "Swedish"]
-  },
-  {
-    name: "Quinn Happy ",
-    location: "San Jose",
-    languages: ["Russian", "Turkish"]
-  },
-  {
-    name: "Tara Sunny ",
-    location: "Fresno",
-    languages: ["French", "German"]
-  },
-  {
-    name: "Wendy Sol ",
-    location: "Oakland",
-    languages: ["Arabic", "English"]
-  },
-  {
-    name: "Erika Web ",
-    location: "Fresno",
-    languages: ["Japanese", "Mandarin"]
-  },
-  {
-    name: "Stefen Awesome ",
-    location: "Long Beach",
-    languages: ["Hindi", "English"]
-  },
-  
-  
-]
+export default connect(
+  mapStateToProps,
+// Implement map dispatch to props
+)(Agents)

@@ -1,5 +1,8 @@
 $roboto-font-path: "../../node_modules/materialize-css/fonts/roboto/" !default;
+$fa-font-path: "~font-awesome/fonts";
+
 @import '../../node_modules/materialize-css/sass/materialize';
+@import "~font-awesome/scss/font-awesome";
 
 html,
 body {

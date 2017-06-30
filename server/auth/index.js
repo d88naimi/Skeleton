@@ -13,10 +13,7 @@ const router = express.Router();
 
 router.use('/local/', require('./local'));
 router.use('/facebook', require('./facebook'));
-router.use('/facebook/agent', require('./facebook'));
 router.use('/twitter', require('./twitter'));
-router.use('/twitter/agent', require('./twitter'));
 router.use('/google', require('./google'));
-router.use('/google/agent', require('./google'));
 
 module.exports = router;

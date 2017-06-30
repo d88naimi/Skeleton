@@ -31,7 +31,7 @@ if (__DEV__) {
         renderApp()
       } catch (e) {
         console.error(e);
-        renderError(e)
+        renderError(e);
       }
     };
 

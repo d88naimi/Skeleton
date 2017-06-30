@@ -5,6 +5,19 @@ const passport = require('passport');
 const setTokenCookie = require('../auth.service').setTokenCookie;
 const router = express.Router();
 
+/**
+ * @api {get} /auth/twitter Twitter signup/login for user
+ * @apiName TwitterSignInUser(signup)
+ * @apiGroup Auth
+ *
+ */
+/**
+ * @api {get} /auth/twitter/agent Twitter signup/login for user
+ * @apiName TwitterSignInAgent(signup)
+ * @apiGroup Auth
+ *
+ */
+
 router
   .get('/', passport.authenticate('twitter', {
     failureRedirect: '/signup',
