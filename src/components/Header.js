@@ -23,7 +23,7 @@ class Header extends React.Component {
                 {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}
                 {!user && <li><NavLink to="/signup"><FormattedMessage id="app.header.signup"/></NavLink></li>}
                 <li><NavLink to="/results"><FormattedMessage id="app.header.results" /></NavLink></li>
-                <li><NavLink to="/plans">Plans</NavLink></li>      
+                <li><NavLink to="/plans"><FormattedMessage id="app.header.plans" /></NavLink></li>      
                 {user && 
                   <li>
                     <a href="/dashboard">
