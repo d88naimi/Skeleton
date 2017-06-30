@@ -1,0 +1,34 @@
+import * as fromAgent from '../actions/agent';
+
+const initialState = {
+  ids: [],
+  entities: {},
+  selected: null
+};
+
+/**
+ * Reducer
+ */
+export function reducer(state = initialState, action) {
+  switch (action.type) {
+    case fromAgent.LOAD_AGENTS: {
+      const agents = action.payload;
+      const entities = agents.reduce((acc, agent) => Object.assign(acc, {[agent._id]: agent}), {});
+      const ids = Object.keys(entities);
+      return Object.assign({}, state, {ids, entities});
+    }
+
+    case fromAgent.SELECT_AGENT: {
+      const selected = action.payload;
+      return Object.assign({}, state, {selected});
+    }
+
+    default:
+      return state;
+  }
+}
+
+/**
+ * Selectors
+ */
+const getAgentList = state => state.ids.map(id => state.entities[id]);
