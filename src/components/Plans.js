@@ -20,10 +20,10 @@ export class Plans extends React.Component {
 
   render() {
     return (
-    <div className="row">
+    <div className=" container row">
 
-        <div className="col s12 m6 xl4 ">
-          <div className="card bronze">
+        <div className="col s12 m12 l4 bronze">
+          <div className="card themeContainer">
             <div className="card-content ">
               <span className="card-title"><FormattedMessage id="app.plans.silverHeader" /></span>
                <h2>
@@ -43,8 +43,8 @@ export class Plans extends React.Component {
         </div>  
         
     
-        <div className="col s12 m6 xl4">
-          <div className="card silver">
+        <div className="col s12 m12 l4 silver">
+          <div className="card themeContainer">
             <div className="card-content ">
               <span className="card-title"><FormattedMessage id="app.plans.goldheader" /></span>
               <h2>
@@ -64,8 +64,8 @@ export class Plans extends React.Component {
           </div>
         </div>
     
-        <div className="col s12 m6 xl4">
-          <div className="card gold">
+        <div className="col s12 m12 l4 gold">
+          <div className="card themeContainer">
             <div className="card-content ">
               <span className="card-title"><FormattedMessage id="app.plans.platinumHeader" /></span>
               <h2>
