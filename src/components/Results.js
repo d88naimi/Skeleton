@@ -32,9 +32,14 @@ export class Results extends React.Component {
         {this.state && this.state.agents.map( (agent,index) =>{
             return <Agents 
             key={index} 
+            role={agent.role}
             name={agent.name}
             languages={agent.languages }
-            location= {agent.location}
+            location={agent.location}
+            email={agent.email}
+            phone={agent.phone}
+             text={agent.text}
+            avgRate={agent.avgRate}
             />
         })}
     </div>
