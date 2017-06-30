@@ -10,12 +10,32 @@ export class Login extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state={}
+    this.state={
+    	role:"user"
+    }
     this.getEmail = this.getEmail.bind(this);
     this.getPassword = this.getPassword.bind(this);
     this.getName = this.getName.bind(this);
     this.renderSignupForm = this.renderSignupForm.bind(this);
+    this.getCheckbox = this.getCheckbox.bind(this);
   }
+
+  	getCheckbox(event){
+  		let inputCheckbox = event.target.checked;
+  		//console.log(inputCheckbox);
+
+  		if(inputCheckbox){
+  			this.setState({
+  				role: "agent"
+  			});
+  		}
+  		else{
+  			this.setState({
+  				role: "user"
+  			});
+  		}
+  		
+  	}
 
 	getEmail(event){
 		const inputEmail= event.target.value.trim();
@@ -78,25 +98,58 @@ export class Login extends React.Component {
 		const headerTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupHeader' : 'app.login.loginHeader'});
     const signBtnTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupBtn' : 'app.login.loginBtn'});
 		return (
-			<div className="container center-align" style={{maxWidth:'400px', padding:'10px'}}>
+			<div className="container center-align themeContainer" >
+
+				<div className="container">
+					<h4>Are you an <b>Agent</b>?</h4>
+				    <p>
+				      <input type="checkbox" id="checkboxForm" onChange={this.getCheckbox}/>
+				      <label htmlFor="checkboxForm">Yes!</label>
+				    </p>
+				    <hr/>
+				</div>
 				
-				<div>
+				<div className="container buttonContainer">
 					<h4>{signBtnTitle + ' with'}</h4>
-					<div className="row">
-						<a href='/auth/google/agent' className="waves-effect waves-light btn-large social google col s12">
-							<i className="fa fa-google"></i> {signBtnTitle} google
-						</a>
-					</div>
-					<div className="row">
-						<a href='/auth/facebook/agent' className="waves-effect waves-light btn-large social facebook col s12">
-							<i className="fa fa-facebook"></i> {signBtnTitle} facebook
-						</a>
-					</div>
-					<div className="row">
-						<a href='/auth/twitter/agent' className="waves-effect waves-light btn-large social twitter col s12">
-							<i className="fa fa-twitter"></i> {signBtnTitle} twitter
-						</a>
-					</div>
+					{ this.state.role === "user" && 
+						<div>
+							<div className="loginButton">
+								<a href='/auth/google' className="waves-effect waves-light btn-large social google col s12">
+									<i className="fa fa-google"></i> {signBtnTitle} with google
+								</a>							
+							</div>
+							<div className="loginButton">
+							<a href='/auth/facebook' className="waves-effect waves-light btn-large social facebook col s12">
+								<i className="fa fa-facebook"></i> {signBtnTitle} with facebook
+							</a>
+							</div>
+							<div className="loginButton">
+								<a href='/auth/twitter' className="waves-effect waves-light btn-large social twitter col s12">
+									<i className="fa fa-twitter"></i> {signBtnTitle} with twitter
+								</a>
+							</div>
+						</div>
+					}
+
+					{ this.state.role === "agent" && 
+						<div>
+							<div className="loginButton">
+								<a href='/auth/google/agent' className="waves-effect waves-light btn-large social google col s12">
+									<i className="fa fa-google"></i> {signBtnTitle} with google
+								</a>							
+							</div>
+							<div className="loginButton">
+							<a href='/auth/facebook/agent' className="waves-effect waves-light btn-large social facebook col s12">
+								<i className="fa fa-facebook"></i> {signBtnTitle} with facebook
+							</a>
+							</div>
+							<div className="loginButton">
+								<a href='/auth/twitter/agent' className="waves-effect waves-light btn-large social twitter col s12">
+									<i className="fa fa-twitter"></i> {signBtnTitle} with twitter
+								</a>
+							</div>
+						</div>
+					}
 				</div>
 				<br/>
 				<h5>or</h5>

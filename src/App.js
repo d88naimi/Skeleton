@@ -63,6 +63,7 @@ class App extends React.Component{
             <Route path="/photo-test" component={PhotoTest} />
             <Route path="/plans" component={Plans} />
             <Route path="/contact-us" component={ContactUs} />
+            
           </main>
           <Footer />
         </div>

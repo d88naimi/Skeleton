@@ -32,7 +32,7 @@ export class Search extends React.Component {
       [name]: value
     })
 
-      // event.target.reset();
+
   }
 
 
@@ -42,6 +42,12 @@ export class Search extends React.Component {
     console.log("CLICK");
     console.log(this.state.language);
     console.log(this.state.location);
+
+    getAgentsNearby(this.state.city).then(results=>{
+
+      console.log("Search Results",results);
+
+    });
 
   }
 
@@ -73,6 +79,7 @@ export class Search extends React.Component {
                   <FormattedMessage id="app.search.location" />
                 </label>
             </div>
+
 
           </div>
         <button 
