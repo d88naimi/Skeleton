@@ -95,8 +95,8 @@ export class Login extends React.Component {
   render() {
 		const {formatMessage} = this.props.intl;
 		const {pathname} = this.props.location;
-		const headerTitle = formatMessage({id: pathname === "/signup" ? 'app.login.header2' : 'app.login.header1'});
-    	const signBtnTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupBtn' : 'app.login.loginBtn'});
+		const headerTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupHeader' : 'app.login.loginHeader'});
+    const signBtnTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupBtn' : 'app.login.loginBtn'});
 		return (
 			<div className="container center-align themeContainer" >
 
@@ -111,7 +111,6 @@ export class Login extends React.Component {
 				
 				<div className="container buttonContainer">
 					<h4>{signBtnTitle + ' with'}</h4>
-					
 					{ this.state.role === "user" && 
 						<div>
 							<div className="loginButton">
@@ -151,8 +150,6 @@ export class Login extends React.Component {
 							</div>
 						</div>
 					}
-
-					
 				</div>
 				<br/>
 				<h5>or</h5>
