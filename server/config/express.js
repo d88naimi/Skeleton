@@ -20,6 +20,7 @@ const session = require('express-session');
 const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
 const MongoStore = connectMongo(session);
+const md5 = require('md5');
 
 module.exports = function(app) {
   const env = app.get('env');
@@ -86,6 +87,7 @@ module.exports = function(app) {
       User.findOne({email: agent.email}).exec()
         .then(user => {
           if(!user) {
+            agent.photoURL = `https://gravatar.com/avatar/${md5(agent.email)}?s=200&d=retro`
             agent.languages = JSON.parse(agent.languages);
             (new User(agent)).save();
           }
