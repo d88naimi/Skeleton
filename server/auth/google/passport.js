@@ -19,7 +19,7 @@ module.exports.setup = (User, config) => {
           name: profile.displayName,
           email: profile.emails[0].value,
           role: 'user',
-            photoURL: profile.image ? profile.image.url : (profile._json.image? profile._json.image.url: 'https://gravatar.com/avatar/07759404e0e350b4c6754b8c1b3edcb8?s=200&d=retro'),
+          photoURL: profile.image ? profile.image.url : (profile._json.image? profile._json.image.url: 'https://gravatar.com/avatar/07759404e0e350b4c6754b8c1b3edcb8?s=200&d=retro'),
           username: profile.emails[0].value.split('@')[0],
           provider: 'google',
           google: profile._json,
