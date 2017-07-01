@@ -3,7 +3,10 @@ import * as fromAgent from '../actions/agent';
 const initialState = {
   ids: [],
   entities: {},
-  selected: null
+  selected: {
+    agentId: null,
+    comments: [] 
+  }
 };
 
 /**
@@ -19,7 +22,10 @@ export function reducer(state = initialState, action) {
     }
 
     case fromAgent.SELECT_AGENT: {
-      const selected = action.payload;
+      const selected = { 
+        agentId: action.payload.agentId,
+        comments: action.payload.comments
+      };
       return Object.assign({}, state, {selected});
     }
 
@@ -36,4 +42,6 @@ export const getAgentList = state => {
   return state.ids.map(id => state.entities[id]);
 };
 
-export const getSelectedAgent = state => state.entities[state.selected];
+export const getSelectedAgent = state => {
+  return Object.assign({}, state.entities[state.selected.agentId], {comments: state.entities[state.selected.comments]})
+};

@@ -21,7 +21,7 @@ class AgentDetail extends React.Component {
           <h3>{agent.avgRate}</h3>
           <h3>{agent.email}</h3>
           <h3>{agent.phone}</h3>
-          <h3>{agent.languages.toString()}</h3>
+          <h3>{agent.languages && agent.languages.toString()}</h3>
           <h3>{agent.text}</h3>
         </div>}
       </div>
