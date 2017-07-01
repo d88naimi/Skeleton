@@ -19,6 +19,14 @@ export function fetchAgents ({language, location, page}) {
   return axios.get(`/api/users/agents` , { params });
 }
 
+export function fetchAgent(agentId) {
+  return axios.get('/api/users/agent/' + agentId);
+}
+
+
+export function fetchComments (agentId) {
+  return axios.get(`/api/comments/agent/${agentId}`);
+}
 
 /**
  * Actions
@@ -50,15 +58,27 @@ export function loadAgents (agents) {
 export function selectAgent (agentId) {
   return function(dispatch, getState) {
     const { agents } = getState();
-    if(agents.entities[agentId]) dispatch({
-      type: SELECT_AGENT,
-      payload: agentId
-    });
+    if(agents.entities[agentId]) {
+      fetchComments(agentId)
+        .then(res => dispatch({
+          type: SELECT_AGENT,
+          payload: {
+            agentId,
+            comments: res.data
+          }
+        }))
+      
+      
+      
+    }
     else {
-      axios.get('/api/users/agent/' + agentId)
-        .then(res => {
-          dispatch(loadAgents([res.data]));
-          dispatch({type: SELECT_AGENT, payload: agentId});
+      Promise.all([fetchAgent(agentId), fetchComments(agentId)])
+        .then(([res1,res2]) => {
+          dispatch(loadAgents([res1.data]));
+          dispatch({type: SELECT_AGENT, payload: {
+            agentId,
+            comments: res2.data
+          }});
         });
     }
   }

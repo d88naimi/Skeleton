@@ -82,6 +82,7 @@ class AgentDetail extends React.Component {
 
               
 
+
       </div>
     );
 
