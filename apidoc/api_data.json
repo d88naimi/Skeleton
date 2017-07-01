@@ -481,20 +481,22 @@
   },
   {
     "type": "post",
-    "url": "/api/comments",
+    "url": "/api/comments/:agentId",
     "title": "Create a Comment (restriction: authenticated)",
     "name": "PostComment",
     "group": "Comment",
     "parameter": {
       "fields": {
-        "request body": [
+        "route params": [
           {
-            "group": "request body",
+            "group": "route params",
             "type": "String",
             "optional": false,
             "field": "agentId",
             "description": "<p>Agent(User) unique ID.</p>"
-          },
+          }
+        ],
+        "request body": [
           {
             "group": "request body",
             "type": "String",
