@@ -4,12 +4,7 @@ import {Search} from './Search';
 
 
 
-export class DashboardAgetns extends React.Component {
-
-componentDidMount(){
-
-}
-
+class DashboardAgents extends React.Component {
 
   constructor(props) {
     super(props);
@@ -27,5 +22,5 @@ componentDidMount(){
 }
 
 export default connect(
-
-)(DashboardAgetns)
+  null
+)(DashboardAgents)

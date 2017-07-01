@@ -24,9 +24,9 @@ class Header extends React.Component {
                 <li><NavLink to="/plans"><FormattedMessage id="app.header.plans" /></NavLink></li>      
                 {user && 
                   <li>
-                    <a href="/dashboard">
+                    <NavLink to="/dashboard">
                       <img id="profilePhoto"  src={user.photoURL} />
-                    </a>
+                    </NavLink>
                   </li>}
                 {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong>{user.name}</strong></li>}
                 {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}

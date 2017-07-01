@@ -21,7 +21,6 @@ const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
 const MongoStore = connectMongo(session);
 const md5 = require('md5');
-
 module.exports = function(app) {
   const env = app.get('env');
 
@@ -96,3 +95,4 @@ module.exports = function(app) {
   }
 
 }
+
