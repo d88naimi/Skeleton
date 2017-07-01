@@ -1,4 +1,5 @@
 import React from 'react';
+import './Agent.scss';
 
 class AgentSingle extends React.Component {
 
