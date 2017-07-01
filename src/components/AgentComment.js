@@ -17,7 +17,7 @@ export class AgentComment extends React.Component {
 
   render() {
     return (
-      <div className="container themeAgent">
+      <div className="agentComment" style={{backgroundColor:"lightblue"}}>
       	<p>{this.props.comment}</p>
       </div>
     );

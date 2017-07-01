@@ -10,6 +10,9 @@ class AgentDetail extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state={
+      myArray:['comment is fdslfkhasf', 'another comment fdhsfjhasdkjhf a']
+    }
     console.log(this.props);
     const { selectAgent } = this.props;
     const id = this.props.match.params.id;
@@ -43,10 +46,42 @@ class AgentDetail extends React.Component {
     const {agent} = this.props;
 
     return (
-      <div className="container themeAgent">
-        <h3>Agent Details</h3>
-        <hr/>
-        {agent && this.renderAgent()}      
+      <div className="container themeAgent row">
+          <h5>Agent Details</h5>
+          <hr/>
+        {agent && this.renderAgent()}
+
+                
+                <AgentSingle
+                  name="Agent Name"
+                  photo="https://s3.amazonaws.com/whisperinvest-images/default.png"
+                  rating ="4.5"
+                  email="email@email.com"
+                  phone="6584905435"
+                  language="English"
+                  description="faflkdshfl hjksah gkjhakj kjashkj ghkjdfhgh knkdljfhg kafdkjghk dfavbv kjfvkjfk"
+                />
+                  <div className="col s12 m9 l9 container">
+                     {this.state.myArray.map( (comment,index)=>{
+                        return <AgentComment key={index} comment={comment}/>
+                     })}
+                  </div>
+
+                  <div className="col s12 m9 l9 container">
+                    <form>
+                            <div>
+                              <div className="input-field">
+                                <i className="material-icons prefix">mode_edit</i>
+                                <textarea id="icon_prefix2" className="materialize-textarea"></textarea>
+                                <label htmlFor="icon_prefix2">Write a Comment</label>
+                              </div>
+                            </div>
+                      <button className="btn themeButton" type='button' >Send</button>
+                    </form>
+                  </div>
+
+              
+
       </div>
     );
 
