@@ -26,6 +26,7 @@ export function reducer(state = initialState, action) {
         agentId: action.payload.agentId,
         comments: action.payload.comments
       };
+      console.log(selected);
       return Object.assign({}, state, {selected});
     }
 
@@ -43,5 +44,6 @@ export const getAgentList = state => {
 };
 
 export const getSelectedAgent = state => {
-  return Object.assign({}, state.entities[state.selected.agentId], {comments: state.entities[state.selected.comments]})
+  console.log(state.selected.comments);
+  return Object.assign({}, state.entities[state.selected.agentId], {comments: state.selected.comments})
 };

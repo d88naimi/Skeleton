@@ -4,7 +4,7 @@
 import {push} from 'react-router-redux';
 import Cookies from 'universal-cookie';
 import axios from "axios"; // eslint-disable-next-line
-// (new Cookies).set('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTQ4Mzg2MmMyN2U5ODJlMGY4NGMyMTAiLCJyb2xlIjoidXNlciIsImlhdCI6MTQ5NzkwNTI1MSwiZXhwIjoxNDk3OTIzMjUxfQ.rKCh_rgxO22y8HNpvuetwT_ql1MxlbNzm9CmZJKE5bs')
+
 /**
  * Action types
  */
@@ -130,7 +130,10 @@ export function getUserInfo (jwt) {
     if(!jwt) return Promise.resolve();
     return fetchUserInfo(jwt)
       .then(
-        res => dispatch(loadUserInfo(res.data)),
+        res => {
+          dispatch(loadUserInfo(res.data));
+
+        },
         err => dispatch(logout(err))
       )
   };

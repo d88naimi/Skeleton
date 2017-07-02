@@ -21,6 +21,7 @@ class AgentDetail extends React.Component {
   }
 
   renderAgent(){
+    const {agent} = this.props;
     return(
       <div className="row">
         <AgentSingle className="col s12 m3 l3"
@@ -28,12 +29,12 @@ class AgentDetail extends React.Component {
           rating ={agent.avgRate}
           email={agent.email}
           phone={agent.phone}
-          language={agent.languages.toString()}
+          language={agent.languages}
           description={agent.text}
         />
           <div className="col s12 m9 l9">
-           {agent.comments.map( (comment,index)=>{
-              return <AgentComment key={index} comment={comment}/>
+           {agent._id && agent.comments.map( (comment,index)=>{
+              return <AgentComment key={index} comment={comment.text}/>
            })}
           </div>
         </div>

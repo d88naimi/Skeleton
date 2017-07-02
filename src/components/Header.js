@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {Userbox} from "./Userbox";
+import Notification from "./Notification";
 import {logout} from "../actions/auth";
 import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang'
@@ -18,6 +19,7 @@ class Header extends React.Component {
         <nav className="darken-4">
           <div className="container nav-wrapper">
             <NavLink to="/" className="brand-logo left navLogo"><span className="t">T</span><span className="u">U</span></NavLink>
+              <Notification />
               <ul className="right hide-on-small-only">
                 {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}
                 {!user && <li><NavLink to="/signup"><FormattedMessage id="app.header.signup"/></NavLink></li>}

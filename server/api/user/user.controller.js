@@ -289,6 +289,16 @@ module.exports.me = (req, res, next) => {
       if(!user) {
         return res.status(401).end();
       }
+
+      // const socket = res.io.of(`/${user._id}`);
+      // socket.on('connection', function(socket){
+      //   console.log('someone connected');
+      //   socket.on('disconnect', () => {
+      //     console.log('%s client disconnected', user.name);
+      //   });
+      // });
+
+      //.emit('saved', `Article saved: ${saved.title}`);
       return res.json(user);
     })
     .catch(err => next(err));
