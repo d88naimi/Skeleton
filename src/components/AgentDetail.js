@@ -6,6 +6,7 @@ import AgentComment from './AgentComment';
 import AgentSingle from './AgentSingle';
 import './Agent.scss';
 import axios from "axios";
+var Rating = require('react-rating');
 
 class AgentDetail extends React.Component {
 
@@ -83,6 +84,7 @@ class AgentDetail extends React.Component {
     //console.log(agent);
 
     return (
+
       <div className="container themeAgent row">
           <h5>Agent Details</h5>
           <hr/>
