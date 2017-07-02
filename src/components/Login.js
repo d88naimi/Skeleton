@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Login.scss';
 import { signup, login } from '../actions/auth';
 import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
+import {validateEmail} from '../helpers/helper';
 
 export class Login extends React.Component {
 
@@ -39,6 +40,15 @@ export class Login extends React.Component {
 
 	getEmail(event){
 		const inputEmail= event.target.value.trim();
+
+		if(!validateEmail(inputEmail)) {
+			return this.setState({
+				emailError: true
+			});
+		} else {
+			this.setState({ emailError: false })
+		}
+
 		this.setState({
 			email: inputEmail
 		});
@@ -53,6 +63,14 @@ export class Login extends React.Component {
 
 	getName(event){
 		let inputName= event.target.value.trim();
+		if(inputName.length < 2 || inputName.length > 15) {
+			console.error("NAME ERROR!!!")
+			return this.setState({nameError: true});
+		} else { 
+			console.info("NAME CORRECT!!!!")
+			this.setState({nameError: false}); 
+		}
+
 		this.setState({
 			name: inputName
 		});
@@ -61,8 +79,8 @@ export class Login extends React.Component {
 	handleSubmit(event) {
 		const {login, signup} = this.props;
 		event.preventDefault();
-		if(this.state.name) return signup(this.state);
-		else return login(this.state);
+		if(this.state.name) return signup({name: this.state.name, password: this.state.password, email: this.state.email, role: this.state.role});
+		else return login({password: this.state.password, email: this.state.email});
 	}
 
 	renderSignupForm(){
@@ -160,11 +178,12 @@ export class Login extends React.Component {
 
 					<div className="row">
 						<div className="input-field col s12">
-							<input id="Email" type="text" className="validate" onChange={this.getEmail}></input>
+							<input id="Email" type="email" className="validate" onChange={this.getEmail}></input>
 							<label htmlFor="Email">
 							<FormattedMessage id="app.login.email" />
 							</label>
 						</div>
+						{this.state.emailError && <p style={{color: 'red'}}>Email is not correct!</p>}
 					</div>
 					<div>
 						<div className="row">
