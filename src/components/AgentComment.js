@@ -17,8 +17,12 @@ export class AgentComment extends React.Component {
 
   render() {
     return (
-      <div className="agentComment" style={{backgroundColor:"lightblue"}}>
-      	<p>{this.props.comment}</p>
+      <div className="agentComment">
+        <span>
+          {Date(this.props.created)}
+        </span>
+      	<p> {this.props.comment}</p>
+
       </div>
     );
   }

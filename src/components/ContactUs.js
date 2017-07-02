@@ -58,7 +58,7 @@ export class ContactUs extends React.Component {
               <FormattedMessage id="app.footer.call" /> 
               <FormattedMessage id="app.footer.number" />
               transUS</em></a>
-              <a href="mailto:widgets@abcwidgets.com"><em><FormattedMessage id="app.footer.email" /> </em></a>
+              <a href="mailto:widgets@abcwidgets.com"><em><FormattedMessage id="app.footer.email" /> TransUnited</em></a>
             </div>
           </div>
         </div>

@@ -44,6 +44,5 @@ export const getAgentList = state => {
 };
 
 export const getSelectedAgent = state => {
-  console.log(state.selected.comments);
   return Object.assign({}, state.entities[state.selected.agentId], {comments: state.selected.comments})
 };
