@@ -80,8 +80,8 @@ class AgentDetail extends React.Component {
 
   render() {
 
-    const {agent} = this.props;
-    //console.log(agent);
+    const {agent, user} = this.props;
+    console.log(this.props);
 
     return (
 
@@ -140,6 +140,9 @@ class AgentDetail extends React.Component {
 }
 
 export default connect(
-  state => ({agent: getSelectedAgent(state)}),
+  state => ({
+    user: state.auth.user,
+    agent: getSelectedAgent(state)
+  }),
   { selectAgent }
 )(AgentDetail);
