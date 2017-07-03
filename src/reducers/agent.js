@@ -26,6 +26,7 @@ export function reducer(state = initialState, action) {
         agentId: action.payload.agentId,
         comments: action.payload.comments
       };
+      console.log(selected);
       return Object.assign({}, state, {selected});
     }
 
