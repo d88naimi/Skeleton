@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Search} from './Search';
 
 
+function mapStateToProps(state) {
+  return {
 
-class DashboardAgents extends React.Component {
+  };
+}
+
+export class DashboardAgents extends React.Component {
 
   constructor(props) {
     super(props);
@@ -12,15 +16,17 @@ class DashboardAgents extends React.Component {
 
   render() {
     return (
-      <div className="container col s12 m9 l9 center-align agents">
-	      <h5>My Agents</h5>
-	      <hr/>
-	      <Search/>
+       <div className="container col s12 m9 l9 center-align agents">
+        <h5>My Agents</h5>
+        <hr/>
+        
       </div>
     );
   }
 }
 
 export default connect(
-  null
+  mapStateToProps,
+// Implement map dispatch to props
 )(DashboardAgents)
+

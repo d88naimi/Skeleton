@@ -24,8 +24,8 @@ export class Plans extends React.Component {
 
         <div className="col s12 m12 l4 bronze">
           <div className="card themeContainer">
-            <div className="card-content ">
-              <span className="card-title"><FormattedMessage id="app.plans.silverHeader" /></span>
+            <div className="card-content  center-align">
+              <img src="./bronzeplan.png" width="150px" alt="bronze plan transunited"/>
                <h2>
                 <em>$1700</em>
               </h2>
@@ -35,7 +35,7 @@ export class Plans extends React.Component {
               <li><FormattedMessage id="app.plans.cellPhone" /></li>
               </ul>
             </div>
-            <div className="card-action">
+            <div className="card-action center-align">
               <a className="btn themeButton" href="#">Select</a>
              
             </div>
@@ -45,8 +45,8 @@ export class Plans extends React.Component {
     
         <div className="col s12 m12 l4 silver">
           <div className="card themeContainer">
-            <div className="card-content ">
-              <span className="card-title"><FormattedMessage id="app.plans.goldheader" /></span>
+            <div className="card-content center-align">
+              <img src="./silverplan.png" width="150px" alt="silver plan transunited"/>
               <h2>
                   <em>$3000</em>
                 </h2>
@@ -57,7 +57,7 @@ export class Plans extends React.Component {
                 <li><FormattedMessage id="app.plans.residence" /></li>
                 </ul>
             </div>
-            <div className="card-action">
+            <div className="card-action center-align">
               <a className="btn themeButton" href="#">Select</a>
               
             </div>
@@ -66,8 +66,8 @@ export class Plans extends React.Component {
     
         <div className="col s12 m12 l4 gold">
           <div className="card themeContainer">
-            <div className="card-content ">
-              <span className="card-title"><FormattedMessage id="app.plans.platinumHeader" /></span>
+            <div className="card-content center-align">
+            <img src="./goldplan.png" width="150px" alt="gold plan transunited"/>
               <h2>
                   <em>$4000</em>
                 </h2>
@@ -81,7 +81,7 @@ export class Plans extends React.Component {
                 <li><FormattedMessage id="app.plans.car" /></li>
                 </ul>
             </div>
-            <div className="card-action">
+            <div className="card-action center-align">
               <a className="btn themeButton" href="#">Select</a>
               
             </div>
