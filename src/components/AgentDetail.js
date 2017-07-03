@@ -28,7 +28,7 @@ class AgentDetail extends React.Component {
     const {agent} = this.props;
     return(
       
-        <AgentSingle className="col s12 m3 l3"
+        <AgentSingle className=""
           name={agent.name}
           photo={agent.photoURL}
           rating ={agent.avgRate}
@@ -84,26 +84,21 @@ class AgentDetail extends React.Component {
 
     return (
       <div className="container themeAgent row">
-          <h5>Agent Details</h5>
-          <hr/>
 
-      <div className=" col s12 m12 l12 right-align selectButtonContainer">
-        <button className="btn themeButton"><i className="material-icons left">done</i>Select as my</button>
+      <div className="right-align selectButtonContainer">
+        <button className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>
       </div>
 
       {agent && this.renderAgent()}
        
 
-      <div className="col s12 m9 l9 container commentContainer">
-        <h5>Comments on this agent</h5>
-        <hr/>
+      <div className="container commentContainer">
        {agent.comments && agent.comments.map( (comment,index)=>{
           return <AgentComment key={index} comment={comment.text} created={comment.createdAt}/>
        })}
       </div>
 
-
-      <div className="col s12 m9 l9  offset-m3 offset-l3 container addCommentContainer">
+      <div className="container addCommentContainer">
         <form onSubmit={this.handleSubmit}>
                 <div>
 
@@ -114,16 +109,16 @@ class AgentDetail extends React.Component {
                   <label className="stars" htmlFor="test1">&#x2605;</label>
                   <br/>
                   <input name="group1" type="radio" id="test2" value="2"/>
-                  <label className="stars" htmlFor="test2">&#x2605; &#x2605;</label>
+                  <label className="stars" htmlFor="test2">&#x2605;x2</label>
                   <br/>
                   <input name="group1" type="radio" id="test3" value="3"/>
-                  <label className="stars" htmlFor="test3">&#x2605; &#x2605; &#x2605;</label>
+                  <label className="stars" htmlFor="test3">&#x2605;x3</label>
                   <br/>
                   <input name="group1" type="radio" id="test4" value="4"/>
-                  <label className="stars" htmlFor="test4">&#x2605; &#x2605; &#x2605; &#x2605;</label>
+                  <label className="stars" htmlFor="test4">&#x2605;x4</label>
                   <br/>
                   <input name="group1" type="radio" id="test5" value="5"/>
-                  <label className="stars" htmlFor="test5">&#x2605; &#x2605; &#x2605; &#x2605; &#x2605;</label>
+                  <label className="stars" htmlFor="test5">&#x2605;x5</label>
                   <br/>
                 </div>
 

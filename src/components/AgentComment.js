@@ -1,12 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Agent.scss';
-
-function mapStateToProps(state) {
-  return {
-
-  };
-}
+import {FormattedMessage, FormattedDate, FormattedNumber} from 'react-intl';
 
 export class AgentComment extends React.Component {
 
@@ -16,19 +11,25 @@ export class AgentComment extends React.Component {
   }
 
   render() {
-    return (
-      <div className="agentComment">
-        <span>
-          {Date(this.props.created)}
-        </span>
-      	<p> {this.props.comment}</p>
 
+ 
+    return (
+      <div className="agentComment row">
+        <span className="commentDate">
+          <FormattedDate value={new Date(this.props.created)} />
+        </span>
+        <div className="center-align commentAuthorBox col s2 m2 l2">
+          <img  src="http://www.free-icons-download.net/images/user-icon-44709.png" alt="user comment"/>
+          <span>USER</span>
+        </div>
+        <div className="col s10 m10 l10">
+      	 <p>{this.props.comment}</p>
+        </div>
       </div>
     );
   }
 }
 
 export default connect(
-  mapStateToProps,
-// Implement map dispatch to props
+ 
 )(AgentComment)

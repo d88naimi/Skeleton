@@ -22,10 +22,10 @@ export class DashboardSidebar extends React.Component {
       		
       		<ProfilePhoto className="col s3 m12 l12" photoURL={user ? user.photoURL : ''} size={this.state.size}/>		  
 		  <ul className="collection col s9 m12 l12">
-	        <li className="collection-item"><NavLink className="whiteText" to="/dashboard/my-agents">My Agents</NavLink></li>
-	        <li className="collection-item"><NavLink className="whiteText" to="/dashboard/payments">Payments</NavLink></li>
-	        <li className="collection-item"><NavLink className="whiteText" to="/dashboard/edit-info">Edit Info</NavLink></li>
-         <li id="logoutCollection" className="collection-item"><a className="whiteText" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>
+	        <li className="collection-item center-align"><NavLink  to="/dashboard/my-agents">My Agent</NavLink></li>
+	        <li className="collection-item center-align"><NavLink  to="/dashboard/payments">Payments</NavLink></li>
+	        <li className="collection-item center-align"><NavLink  to="/dashboard/edit-info">Edit Info</NavLink></li>
+          <li id="logoutCollection" className="collection-item center-align"><a className="whiteText" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>
 	      </ul>
       </div>
       
