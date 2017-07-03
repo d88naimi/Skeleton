@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Login.scss';
 import { signup, login } from '../actions/auth';
 import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
-import {validateEmail} from '../helpers/helper';
+import {validateEmail, validatePassword, validateName} from '../helpers/helper';
 
 export class Login extends React.Component {
 
@@ -42,10 +42,12 @@ export class Login extends React.Component {
 		const inputEmail= event.target.value.trim();
 
 		if(!validateEmail(inputEmail)) {
+			console.error("Email ERROR!!!")
 			return this.setState({
 				emailError: true
 			});
 		} else {
+			console.info("PW CORRECT!!!!")
 			this.setState({ emailError: false })
 		}
 
@@ -56,6 +58,16 @@ export class Login extends React.Component {
 
 	getPassword(event){
 		let inputPassword= event.target.value.trim();
+
+		if(!validatePassword(inputPassword)) {
+			console.error("PW ERROR!!!")
+			return this.setState({
+				passwordError: true
+			});
+		} else {
+			console.info("PW CORRECT!!!!")
+			this.setState({passwordError: false})
+		}
 		this.setState({
 			password: inputPassword
 		});
@@ -63,14 +75,13 @@ export class Login extends React.Component {
 
 	getName(event){
 		let inputName= event.target.value.trim();
-		if(inputName.length < 2 || inputName.length > 15) {
+		if(!validateName(inputName)) {
 			console.error("NAME ERROR!!!")
 			return this.setState({nameError: true});
 		} else { 
 			console.info("NAME CORRECT!!!!")
-			this.setState({nameError: false}); 
+			this.setState({nameError: false})
 		}
-
 		this.setState({
 			name: inputName
 		});
@@ -79,19 +90,26 @@ export class Login extends React.Component {
 	handleSubmit(event) {
 		const {login, signup} = this.props;
 		event.preventDefault();
-		if(this.state.name) return signup({name: this.state.name, password: this.state.password, email: this.state.email, role: this.state.role});
-		else return login({password: this.state.password, email: this.state.email});
+			if(this.state.name) return signup({name: this.state.name, password: this.state.password, email: this.state.email, role: this.state.role});
+			else return login({password: this.state.password, email: this.state.email});
 	}
 
 	renderSignupForm(){
 		return(
 			<div className="row">
 					<div className="input-field col s12">
-						<input id="Name" type="text" className="validate" onChange={this.getName}></input>
+						<input 
+							id="Name" 
+							pattern="^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,4}$"
+							type="text" 
+							className="validate" 
+							onChange={this.getName} 
+							required />
 						<label htmlFor="Username">
 							<FormattedMessage id="app.login.name" />
 						</label>
 					</div>
+					{this.state.nameError && <span style={{color: 'red'}}>That's not your name, stop lying!</span>}
 			</div>
 		);
 	}
@@ -178,21 +196,31 @@ export class Login extends React.Component {
 
 					<div className="row">
 						<div className="input-field col s12">
-							<input id="Email" type="email" className="validate" onChange={this.getEmail}></input>
+							<input 
+								id="Email" 
+								type="email" 
+								className="validate" 
+								onChange={this.getEmail} required />
 							<label htmlFor="Email">
 							<FormattedMessage id="app.login.email" />
 							</label>
 						</div>
-						{this.state.emailError && <p style={{color: 'red'}}>Email is not correct!</p>}
+						{this.state.emailError && <span style={{color: 'red'}}>Please enter a valid email i.e. youremail@email.com</span>}
 					</div>
 					<div>
 						<div className="row">
 							<div className="input-field col s12">
-								<input id="Password" type="password" className="validate" onChange={this.getPassword}></input>
+								<input
+									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+									id="Password" 
+									type="password" 
+									className="validate" 
+									onChange={this.getPassword} required />
 								<label htmlFor="Password">
 									<FormattedMessage id="app.login.password" />
 								</label>
 							</div>
+							{this.state.passwordError && <span style={{color: 'red'}}>Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number</span>}
 						</div>
 					</div>
 					<button className="btn waves-effect waves-light themeButton" type="submit" name="action">
@@ -210,5 +238,3 @@ export default injectIntl(connect(
   null,
 	{ signup, login }
 )(Login));
-
-
