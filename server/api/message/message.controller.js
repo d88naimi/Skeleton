@@ -57,7 +57,7 @@ function handleError(res, statusCode) {
 }
 
 /**
- * @api {get} /api/messages Request all messages received (restriction: authenticated)
+ * @api {get} /api/messages Request all messages of user (restriction: authenticated)
  * @apiName GetAllMessagesReceived
  * @apiGroup Message
  *
@@ -98,7 +98,7 @@ module.exports.showAllMyMessages = (req, res) => {
 
 
 /**
- * @api {get} /api/messages/:with Request messages from a specific user
+ * @api {get} /api/messages/:with Request messages with a specific user
  * @apiName GetMessagesWith
  * @apiGroup Message
  *
@@ -142,7 +142,7 @@ module.exports.showMessagesWith = (req, res) => {
 
 
 /**
- * @api {post} /api/messages Create a Comment (restriction: authenticated)
+ * @api {post} /api/messages Send a message (restriction: authenticated)
  * @apiName SendMessage
  * @apiGroup Message
  *
