@@ -15,7 +15,7 @@ export class DashboardDefault extends React.Component {
       <div className="container col s12 m9 l9 center-align defaultBox">
 	      <h4>Welcome Back!</h4>
 	      <br/>
-	      <img src="./statue.jpeg" alt="welcome picture transUnited"/>
+	      <img src="./skylinelogo.jpg" alt="welcome picture transUnited"/>
       </div>
     );
   }

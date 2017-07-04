@@ -18,7 +18,8 @@ class Header extends React.Component {
       <header className="navbar-fixed">
         <nav className="darken-4">
           <div className="container nav-wrapper">
-            <NavLink to="/" className="brand-logo"><span className="t">T</span><span className="u">U</span></NavLink>
+            <NavLink to="/" className="brand-logo left navLogo">LOGO</NavLink>
+
             <ul className="right hide-on-small-only">
               <Notification />
               {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}

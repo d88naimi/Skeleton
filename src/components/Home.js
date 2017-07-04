@@ -16,20 +16,19 @@ class Home extends React.Component {
     const {time, loadLanguage} = this.props;
     return (
       <div className="container homeBackground whiteBackground">
-      	
-      	<img className="homeImage" src="./skylinelogo.jpg" alt="transunited home"></img>
-      	<div className="container">
+      	<div className="center-align">
+          <iframe src="https://player.vimeo.com/video/224119873?title=0&byline=0&portrait=0" width="640" height="360" frameBorder="0"  allowFullScreen></iframe>
+      	</div>
+        <div className="container">
 	      	<hr/>
-          <button onClick={loadLanguage.bind(null, 'en')}>English</button>
-          <button onClick={loadLanguage.bind(null, 'es')}>Spanish</button>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
           
 	      	<h4 className="blueFont">
             <FormattedMessage id="app.home.intro"/>
           </h4>
-          <p><FormattedMessage id='food' defaultMessage="I don;t know" /></p>
           <p><FormattedDate value={time} /></p>
 	      	<Search />
-          <p><Link to='/photo-test'>Photo Upload test page</Link></p>
       	</div>
 
       </div>
