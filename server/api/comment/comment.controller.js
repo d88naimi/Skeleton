@@ -85,7 +85,7 @@ function handleError(res, statusCode) {
  */
 module.exports.index = (req, res) => {
   const page = +req.query.page || 0;
-  return Comment.find(req.params.agentId)
+  return Comment.find({agentId: req.params.agentId})
     .skip(page * 10)
     .limit(10)
     .exec()
@@ -126,11 +126,11 @@ module.exports.show = (req, res) => {
 
 
 /**
- * @api {post} /api/comments Create a Comment (restriction: authenticated)
+ * @api {post} /api/comments/:agentId Create a Comment (restriction: authenticated)
  * @apiName PostComment
  * @apiGroup Comment
  *
- * @apiParam (request body) {String} agentId Agent(User) unique ID.
+ * @apiParam (route params) {String} agentId Agent(User) unique ID.
  * @apiParam (request body) {String} text comment text
  * @apiParam (request body) {String} rate star rate (integer from 0 to 5)
  *
@@ -153,11 +153,13 @@ module.exports.show = (req, res) => {
 module.exports.create = (req, res) => {
   const author = {
     _id: req.user._id,
-    name: req.user.name
+    name: req.user.name,
+    photoURL: req.user.photoURL
   };
   req.body.author = author;
 
-  const agentId = req.body.agentId;
+  const agentId = req.params.agentId;
+  req.body.agentId = agentId;
 
   return Comment.findOne({'author._id': author._id})
     .then(comment => {

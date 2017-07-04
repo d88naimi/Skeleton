@@ -10,23 +10,22 @@ export class DashboardSidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-		photo: "https://cdn-img.easyicon.net/png/5792/579263.gif",
 		size: "100"
     }
   }
 
   render() {
-    return (
-     
+    const {user} = this.props;
+    return (   
       	<div className="col s12 m3 l3 row sidebar">
       		<br/>
       		
-      		<ProfilePhoto className="col s3 m12 l12" photoURL={this.state.photo} size={this.state.size}/>		  
+      		<ProfilePhoto className="col s3 m12 l12" photoURL={user ? user.photoURL : ''} size={this.state.size}/>		  
 		  <ul className="collection col s9 m12 l12">
-	        <li className="collection-item"><NavLink to="/dashboard/my-agents">My Agents</NavLink></li>
-	        <li className="collection-item"><NavLink to="/dashboard/payments">Payments</NavLink></li>
-	        <li className="collection-item"><NavLink to="/dashboard/edit-info">Edit Info</NavLink></li>
-         <li className="collection-item"><a onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>
+	        <li className="collection-item center-align"><NavLink  to="/dashboard/my-agents">My Agent</NavLink></li>
+	        <li className="collection-item center-align"><NavLink  to="/dashboard/payments">Payments</NavLink></li>
+	        <li className="collection-item center-align"><NavLink  to="/dashboard/edit-info">Edit Info</NavLink></li>
+          <li id="logoutCollection" className="collection-item center-align"><a className="whiteText" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>
 	      </ul>
       </div>
       
@@ -34,4 +33,6 @@ export class DashboardSidebar extends React.Component {
   }
 }
 
-export default connect()(DashboardSidebar)
+export default connect(
+  ({auth}) => ({ user: auth.user}), null
+  )(DashboardSidebar)

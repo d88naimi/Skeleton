@@ -80,7 +80,7 @@ export class Login extends React.Component {
 			return this.setState({nameError: true});
 		} else { 
 			console.info("NAME CORRECT!!!!")
-			this.setState({nameError: false})
+			this.setState({nameError: false}); 
 		}
 		this.setState({
 			name: inputName

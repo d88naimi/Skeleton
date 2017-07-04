@@ -21,7 +21,6 @@ const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
 const MongoStore = connectMongo(session);
 const md5 = require('md5');
-
 module.exports = function(app) {
   const env = app.get('env');
 
@@ -81,18 +80,29 @@ module.exports = function(app) {
   }
   const User = require('../api/user/user.model');
   const agents = require('./environment/seed');
+  const Comment = require('../api/comment')
   if(env === 'development') {
-    console.log("DEVELOPMENT!!!");
-    agents.forEach(agent => {
-      User.findOne({email: agent.email}).exec()
-        .then(user => {
-          if(!user) {
-            agent.photoURL = `https://gravatar.com/avatar/${md5(agent.email)}?s=200&d=retro`
-            agent.languages = JSON.parse(agent.languages);
-            (new User(agent)).save();
-          }
-        });
-    });
+    // console.log("DEVELOPMENT!!!");
+    // agents.forEach(agent => {
+    //   User.findOne({email: agent.email}).exec()
+    //     .then(user => {
+    //       if(!user) {
+    //         agent.photoURL = `https://gravatar.com/avatar/${md5(agent.email)}?s=200&d=retro`
+    //         agent.languages = JSON.parse(agent.languages);
+    //         (new User(agent)).save();
+    //       }
+    //     });
+    // });
+    // const comment = new Comment({
+    //   text: "This is comment " + (i+1),
+    //   rate: Math.floor((Math.random() * 4)) + 1,
+    //   author: {
+    //     _id: "5957cefb34852a0efc3cc5ec",
+    //     name: "Hyungwu Pae"
+    //   }
+    // })
+    
   }
 
 }
+

@@ -83,13 +83,12 @@ module.exports.showAllAgents = (req, res) => {
  *     }]
  */
 module.exports.showAgents = (req, res) => {
-  const location = decodeURI(req.query.location);
-  const language = decodeURI(req.query.language);
+  const location = req.query.location;
+  const language = req.query.language;
   const page = +req.query.page || 0;
-
   let queryObj = {};
-  if(location) queryObj.location = location;
-  if(language) queryObj.languages = language;
+  if(location) queryObj.location = decodeURI(location);
+  if(language) queryObj.languages = decodeURI(language);
   // if(Object.keys(queryObj).length === 0) return res.status(400).end();
   return User.find(queryObj)
     .skip(page * 10)
@@ -290,6 +289,16 @@ module.exports.me = (req, res, next) => {
       if(!user) {
         return res.status(401).end();
       }
+
+      // const socket = res.io.of(`/${user._id}`);
+      // socket.on('connection', function(socket){
+      //   console.log('someone connected');
+      //   socket.on('disconnect', () => {
+      //     console.log('%s client disconnected', user.name);
+      //   });
+      // });
+
+      //.emit('saved', `Article saved: ${saved.title}`);
       return res.json(user);
     })
     .catch(err => next(err));
