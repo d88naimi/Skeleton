@@ -284,21 +284,19 @@ module.exports.changePassword = (req, res, next) => {
 module.exports.me = (req, res, next) => {
   const userId = req.user._id;
 
-  return User.findOne({ _id: userId }, '-salt -password').exec()
+
+  return User.findOne({ _id: userId }, '-salt -password')
+    .exec()
     .then(user => { // don't ever give out the password or salt
       if(!user) {
         return res.status(401).end();
       }
 
-      // const socket = res.io.of(`/${user._id}`);
-      // socket.on('connection', function(socket){
-      //   console.log('someone connected');
-      //   socket.on('disconnect', () => {
-      //     console.log('%s client disconnected', user.name);
-      //   });
-      // });
-
-      //.emit('saved', `Article saved: ${saved.title}`);
+      if(user.myAgent) {
+        user.populate('myAgent', '_id photoURL name', function (err, user) {
+          return res.json(user);
+        })
+      }
       return res.json(user);
     })
     .catch(err => next(err));
@@ -430,12 +428,19 @@ module.exports.editUser = (req, res, next) => {
       if(newInfo.myAgent) user.myAgent = newInfo.myAgent;
       user.save()
         .then(updatedUser => {
-          updatedUser.populate('myAgent', '_id name photoURL', function (user) {
-            let updatedUser = user.toObject();
-            Reflect.deleteProperty(updatedUser, 'salt');
-            Reflect.deleteProperty(updatedUser, 'password');
-            return res.json(updatedUser);
-          });
+          if(updatedUser.myAgent) {
+            updatedUser.populate('myAgent', '_id name photoURL', function (err, user) {
+              let updatedUser = user.toObject();
+              Reflect.deleteProperty(updatedUser, 'salt');
+              Reflect.deleteProperty(updatedUser, 'password');
+              return res.json(updatedUser);
+            });
+          } else {
+            let user = updatedUser.toObject();
+            Reflect.deleteProperty(user, 'salt');
+            Reflect.deleteProperty(user, 'password');
+            return res.json(user);
+          }
         })
         .catch(err => next(err));
     });
