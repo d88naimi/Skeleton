@@ -32,6 +32,7 @@ import {addLocaleData, IntlProvider} from 'react-intl';
 import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 import es from 'react-intl/locale-data/es';
+import MessagesTest from "./components/MessagesTest";
 addLocaleData([...en, ...fr, ...es]);
 
 class App extends React.Component{
@@ -64,6 +65,7 @@ class App extends React.Component{
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/agents/:id" component={AgentDetail} />
             <Route path="/agent-profile" component={AgentDetail}/>
+            <Route path="/messages" component={MessagesTest}/>
           </main>
           <Footer />
         </div>

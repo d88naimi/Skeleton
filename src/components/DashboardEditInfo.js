@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Dashboard.scss';
+import PropTypes from 'prop-types';
 
 export class DashboardEditInfo extends React.Component {
   static propTypes = {
-    name: React.PropTypes.string,
+    name: PropTypes.string,
   };
 
   constructor(props) {
