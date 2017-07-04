@@ -41,7 +41,7 @@ export const en = {
   "app.login.name": "Name",
   "app.login.loginHeader": "Sign in with email",
   "app.login.signupHeader": "Create Account",
-  "app.login.signupBtn": "Sign Up with",
+  "app.login.signupBtn": "Sign Up",
   "app.login.loginBtn": "Log In",
 
   "app.plans.silverHeader": "Package Silver",
