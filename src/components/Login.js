@@ -136,14 +136,15 @@ export class Login extends React.Component {
 		return (
 			<div className="container center-align themeContainer" >
 
+				{pathname === '/signup' &&
 				<div className="container">
 					<h4>Are you an <b>Agent</b>?</h4>
-				    <p>
-				      <input type="checkbox" id="checkboxForm" onChange={this.getCheckbox}/>
-				      <label htmlFor="checkboxForm">Yes!</label>
-				    </p>
-				    <hr/>
-				</div>
+					<p>
+						<input type="checkbox" id="checkboxForm" onChange={this.getCheckbox}/>
+						<label htmlFor="checkboxForm">Yes!</label>
+					</p>
+					<hr/>
+				</div>}
 				
 				<div className="container buttonContainer">
 					<h4>{signBtnTitle + ' with'}</h4>
