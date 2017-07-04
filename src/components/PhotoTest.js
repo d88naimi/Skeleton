@@ -24,7 +24,6 @@ class PhotoTest extends React.Component {
             <form>
               <div className="file-field input-field">
                 <div className="btn">
-                  <span>File</span>
                   <input type="file" accept="image/*"
                         ref={(ref) => this.fileUpload = ref} />
                 </div>
