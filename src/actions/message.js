@@ -1,11 +1,12 @@
-import {push} from 'react-router-redux';
+// import {push} from 'react-router-redux';
 import axios from "axios"; // eslint-disable-next-line
 /**
  * Action types
  */
 export const LOAD_MESSAGES = 'LOAD_MESSAGES';
 export const LOAD_MESSAGE = 'LOAD_MESSAGE';
-export const SEND_MESSAGE = 'SEND_MESSAGE';
+// export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const CHECKED_NEW_MESSAGES = 'CHECKED_NEW_MESSAGES';
 
 
 /**

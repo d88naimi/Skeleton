@@ -14,7 +14,7 @@ export default combineReducers({
   routing: routerReducer,
   lang: fromLang.reducer,
   agents: fromAgent.reducer,
-  messages: fromMessage.reducer
+  msg: fromMessage.reducer
 });
 
 

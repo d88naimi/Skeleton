@@ -278,7 +278,7 @@ module.exports.changePassword = (req, res, next) => {
  *       "provider": "google",
  *       "photoURL": "https://sokaspdo.asodkasd.asdasd/soks.jpg"
  *       "role": "user",
- *       "_id": "59483862c27e982e0f84c210"
+ *       "_id": "59483862c27e982e0f84c210",
  *     }
  */
 module.exports.me = (req, res, next) => {
