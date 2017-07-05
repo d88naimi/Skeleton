@@ -79,7 +79,7 @@ module.exports.create = (req, res) => {
       room
         .populate('user1', '_id name photoURL')
         .populate('user2', '_id name photoURL', (err, room) => {
-          console.log(room);
+          // console.log(room);
           res.io.sockets.in(room.user2._id).emit('roomCreated', room);
           res.status(201).json(room);
         });

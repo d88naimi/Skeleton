@@ -1,6 +1,6 @@
 import * as fromChat from '../actions/chat';
 
-const initialState = { newMsgCounter: 0, ids: [], entities: null, withs: [], selected: null,  messages: [], unread: [] };
+const initialState = { totalNewMsgCounter: 0, ids: [], entities: null, withs: [], selected: null,  messages: [], unread: [] };
 
 /**
  * Reducer
@@ -39,8 +39,10 @@ export function reducer(state = initialState, action) {
     case fromChat.LOAD_MESSAGES: {
       const messages = action.payload.messages; //array
       const selected = action.payload.roomId;
-
-      return Object.assign({}, state, {messages, selected});
+      const room = Object.assign({}, state.entities[selected], { hasNewMsg: false, newMsgCounter: 0});
+      const entities = Object.assign({}, state.entities, {[selected]: room});
+      const totalNewMsgCounter = state.totalNewMsgCounter - (state.entities[selected].newMsgCounter || 0);
+      return Object.assign({}, state, {messages, selected, entities, totalNewMsgCounter});
     }
 
     case fromChat.LOAD_MESSAGE: {
@@ -48,7 +50,12 @@ export function reducer(state = initialState, action) {
       if(message.room === state.selected) {
         return Object.assign({}, state, {messages: [...state.messages, message]});
       } else {
-        return Object.assign({}, state, {newMsgCounter: state.newMsgCounter + 1, unread: [...state.unread, message]});
+        const totalNewMsgCounter = state.totalNewMsgCounter + 1;
+        const newMsgCounter = (state.entities[message.room].newMsgCounter || 0) + 1;
+        const room = Object.assign({}, state.entities[message.room], {latestMessage: message.text, hasNewMsg: true, newMsgCounter});
+        const entities = Object.assign({}, state.entities, {[message.room]: room});
+
+        return Object.assign({}, state, {totalNewMsgCounter, entities});
       }
     }
 
@@ -58,7 +65,12 @@ export function reducer(state = initialState, action) {
     }
 
     case fromChat.CHECKED_NEW_MESSAGES: {
-      return Object.assign({}, state, {newMsgCounter: 0, unread: []});
+      return Object.assign({}, state, {totalNewMsgCounter: 0});
+    }
+
+    case fromChat.UNSELECT_ROOM: {
+      const selected = null;
+      return Object.assign({}, state, {selected});
     }
 
     default:

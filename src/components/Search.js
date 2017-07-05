@@ -33,11 +33,11 @@ class Search extends React.Component {
 
   handleSubmit(e){
     const {moveToSearchResult} = this.props;
-    console.log(moveToSearchResult);
+    // console.log(moveToSearchResult);
     e.preventDefault();
-    console.log("CLICK");
-    console.log(this.state.language);
-    console.log(this.state.location);
+    // console.log("CLICK");
+    // console.log(this.state.language);
+    // console.log(this.state.location);
     moveToSearchResult({location: this.state.location, language: this.state.language});
   }
 

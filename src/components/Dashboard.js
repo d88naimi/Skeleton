@@ -35,7 +35,7 @@ export class Dashboard extends React.Component {
 
 export default connect(
     ({auth}) => {
-    console.log(auth);
+    // console.log(auth);
     return ({ user: auth.user })
   },
   null

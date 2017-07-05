@@ -12,12 +12,12 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const {time, loadLanguage} = this.props;
     return (
       <div className="container homeBackground whiteBackground">
       	<div className="center-align">
-          <iframe src="https://player.vimeo.com/video/224119873?title=0&byline=0&portrait=0" width="640" height="360" frameBorder="0"  allowFullScreen></iframe>
+          <iframe src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" width="640" height="360" frameBorder="0"  allowFullScreen></iframe>
       	</div>
         <div className="container">
 	      	<hr/>
