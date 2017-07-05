@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {searchAgents} from '../actions/agent'
 import {getAgentList} from '../reducers';
+import Search from './Search';
+
+
 class Results extends React.Component {
 
 
@@ -33,6 +36,8 @@ class Results extends React.Component {
     // console.log(this.props);
     return (
       <div className="container row">
+      
+      <Search />
         {agents && agents.map( (agent,index) =>{
             return <Agents
             id={agent._id}
@@ -45,8 +50,11 @@ class Results extends React.Component {
             phone={agent.phone}
              text={agent.text}
             avgRate={agent.avgRate}
+          
+            
             />
         })}
+        
     </div>
     );
   }

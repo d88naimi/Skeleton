@@ -1,6 +1,7 @@
 import React from 'react';
 import photo from '../assets/images/cafe2.jpg';
 import { connect } from 'react-redux';
+var Rating = require('react-rating');
 
 
 function mapStateToProps(state) {
@@ -27,15 +28,19 @@ export class ResultItems extends React.Component {
           <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
         </div>
         <div className="card-content center-align">
-          <ul>
+          <ul id= "agentbio">
           <li><em>{this.props.role}</em></li>
           <li><em>{this.props.name}</em></li>
             <li>{this.props.languages.join(', ')}</li>
-            <li><em>{this.props.location}</em></li>
+            <li><strong><em>{this.props.location}</em></strong></li>
             <li><em>{this.props.email}</em></li>
             <li><em>{this.props.phone}</em></li>
             <li><em>{this.props.avgRate}</em></li>
-            
+            <Rating
+  empty="fa fa-star-o fa-2x"
+  full="fa fa-star fa-2x"
+  fractions={2}
+/>
             
           </ul>
         </div>

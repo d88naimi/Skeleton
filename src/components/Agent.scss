@@ -10,6 +10,13 @@ $Main-DarkGray: #333333;
 	}
 }
 
+.stars{
+	color:grey;
+	&:hover{
+		color: #ffcc00;
+	}
+}
+
 .themeAgent{
 	background-color: #f2f2f2;
 	color: $Main-DarkGray;
