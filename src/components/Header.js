@@ -18,14 +18,13 @@ class Header extends React.Component {
       <header className="navbar-fixed">
         <nav className="darken-4">
           <div className="container nav-wrapper">
-            <NavLink to="/" className="brand-logo left navLogo">LOGO</NavLink>
+            <NavLink to="/" className="brand-logo left navLogo"><img src="./favicon.png" width="70px" height="70px" alt="LOGO"/></NavLink>
 
             <ul className="right hide-on-small-only">
               <Notification />
               {!user && <li><NavLink to="/login"><FormattedMessage id="app.header.login"/></NavLink></li>}
               {!user && <li><NavLink to="/signup"><FormattedMessage id="app.header.signup"/></NavLink></li>}
               <li><NavLink to="/plans"><FormattedMessage id="app.header.plans" /></NavLink></li>
-              <li><NavLink to="/agent-profile">Agent Profile</NavLink></li>
               {user &&
                 <li>
                   <NavLink to="/dashboard">
