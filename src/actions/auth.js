@@ -164,10 +164,10 @@ export function changeUserInfo (update) {
 export function uploadImage (fileUpload) {
   return function (dispatch) {
     let file = fileUpload.files[0];
-    console.log(file);
+    // console.log(file);
     getSignedRequest(file)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         // file.name = res.filename;
         return uploadToS3(file, res.signedRequest, res.url)
       })

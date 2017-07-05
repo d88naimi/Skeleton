@@ -18,19 +18,14 @@ componentDidMount(){
   let user = this.props.user;
   //console.log("USER", user);
 
- if(user){
+  if(user) {
      axios.put('/api/users/'+user._id, {myAgent: "5957cefb34852a0efc3cc5ec"}).then(res =>{
       //console.log("response", res);
       this.setState({
         agentInfo: res.data.myAgent
-      })
-    });
-
-    //console.log("agentInfo", this.state.agentInfo);
- }
-
-  }
-     
+      });
+     });
+  }     
 
   render() {
 

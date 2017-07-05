@@ -9,6 +9,11 @@ const MessageSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  to: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  },
   room: {
     type: mongoose.Schema.ObjectId,
     ref: 'Chatroom',

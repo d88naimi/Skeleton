@@ -12,7 +12,7 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const {time, loadLanguage} = this.props;
     return (
       <div className="container homeBackground whiteBackground">

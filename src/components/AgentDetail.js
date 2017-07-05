@@ -83,7 +83,7 @@ class AgentDetail extends React.Component {
   render() {
 
     const {agent, selectAsMyAgent, moveToMessageRoute} = this.props;
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
       <div className="container themeAgent row">
