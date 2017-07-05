@@ -10,29 +10,30 @@ export class DashboardAgents extends React.Component {
     this.state={
       agentInfo: {}
     }
-    
+
   }
 
-componentDidMount(){
+  componentDidMount() {
 
-  let user = this.props.user;
-  //console.log("USER", user);
+    let user = this.props.user;
+    //console.log("USER", user);
 
-  if(user) {
-     axios.put('/api/users/'+user._id, {myAgent: "5957cefb34852a0efc3cc5ec"}).then(res =>{
-      //console.log("response", res);
-      this.setState({
-        agentInfo: res.data.myAgent
+    if (user) {
+      axios.put('/api/users/' + user._id, {myAgent: "5957cefb34852a0efc3cc5ec"}).then(res => {
+        //console.log("response", res);
+        this.setState({
+          agentInfo: res.data.myAgent
+        });
       });
-     });
-  }     
+    }
+  }
 
   render() {
 
     const user = this.props.user;
 
     return (
-       <div className="container col s12 m9 l9 center-align agents">
+      <div className="container col s12 m9 l9 center-align agents">
         <h5>My Agent</h5>
         <hr/>
         <div className="container center-align">
@@ -40,7 +41,7 @@ componentDidMount(){
           {user && <img className="photo" src={this.state.agentInfo.photoURL} alt="agent photo"/> }
           {user && <h3>{this.state.agentInfo.name}</h3>}
         </div>
-        
+
       </div>
     );
   }
