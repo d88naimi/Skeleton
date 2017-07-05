@@ -297,7 +297,7 @@ module.exports.me = (req, res, next) => {
           return res.json(user);
         })
       }
-      return res.json(user);
+      else return res.json(user);
     })
     .catch(err => next(err));
 };

@@ -3,28 +3,27 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router';
 import ChatBox from "./ChatBox";
 import { Link } from 'react-router-dom'
+import {getChatRoomList} from '../reducers/chat';
 
-
+//TODO: Lifecycle (leave) => selected: null
 class MessagesTest extends React.Component {
 
   render() {
-    const {messages, user, match} = this.props;
-    console.log(match);
-    const ids = Object.keys(messages);
+    const {rooms, user, match} = this.props;
     return (
       <div className="container">
         <div className="row">
-          <div className="col s5">
+          <div className="col s4">
             <ul className="collection">
-              { ids.map((id, idx) =>
+              { rooms.map((room, idx) =>
                 (<li key={idx} className="collection-item" style={{marginBottom: '3px'}}>
-                  <Link to={match.path + '/' + id}><div className="row"  style={{marginBottom: 0}}>
+                  <Link to={match.path + '/' + room._id}><div className="row"  style={{marginBottom: 0}}>
                     <div className="col s2">
-                      <img src={messages[id][0].to._id === user._id ? messages[id][0].from.photoURL : messages[id][0].to.photoURL} className="circle responsive-img"/>
+                      <img src={room.user1._id === user._id ? room.user2.photoURL : room.user1.photoURL} className="circle responsive-img"/>
                     </div>
                     <div className="col s10">
-                      <span><strong>{messages[id][0].to._id === user._id ? messages[id][0].from.name : messages[id][0].to.name}</strong></span>
-                      <div>{messages[id][messages[id].length -1].text}</div>
+                      <span><strong>{room.user1._id === user._id ? room.user2.name : room.user1.name}</strong></span>
+                      <div>{room.latestMessage}</div>
                     </div>
                   </div></Link>
                 </li>)
@@ -32,8 +31,8 @@ class MessagesTest extends React.Component {
             </ul>
           </div>
 
-          <div className="col s7">
-            <Route path={match.path + '/:opponent'} component={ChatBox} />
+          <div className="col s8">
+            <Route path={match.path + '/:roomId'} component={ChatBox} />
           </div>
 
         </div>
@@ -43,5 +42,5 @@ class MessagesTest extends React.Component {
 }
 
 export default connect(
-  ({auth, msg}) => ({ user: auth.user, messages: msg.messages }),
+  ({auth, chat}) => ({ user: auth.user, rooms: getChatRoomList(chat) }),
 )(MessagesTest)

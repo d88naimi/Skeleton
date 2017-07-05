@@ -73,7 +73,7 @@ server.listen(app.get('port'), () => {
 io.on('connection', function(socket){
   console.log('%s client connected', chalk.green('✓'));
 
-  socket.on('room', function(id) {
+  socket.on('chatroom', function(id) {
     console.log("ROOM %s was made!!!", id);
     socket.join(id);
   });

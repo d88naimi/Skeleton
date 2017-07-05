@@ -3,23 +3,22 @@
 const mongoose  = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-const MessageSchema = new mongoose.Schema({
-  from: {
+const ChatroomSchema = new mongoose.Schema({
+  user1: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: true
-  },
-  room: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Chatroom',
     required: true,
     index: true
   },
-  text: {
-    type: String,
+  user2: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
     required: true,
-    minLength: 3
+    index: true
+  },
+  latestMessage: {
+    type: String
   }
 }, {timestamps: true});
 
-module.exports = mongoose.model('Message', MessageSchema);
+module.exports = mongoose.model('Chatroom', ChatroomSchema);
