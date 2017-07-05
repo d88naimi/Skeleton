@@ -28,7 +28,7 @@ class Home extends React.Component {
             <FormattedMessage id="app.home.intro"/>
           </h4>
           <p><em><FormattedDate value={time} /></em></p>
-          David Insert here 
+          
 	      	<Search />
       	</div>
 

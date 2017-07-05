@@ -16,9 +16,9 @@ export default class Agents extends React.Component {
   render() {
     return (
 
-
+      
     <div className="card col xs12 s12 m5 offset-m1 l3 xl3 offset-xl1 ">
-   
+    
     <div className="card-image waves-effect waves-block waves-light">
       <img className="activator" img src={photo}></img>
     </div>
@@ -26,8 +26,8 @@ export default class Agents extends React.Component {
       <span className="card-title activator grey-text text-darken-4">{this.props.name}</span>
       <span className="card-title activator grey-text text-darken-4">{this.props.city}</span>
       <span className="card-title activator grey-text text-darken-4">{this.props.languages.join('/')}</span>
-      <span className="card-title activator grey-text text-darken-4">{this.props.email}</span>
-      <span className="card-title activator grey-text text-darken-4">{this.props.phone}</span>
+      <span className="card-title activator grey-text text-darken-4"><Link to={'/agents/' + this.props.id}> AGENT DETAILS</Link> </span>
+ 
       <Rating
               empty="fa fa-star-o fa-2x"
               full="fa fa-star fa-2x" />
@@ -35,6 +35,8 @@ export default class Agents extends React.Component {
     </div>
    
   </div>
+ 
+  
   
 
 
