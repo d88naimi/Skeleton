@@ -19,8 +19,9 @@ export class AgentComment extends React.Component {
           <FormattedDate value={new Date(this.props.created)} />
         </span>
         <div className="center-align commentAuthorBox col s2 m2 l2">
-          <img  src="http://www.free-icons-download.net/images/user-icon-44709.png" alt="user comment"/>
-          <span>USER</span>
+          {!this.props.authorPhotoURL && <img  src="http://www.free-icons-download.net/images/user-icon-44709.png" alt="user comment"/>}
+          {this.props.authorPhotoURL && <img  src={this.props.authorPhotoURL} alt="user comment"/>}
+          <span>{this.props.authorName}</span>
         </div>
         <div className="col s10 m10 l10">
       	 <p>{this.props.comment}</p>

@@ -96,7 +96,7 @@ class AgentDetail extends React.Component {
 
       <div className="container commentContainer">
        {agent.comments && agent.comments.map( (comment,index)=>{
-          return <AgentComment key={index} comment={comment.text} created={comment.createdAt}/>
+          return <AgentComment key={index} comment={comment.text} created={comment.createdAt} authorName={comment.author.name} authorPhotoURL={comment.author.photoURL}/>
        })}
       </div>
 
