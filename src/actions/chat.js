@@ -9,6 +9,7 @@ export const CHECKED_NEW_MESSAGES = 'CHECKED_NEW_MESSAGES';
 export const LOAD_ROOMS = 'LOAD_ROOMS';
 export const LOAD_ROOM = 'LOAD_ROOM';
 export const SELECT_ROOM = 'SELECT_ROOM';
+export const UNSELECT_ROOM = 'UNSELECT_ROOM';
 
 
 /**
@@ -126,7 +127,7 @@ export function openChatRoom (opponentId) {
 
 export function sendMessage ({message, roomId}) {
   return function (dispatch) {
-    // console.info(message)
+    console.info(message)
     // console.info(roomId)
     postMessage(message, roomId)
       .then(res => dispatch(loadMessage(res.data)));
@@ -145,5 +146,11 @@ export function  moveToMessageRoute(opponentId) {
     const {auth} = getState();
     dispatch(openChatRoom(opponentId));
   }
+}
 
+export function unselectChatroom () {
+  return {
+    type: UNSELECT_ROOM,
+    payload: null
+  }
 }

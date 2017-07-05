@@ -123,10 +123,9 @@ class AgentDetail extends React.Component {
   render() {
 
     const {agent, selectAsMyAgent, moveToMessageRoute} = this.props;
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
-
       <div className="container themeAgent row">
 
           <h5>Agent Details </h5>
@@ -189,47 +188,44 @@ class AgentDetail extends React.Component {
 
         {agent && this.renderAgent()}
 
-
         <div className="container commentContainer">
-          {agent.comments && agent.comments.map( (comment,index)=>{
-            return <AgentComment key={index} comment={comment.text} created={comment.createdAt}/>
-          })}
+         {agent.comments && agent.comments.map( (comment,index)=>{
+            return <AgentComment key={index} comment={comment.text} created={comment.createdAt} authorName={comment.author.name} authorPhotoURL={comment.author.photoURL}/>
+         })}
         </div>
 
         <div className="container addCommentContainer">
           <form onSubmit={this.handleSubmit}>
-            <div>
+                  <div>
 
-              <div onChange={this.getRadioValue}>
-                <span>Rate this Agent</span>
-                <hr/>
-                <input name="group1" type="radio" id="test1" value="1"/>
-                <label className="stars" htmlFor="test1">&#x2605;</label>
-                <br/>
-                <input name="group1" type="radio" id="test2" value="2"/>
-                <label className="stars" htmlFor="test2">&#x2605;x2</label>
-                <br/>
-                <input name="group1" type="radio" id="test3" value="3"/>
-                <label className="stars" htmlFor="test3">&#x2605;x3</label>
-                <br/>
-                <input name="group1" type="radio" id="test4" value="4"/>
-                <label className="stars" htmlFor="test4">&#x2605;x4</label>
-                <br/>
-                <input name="group1" type="radio" id="test5" value="5"/>
-                <label className="stars" htmlFor="test5">&#x2605;x5</label>
-                <br/>
-              </div>
+                  <div onChange={this.getRadioValue}>
+                    <span>Rate this Agent</span>
+                    <hr/>
+                    <input name="group1" type="radio" id="test1" value="1"/>
+                    <label className="stars" htmlFor="test1">&#x2605;</label>
+                    <br/>
+                    <input name="group1" type="radio" id="test2" value="2"/>
+                    <label className="stars" htmlFor="test2">&#x2605;x2</label>
+                    <br/>
+                    <input name="group1" type="radio" id="test3" value="3"/>
+                    <label className="stars" htmlFor="test3">&#x2605;x3</label>
+                    <br/>
+                    <input name="group1" type="radio" id="test4" value="4"/>
+                    <label className="stars" htmlFor="test4">&#x2605;x4</label>
+                    <br/>
+                    <input name="group1" type="radio" id="test5" value="5"/>
+                    <label className="stars" htmlFor="test5">&#x2605;x5</label>
+                    <br/>
+                  </div>
 
-              <div className="input-field">
-                <i className="material-icons prefix">mode_edit</i>
-                <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
-                <label htmlFor="icon_prefix2">Write a Comment</label>
-              </div>
-            </div>
+                    <div className="input-field">
+                      <i className="material-icons prefix">mode_edit</i>
+                      <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
+                      <label htmlFor="icon_prefix2">Write a Comment</label>
+                    </div>
+                  </div>  
           </form>
         </div>
->>>>>>> origin
-
       </div>
     );
 
