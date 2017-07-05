@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {searchAgents} from '../actions/agent'
 import {getAgentList} from '../reducers';
+
 class Results extends React.Component {
 
 
@@ -46,6 +47,7 @@ class Results extends React.Component {
             phone={agent.phone}
              text={agent.text}
             avgRate={agent.avgRate}
+            
             />
         })}
     </div>
