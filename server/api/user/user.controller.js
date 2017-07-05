@@ -278,18 +278,26 @@ module.exports.changePassword = (req, res, next) => {
  *       "provider": "google",
  *       "photoURL": "https://sokaspdo.asodkasd.asdasd/soks.jpg"
  *       "role": "user",
- *       "_id": "59483862c27e982e0f84c210"
+ *       "_id": "59483862c27e982e0f84c210",
  *     }
  */
 module.exports.me = (req, res, next) => {
   const userId = req.user._id;
 
-  return User.findOne({ _id: userId }, '-salt -password').exec()
+
+  return User.findOne({ _id: userId }, '-salt -password')
+    .exec()
     .then(user => { // don't ever give out the password or salt
       if(!user) {
         return res.status(401).end();
       }
-      return res.json(user);
+
+      if(user.myAgent) {
+        user.populate('myAgent', '_id photoURL name', function (err, user) {
+          return res.json(user);
+        })
+      }
+      else return res.json(user);
     })
     .catch(err => next(err));
 };
@@ -373,7 +381,8 @@ module.exports.editAgent = (req, res, next) => {
  * @apiParam (request body) {String} phone (OPTIONAL) User's phone number
  * @apiParam (request body) {String} text (OPTIONAL) User's introduction text
  * @apiParam (request body) {String} photoURL (OPTIONAL) User's photoURL 
- * 
+ * @apiParam (request body) {String} myAgent (OPTIONAL) id of User's selected Agent
+ *
  * @apiSuccess {String} name Name of the Agent(User).
  * @apiSuccess {String} role "user", "agent", "admin".
  * @apiSuccess {String} photoURL profile photo url
@@ -382,6 +391,7 @@ module.exports.editAgent = (req, res, next) => {
  * @apiSuccess {String} text Simple profile text,
  * @apiSuccess {String} phone Phone number,
  * @apiSuccess {String} _id user(agent) unique id, * 
+ * @apiSuccess {String} myAgent agent object ex) {_id: '59483862c27e982e0f84c210', name: 'Hyungwu Pae', photoURL: "https://sokaspdo.asodkasd.asdasd/soks.jpg"}
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
@@ -395,7 +405,12 @@ module.exports.editAgent = (req, res, next) => {
  *       "location": "San Diego",
  *       "languages": [ "Korean", "Spanish"],
  *       "phone": "858-211-1111",
- *       "text": "I am ......................."
+ *       "text": "I am .......................",
+ *       "myAgent": {
+ *          _id: "59483862c27e982e0f84c210",
+ *          name: 'Jack Doe',
+ *          photoURL: 'https://.........'
+ *       }
  *     }
  */
 
@@ -410,12 +425,22 @@ module.exports.editUser = (req, res, next) => {
       if(newInfo.text) user.text = newInfo.text;
       if(newInfo.name) user.name = newInfo.name;
       if(newInfo.photoURL) user.photoURL = newInfo.photoURL;      
+      if(newInfo.myAgent) user.myAgent = newInfo.myAgent;
       user.save()
         .then(updatedUser => {
-          let user = updatedUser.toObject();
-          Reflect.deleteProperty(user, 'salt');
-          Reflect.deleteProperty(user, 'password');
-          return res.json(user);
+          if(updatedUser.myAgent) {
+            updatedUser.populate('myAgent', '_id name photoURL', function (err, user) {
+              let updatedUser = user.toObject();
+              Reflect.deleteProperty(updatedUser, 'salt');
+              Reflect.deleteProperty(updatedUser, 'password');
+              return res.json(updatedUser);
+            });
+          } else {
+            let user = updatedUser.toObject();
+            Reflect.deleteProperty(user, 'salt');
+            Reflect.deleteProperty(user, 'password');
+            return res.json(user);
+          }
         })
         .catch(err => next(err));
     });

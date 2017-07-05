@@ -10,7 +10,7 @@ class ProfilePhoto extends React.Component {
 
   render() {
 
-    const user = this.props.user;
+    const user = this.props;
     return (
       <div className="center-align">
       	{user && <img className="photo" src={user.photoURL} style={{'width': this.props.size+"px"}} alt="profile picture transUnited"></img>}
@@ -22,6 +22,5 @@ class ProfilePhoto extends React.Component {
 export default connect(  
   ({auth}) => {
     return ({ user: auth.user })
-  },
-  null
+  }, null
 )(ProfilePhoto)

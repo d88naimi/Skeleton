@@ -153,7 +153,8 @@ module.exports.show = (req, res) => {
 module.exports.create = (req, res) => {
   const author = {
     _id: req.user._id,
-    name: req.user.name
+    name: req.user.name,
+    photoURL: req.user.photoURL
   };
   req.body.author = author;
 

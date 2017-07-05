@@ -73,9 +73,16 @@ server.listen(app.get('port'), () => {
 io.on('connection', function(socket){
   console.log('%s client connected', chalk.green('✓'));
 
+  socket.on('chatroom', function(id) {
+    console.log("ROOM %s was made!!!", id);
+    socket.join(id);
+  });
+
   socket.on('disconnect', () => {
     console.log('%s client disconnected', chalk.red('✗'));
   });
+
+  // socket.on('')
 });
 
 module.exports = app;
