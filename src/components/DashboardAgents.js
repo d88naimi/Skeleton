@@ -22,7 +22,7 @@ export class DashboardAgents extends React.Component {
       })
     });
 
-    console.log("agentInfo", this.state.agentInfo);
+    // console.log("agentInfo", this.state.agentInfo);
 
   }
 

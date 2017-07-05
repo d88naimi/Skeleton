@@ -12,7 +12,7 @@ class Header extends React.Component {
 
   render() {
     const {user, logout, loadLanguage} = this.props;
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
       <header className="navbar-fixed">

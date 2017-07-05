@@ -25,12 +25,12 @@ class Notification extends React.Component {
   }
 
   render() {
-    const {newMsgCounter, user, numOfChatRoom} = this.props;
+    const {totalNewMsgCounter, user, numOfChatRoom} = this.props;
     return (
       <li>
-        { numOfChatRoom &&
+        { user && numOfChatRoom > 0 &&
         <NavLink to="/messages">
-          Messages {newMsgCounter > 0 && <span className="new badge blue">{newMsgCounter}</span>}
+          Messages {totalNewMsgCounter > 0 && <span className="new badge blue">{totalNewMsgCounter}</span>}
         </NavLink>}
       </li>
     );
@@ -41,7 +41,7 @@ export default connect(
   ({auth, lang, chat}) => ({
     user: auth.user,
     language: lang.language,
-    newMsgCounter: chat.newMsgCounter,
+    totalNewMsgCounter: chat.totalNewMsgCounter,
     numOfChatRoom: chat.ids.length
   }),
   { receiveMessage, getRooms, loadRoom }

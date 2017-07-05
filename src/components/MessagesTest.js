@@ -4,9 +4,14 @@ import { Route } from 'react-router';
 import ChatBox from "./ChatBox";
 import { Link } from 'react-router-dom'
 import {getChatRoomList} from '../reducers/chat';
+import {unselectChatroom} from '../actions/chat';
 
 //TODO: Lifecycle (leave) => selected: null
 class MessagesTest extends React.Component {
+  componentWillUnmount() {
+    const {unselectChatroom} = this.props;
+    unselectChatroom();
+  }
 
   render() {
     const {rooms, user, match} = this.props;
@@ -16,16 +21,18 @@ class MessagesTest extends React.Component {
           <div className="col s4">
             <ul className="collection">
               { rooms.map((room, idx) =>
-                (<li key={idx} className="collection-item" style={{marginBottom: '3px'}}>
-                  <Link to={match.path + '/' + room._id}><div className="row"  style={{marginBottom: 0}}>
-                    <div className="col s2">
-                      <img src={room.user1._id === user._id ? room.user2.photoURL : room.user1.photoURL} className="circle responsive-img"/>
+                (<li key={idx} className="collection-item" style={{marginBottom: '3px', backgroundColor: room.hasNewMsg ? '#b1dcfb': '#fff' }}>
+                  <Link to={match.path + '/' + room._id}>
+                    <div className="row"  style={{marginBottom: 0}}>
+                      <div className="col s2">
+                        <img src={room.user1._id === user._id ? room.user2.photoURL : room.user1.photoURL} className="circle responsive-img"/>
+                      </div>
+                      <div style={{fontWeight: room.hasNewMsg ? 'bold': 'normal'}} className="col s10">
+                        <span>{room.user1._id === user._id ? room.user2.name : room.user1.name}</span>
+                        <div>{room.latestMessage}</div>
+                      </div>
                     </div>
-                    <div className="col s10">
-                      <span><strong>{room.user1._id === user._id ? room.user2.name : room.user1.name}</strong></span>
-                      <div>{room.latestMessage}</div>
-                    </div>
-                  </div></Link>
+                  </Link>
                 </li>)
               )}
             </ul>
@@ -43,4 +50,5 @@ class MessagesTest extends React.Component {
 
 export default connect(
   ({auth, chat}) => ({ user: auth.user, rooms: getChatRoomList(chat) }),
+  {unselectChatroom}
 )(MessagesTest)
