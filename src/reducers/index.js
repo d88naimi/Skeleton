@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import * as fromAuth from './auth';
 import * as fromLang from './lang';
 import * as fromAgent from './agent';
-import * as fromMessage from './message';
+import * as fromChat from './chat';
 
 import { createSelector } from 'reselect'
 /**
@@ -14,7 +14,7 @@ export default combineReducers({
   routing: routerReducer,
   lang: fromLang.reducer,
   agents: fromAgent.reducer,
-  msg: fromMessage.reducer
+  chat: fromChat.reducer
 });
 
 
