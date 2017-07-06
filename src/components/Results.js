@@ -6,7 +6,7 @@ import axios from 'axios';
 import {searchAgents} from '../actions/agent'
 import {getAgentList} from '../reducers';
 import Search from './Search';
-
+import "./Results.scss";
 
 class Results extends React.Component {
 
@@ -35,26 +35,29 @@ class Results extends React.Component {
     const {agents} = this.props;
     // console.log(this.props);
     return (
-      <div className="container row">
-      
-      <Search />
-        {agents && agents.map( (agent,index) =>{
-            return <Agents
-            id={agent._id}
-            key={index} 
-            role={agent.role}
-            name={agent.name}
-            languages={agent.languages }
-            city={agent.location}
-            email={agent.email}
-            phone={agent.phone}
-             text={agent.text}
-            avgRate={agent.avgRate}
-          
-            
-            />
-        })}
-        
+      <div className="container center-align">
+          <div className="container whiteBack center-align">
+              <Search/>
+            </div>
+          <div className="container flexParent" >
+            {agents && agents.map( (agent,index) =>{
+                return <Agents
+                id={agent._id}
+                key={index} 
+                role={agent.role}
+                name={agent.name}
+                languages={agent.languages }
+                city={agent.location}
+                email={agent.email}
+                phone={agent.phone}
+                text={agent.text}
+                avgRate={agent.avgRate}
+              
+                
+                />
+            })}
+          </div> 
+
     </div>
     );
   }
