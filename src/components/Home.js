@@ -25,11 +25,17 @@ class Home extends React.Component {
           <button className="btn langButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
           
 	      	<h4 className="blueFont">
+
             <FormattedMessage id="app.home.intro"/>
           </h4>
-          <p><em><FormattedDate value={time} /></em></p>
+
+	       <div className="container  center-align">
+              <Search/>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
           
-	      	<Search />
+               <p><em><FormattedDate value={time} /></em></p>
+            </div>
       	</div>
 
       </div>

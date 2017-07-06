@@ -13,7 +13,8 @@ export const EMPTY_AUTH = 'EMPTY_AUTH';
 export const LOAD_USER_INFO = 'LOAD_USER_INFO';
 export const LOGOUT = 'LOGOUT';
 export const LOAD_USER_PHOTO = 'LOAD_USER_PHOTO';
-
+export const ERROR_MSG = 'ERROR_MSG';
+export const DELETE_ERROR_MSG = 'DELETE_ERROR_MSG';
 
 /**
  * helper functions
@@ -29,7 +30,7 @@ export function fetchUserInfo (jwt) {
 }
 
 export function saveJWT(jwt) {
-  (new Cookies).set('token', jwt);
+  (new Cookies()).set('token', jwt);
   return Promise.resolve();
 }
 
@@ -69,36 +70,44 @@ export function loadJWT (jwt) {
 export function signup (secret) { //email, name, password
   return dispatch => {
     axios.post('/api/users', secret)
-      .then(
-        res => saveJWT(res.data.token),
-        err => console.log("something went wrong. Try again")
-      )
+      .then(res => saveJWT(res.data.token))
       .then(() => {
         dispatch(checkLoginStatus());
         dispatch(push('/dashboard'))
-      });
+      })
+      .catch(err => dispatch(loadError(err.response.data.message)));
   }
 }
 
 export function login (secret) { //email, password
   return dispatch => {
     axios.post('/auth/local', secret)
-      .then(
-        res => saveJWT(res.data.token),
-        err => console.log("something went wrong. Try again")
-      )
-      .then(() => {
-        dispatch(checkLoginStatus());
-        dispatch(push('/dashboard'))
-      });
+      .then(res => saveJWT(res.data.token))
+      .then(() => dispatch(checkLoginStatus()))
+      .catch(err => dispatch(loadError(err.response.data.message)));
   }
 }
 
+export function loadError(errorMsg) {
+  return {
+    type: ERROR_MSG,
+    payload: errorMsg
+  }
+}
+
+export function deleteError() {
+  return {
+    type: DELETE_ERROR_MSG
+  }
+}
 
 export const fetchJWT = () => {
   return function (dispatch) {// eslint-disable-next-line
-    return Promise.resolve((new Cookies).get('token') || null)
-      .then(jwt => dispatch(loadJWT(jwt)));
+    return new Promise((resolve, reject) => {
+      const token = (new Cookies()).get('token');
+      if(token) resolve(dispatch(loadJWT(token)));
+      else reject();
+    });
   }
 };
 
@@ -119,8 +128,10 @@ export function checkLoginStatus() {
   return function(dispatch) {
     dispatch(fetchJWT())
       .then(action => {
-        dispatch(getUserInfo(action.payload));
+        dispatch(getUserInfo(action.payload))
+        .then(()=> dispatch(push('/dashboard')));
       })
+      .catch(() => console.log("no jwt found"))
   }
 }
 
@@ -129,20 +140,18 @@ export function getUserInfo (jwt) {
     // if we don't have jwt, it means user is not in logged-in state.
     if(!jwt) return Promise.resolve();
     return fetchUserInfo(jwt)
-      .then(
-        res => {
-          dispatch(loadUserInfo(res.data));
-
-        },
-        err => dispatch(logout(err))
-      )
+      .then(res => dispatch(loadUserInfo(res.data)))
+      .catch(err => dispatch(logout(err)))
   };
 }
 
 export function logout () {
   return function (dispatch) {
     deleteJWT()
-      .then(() => dispatch(emptyAuth()));
+      .then(() => {
+        dispatch(emptyAuth());
+        dispatch(push('/'));
+      });
   }
 }
 

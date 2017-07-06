@@ -53,3 +53,4 @@ export default connect(
   ({auth, chat}) => ({ user: auth.user, rooms: getChatRoomList(chat) }),
   {unselectChatroom}
 )(MessagesTest)
+

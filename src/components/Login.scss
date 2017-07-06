@@ -158,6 +158,7 @@ $color_twitter_light: #83c3f3;
 .input-field input[type=email].valid,
 .input-field input[type=password].valid
  {
+    content: attr(data-success);
 	border-bottom: 1px solid #4caf50  !important;
     box-shadow: 0 1px 0 0 #4caf50  !important;
       width: 100%;

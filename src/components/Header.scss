@@ -61,6 +61,14 @@ nav{
 	}
 
 }
+/*header align with main container*/
+nav ul a.btn {
+	margin-right: 0;
+}
+/*capitalize first word of each letter*/
+#userName {
+	text-transform: capitalize;
+}
 
 
 

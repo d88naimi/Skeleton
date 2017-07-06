@@ -21,14 +21,14 @@ export class ContactUs extends React.Component {
       return (
     <div className="container">
         <div className="col s2 m2 l2">
-		    <h2 className="header">TransUnited</h2>
+		    <h2 className="header">AmericanLife</h2>
 		    <div className="card horizontal">
 		      <div className="card-image">
-		        <img id="cardImage" src="./logo.png" alt="TransUnited logo"></img>
+		        <img id="cardImage" src="./logo.png" alt="AmericanLife logo"></img>
 		      </div>
 		      <div className="card-stacked">
 		        <div className="card-content">
-		          <p><i>TransUnited</i>
+		          <p><i>AmericanLife</i>
                 <FormattedMessage id="app.faqs.a1" />
               </p>
 		        </div>
@@ -57,8 +57,8 @@ export class ContactUs extends React.Component {
               <a href="#"><em>
               <FormattedMessage id="app.footer.call" /> 
               <FormattedMessage id="app.footer.number" />
-              transUS</em></a>
-              <a href="mailto:widgets@abcwidgets.com"><em><FormattedMessage id="app.footer.email" /> TransUnited</em></a>
+               America</em></a>
+              <a href="mailto:widgets@abcwidgets.com"><em><FormattedMessage id="app.footer.email" /> American@life.com</em></a>
             </div>
           </div>
         </div>

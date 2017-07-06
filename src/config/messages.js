@@ -1,5 +1,5 @@
 export const en = {
-  "app.home.intro": "Hello, TransUnited!",
+  "app.home.intro": "Hello, AmericanLife!",
   "app.search.language": "Search by language",
   "app.search.location": "Search by City",
   "app.search.searchBtn": "Search for Agents", 
@@ -19,9 +19,12 @@ export const en = {
 
   "app.about.link1": "Repository",
   "app.about.link2": "Full Stack Developer",
+  "app.about.addMe": "Add me on LinkedIn",
+  "app.about.david": "My Father is Persian and Mother is Mexican so my friends call me the Persiacan. Graduated with a Marketing degree but explored my entrepreneurial spirit  and opened a coffee shop at the San Diego County fairgrounds. Although it was enjoyable I wanted a new challenge and was always passionate about Software Development so I joined the UCSD Coding Bootcamp.",
+  "app.about.marco": "Web developer with front-end and back-end development experience. Experience in Node environments, database management and RESTful API development and communication. Started my career in graphic design and illustration applying my eye for design on every app built. My interests evolved and went into web development as I became more interested in building web applications. Nothing beats the feeling of seeing something you worked on being used all over the world! Always eager to learn new technologies!",
 
   "app.faqs.td": "Frequently Asked Questions",
-  "app.faqs.q1": "What is TransUnited?",
+  "app.faqs.q1": "What is AmericanLife?",
   "app.faqs.q2": "How does it work?",
   "app.faqs.q3": "Can I become an agent?",
   "app.faqs.q4": "What requirements do I have to have to become an agent?",
@@ -43,6 +46,7 @@ export const en = {
   "app.login.signupHeader": "Create Account",
   "app.login.signupBtn": "Sign Up",
   "app.login.loginBtn": "Log In",
+  "app.login.passwordMessage": "Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number",
 
   "app.plans.silverHeader": "Package Silver",
   "app.plans.goldheader": "Package Gold",
@@ -53,14 +57,15 @@ export const en = {
   "app.plans.residence": "Apartment",
   "app.plans.school": "School",
   "app.plans.citizenship": "Citizenship",
-  "app.plans.car": "Vehicle"
+  "app.plans.car": "Vehicle",
+  "app.plans.selectBtn": "Select"
 
 
 
 }
 
 export const es = {
-  "app.home.intro": "¡Hola, TransUnited!",
+  "app.home.intro": "¡Hola, AmericanLife!",
   "app.search.language": "Búsqueda por idioma",
   "app.search.location": "Búsqueda por ciudad",
   "app.search.searchBtn": "Búsqueda de agentes",
@@ -80,12 +85,15 @@ export const es = {
 
   "app.about.link1": "Repositorio",
   "app.about.link2": "Desarrollador 'Full Stack'",
+  "app.about.addMe": "Añadirme en LinkedIn",
+  "app.about.david": 'Mi padre es persa y mi madre es mexicana, así que mis amigos me llaman el "Persiacano". Gradué con una licenciatura en Comercialización, pero exploré mi espíritu empresarial y abrí un negocio del café en la feria del Condado de San Diego. Aunque era agradable, quería un nuevo reto y siempre me apasionaba el Desarrollo de Software, así que me inscribí en el "UCSD Coding Bootcamp".',
+  "app.about.marco": 'Desarrollador de web con experiencia de desarrollo de cliente y de servidor. Experiencia en entornos de Node.js, gestión de bases de datos y desarrollo de RESTful API y comunicación. Comencé mi carrera en diseño gráfico e ilustración aplicando mi ojo para el diseño en cada aplicación que construí. Mis intereses evolucionaron y entraron en el desarrollo de web, ya que me interesé más en la construcción de aplicaciones. Nada supera la sensación de ver algo que trabajó en ser utilizado en todo el mundo! Siempre ansioso por aprender nuevas tecnologías!',
 
   "app.faqs.td": "Preguntas más frecuentes",
-  "app.faqs.q1": "¿Qué es TransUnited?",
+  "app.faqs.q1": "¿Qué es AmericanLife?",
   "app.faqs.q2": "¿Como funciona?",
   "app.faqs.q3": "¿Puedo ser un agente?",
-  "app.faqs.q4": "¿Cuáles son los requisitos para convertirse en un agente de TransUnited?",
+  "app.faqs.q4": "¿Cuáles son los requisitos para convertirse en un agente de AmericanLife?",
   "app.faqs.q5": "¿Cuánto cuesta el servicio?",
   "app.faqs.q6": "¿Qué servicios ofrecen los agentes?",
   "app.faqs.q7": "¿Qué tan rápido es el proceso?",
@@ -104,6 +112,7 @@ export const es = {
   "app.login.signupHeader": "Por favor llene esto",
   "app.login.signupBtn": "Regístrate con",
   "app.login.loginBtn": "Iniciar Sesión",
+   "app.login.passwordMessage": "Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number",
 
   "app.plans.silverHeader": "Paquete Plata",
   "app.plans.goldheader": "Paquete Oro",
@@ -114,7 +123,8 @@ export const es = {
   "app.plans.residence": "Departamento",
   "app.plans.school": "Escuela",
   "app.plans.citizenship": "Ciudadanía",
-  "app.plans.car": "Vehículo"
+  "app.plans.car": "Vehículo",
+  "app.plans.selectBtn": "Seleccionar"
 
 
 
