@@ -8,6 +8,7 @@ export const en = {
   "app.header.signup": "Sign Up",
   "app.header.results": "Results",
   "app.header.plans": "Plans",
+   "app.header.hi": "Hi!  ",
 
   "app.footer.faqs": "FAQ",
   "app.footer.about": "About Us",
@@ -58,7 +59,15 @@ export const en = {
   "app.plans.school": "School",
   "app.plans.citizenship": "Citizenship",
   "app.plans.car": "Vehicle",
-  "app.plans.selectBtn": "Select"
+  "app.plans.selectBtn": "Select",
+
+  "app.dashboard.default": "Welcome Back!",
+  "app.dashboardSB.myagent": "My Agent",
+  "app.dashboardSB.payment": "Payments",
+  "app.dashboardSB.editInfo": "Edit Info",
+  "app.dashboardSB.logout": "Log Out",
+
+  "app.dashboardPay.header": "Submit a Payment"
 
 
 
@@ -74,6 +83,7 @@ export const es = {
   "app.header.signup": "Regístrate",
   "app.header.results": "Resultados",
   "app.header.plans": "Planes",
+  "app.header.hi": "¡Hola!  ",
 
   "app.footer.faqs": "Preguntas frecuentes",
   "app.footer.about": "Sobre Nosotros",
@@ -124,7 +134,15 @@ export const es = {
   "app.plans.school": "Escuela",
   "app.plans.citizenship": "Ciudadanía",
   "app.plans.car": "Vehículo",
-  "app.plans.selectBtn": "Seleccionar"
+  "app.plans.selectBtn": "Seleccionar",
+
+  "app.dashboard.default": "Bienvenido de nuevo!",
+  "app.dashboardSB.myagent": "Mi agente",
+  "app.dashboardSB.payment": "Realizar un pago",
+  "app.dashboardSB.editInfo": "Editar su información",
+  "app.dashboardSB.logout": "Salir",
+
+  "app.dashboardPay.header": "Realizar un pago"
 
 
 

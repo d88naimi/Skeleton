@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
+
 
 
 export class DashboardPayment extends React.Component {
@@ -12,7 +14,7 @@ export class DashboardPayment extends React.Component {
   render() {
     return (
         <div className="col s12 m9 l9 payments">
-        	<h5>Submit A Payment</h5>
+        	<h5><FormattedMessage id="app.dashboardPay.header" /></h5>
         	<hr/>
 
     	    <p>

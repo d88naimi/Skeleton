@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import './Dashboard.scss';
 import {uploadImage} from '../actions/auth';
 import PropTypes from 'prop-types';
+import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
+
 
 export class DashboardEditInfo extends React.Component {
   static propTypes = {
