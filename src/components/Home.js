@@ -21,19 +21,15 @@ class Home extends React.Component {
       	</div>
         <div className="container">
 	      	<hr/>
-          <button className="btn langButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
-          <button className="btn langButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
           
-	      	<h4 className="blueFont">
-
+	      	<h4 className="blueFont center-align">
             <FormattedMessage id="app.home.intro"/>
           </h4>
 
 	       <div className="container  center-align">
+               <div className="col s12 m12 l12 xl12 ">
               <Search/>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Korean</button>
+              </div>
                <h4><em><FormattedDate value={time} /></em></h4>
             </div>
       	</div>
@@ -47,3 +43,7 @@ export default connect(
   (state) => ({time: Date.now()}),
   { loadLanguage }
 ) (Home)
+
+// links for languages
+          // <button className="btn langButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
+          // <button className="btn langButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
