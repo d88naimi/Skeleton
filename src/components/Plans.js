@@ -36,7 +36,9 @@ export class Plans extends React.Component {
               </ul>
             </div>
             <div className="card-action center-align">
-              <a className="btn themeButton" href="#">Select</a>
+              <a className="btn themeButton" href="#">
+                <FormattedMessage id="app.plans.selectBtn" />
+              </a>
              
             </div>
           </div>
@@ -58,7 +60,9 @@ export class Plans extends React.Component {
                 </ul>
             </div>
             <div className="card-action center-align">
-              <a className="btn themeButton" href="#">Select</a>
+              <a className="btn themeButton" href="#">
+                <FormattedMessage id="app.plans.selectBtn" />
+              </a>
               
             </div>
           </div>
@@ -82,7 +86,9 @@ export class Plans extends React.Component {
                 </ul>
             </div>
             <div className="card-action center-align">
-              <a className="btn themeButton" href="#">Select</a>
+              <a className="btn themeButton" href="#">
+                <FormattedMessage id="app.plans.selectBtn" />
+              </a>
               
             </div>
           </div>

@@ -10,7 +10,7 @@ const Footer = () => (
       
     <div className="footer-copyright">
       <div className="container">
-        Copyright © 2017, <a href="/">TransUnited </a>
+        Copyright © 2017, <a href="/">AmericanLife </a>
         <hr/>
         <nav>
           <div className="nav-wrapper">
