@@ -15,7 +15,7 @@ export class DashboardSidebar extends React.Component {
   }
 
   render() {
-    const {user} = this.props;
+    const {user, logout} = this.props;
     return (   
       	<div className="col s12 m3 l3 row sidebar center-align">
       		<br/>    		
@@ -33,5 +33,6 @@ export class DashboardSidebar extends React.Component {
 }
 
 export default connect(
-  ({auth}) => ({ user: auth.user}), null
+  ({auth}) => ({ user: auth.user}),
+  { logout }
   )(DashboardSidebar)
