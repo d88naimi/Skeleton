@@ -16,16 +16,19 @@ export const UNSELECT_ROOM = 'UNSELECT_ROOM';
  * helper functions
  */
 
-export function fetchRooms() {
-  return axios.get('/api/chatrooms');
+export function fetchRooms(jwt) {
+  const headers = { authorization: `Bearer ${jwt}`};
+  return axios.get('/api/chatrooms', { headers });
 }
 
-export function fetchMessages(roomId) {
-  return axios.get('/api/messages/' + roomId);
+export function fetchMessages(roomId, jwt) {
+  const headers = { authorization: `Bearer ${jwt}`};
+  return axios.get('/api/messages/' + roomId,  { headers });
 }
 
-export function postMessage(message, roomId) {
-  return axios.post(`/api/messages/${roomId}`, message)
+export function postMessage(message, roomId, jwt) {
+  const headers = { authorization: `Bearer ${jwt}`};
+  return axios.post(`/api/messages/${roomId}`, message,  { headers })
 }
 
 
@@ -36,7 +39,7 @@ export function postMessage(message, roomId) {
 export function getRooms () {
   return function(dispatch, getState) {
     const { auth } = getState();
-    fetchRooms()
+    fetchRooms(auth.jwt)
       .then(res => dispatch(loadRooms(res.data, auth.user._id)))
   }
 }
@@ -63,15 +66,17 @@ export function loadRoom (room, userId) {
 
 export function enterRoom (roomId) {
   return function(dispatch, getState) {
-    fetchMessages(roomId)
+    const { auth } = getState();
+    fetchMessages(roomId, auth.jwt)
       .then(res => dispatch(loadMessages(res.data, roomId)))
       .then(() => dispatch(push(`/messages/${roomId}`)))
   }
 }
 
 export function getMessages (roomId) {
-  return function(dispatch) {
-    fetchMessages(roomId)
+  return function(dispatch, getState) {
+    const { auth } = getState();
+    fetchMessages(roomId, auth.jwt)
       .then(res => dispatch(loadMessages(res.data, roomId)))
   }
 }
@@ -126,10 +131,9 @@ export function openChatRoom (opponentId) {
 
 
 export function sendMessage ({message, roomId}) {
-  return function (dispatch) {
-    console.info(message)
-    // console.info(roomId)
-    postMessage(message, roomId)
+  return function (dispatch, getState) {
+    const {auth} = getState();
+    postMessage(message, roomId, auth.jwt)
       .then(res => dispatch(loadMessage(res.data)));
   }
 }
@@ -142,8 +146,7 @@ export function receiveMessage (message) {
 }
 
 export function  moveToMessageRoute(opponentId) {
-  return function (dispatch, getState) {
-    const {auth} = getState();
+  return function (dispatch) {
     dispatch(openChatRoom(opponentId));
   }
 }

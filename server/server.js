@@ -82,7 +82,9 @@ io.on('connection', function(socket){
     console.log('%s client disconnected', chalk.red('✗'));
   });
 
-  // socket.on('')
+  socket.on('pleaseDisconnect', () => {
+    socket.disconnect();
+  })
 });
 
 module.exports = app;

@@ -34,7 +34,7 @@ export function saveJWT(jwt) {
   return Promise.resolve();
 }
 
-export function uploadToS3(file, signedRequest, url) {
+export function uploadToS3(file, signedRequest, url, jwt) {
   return axios.put(signedRequest, file, {
     headers: {
       'Content-Type': file.type
@@ -84,6 +84,7 @@ export function login (secret) { //email, password
     axios.post('/auth/local', secret)
       .then(res => saveJWT(res.data.token))
       .then(() => dispatch(checkLoginStatus()))
+      .then(()=> dispatch(push('/dashboard')))
       .catch(err => dispatch(loadError(err.response.data.message)));
   }
 }
@@ -127,10 +128,7 @@ export function loadUserInfo (user) {
 export function checkLoginStatus() {
   return function(dispatch) {
     dispatch(fetchJWT())
-      .then(action => {
-        dispatch(getUserInfo(action.payload))
-        .then(()=> dispatch(push('/dashboard')));
-      })
+      .then(action => dispatch(getUserInfo(action.payload)))
       .catch(() => console.log("no jwt found"))
   }
 }
@@ -165,20 +163,26 @@ export function loadUserPhoto (url) {
 export function changeUserInfo (update) {
   return function (dispatch, getState) {
     const { auth } = getState();
-    axios.put(`/api/users/${auth.user._id}`, update)
+    axios.put(`/api/users/${auth.user._id}`, update, {
+      headers: {
+        authorization: `Bearer ${auth.jwt}`
+      }
+    })
       .then(res => dispatch(loadUserInfo(res.data)))
   }
 }
 
 export function uploadImage (fileUpload) {
-  return function (dispatch) {
+  console.log(fileUpload);
+  return function (dispatch, getState) {
     let file = fileUpload.files[0];
-    // console.log(file);
+    const { auth } = getState();
+
     getSignedRequest(file)
       .then(res => {
         // console.log(res);
         // file.name = res.filename;
-        return uploadToS3(file, res.signedRequest, res.url)
+        return uploadToS3(file, res.signedRequest, res.url, auth.jwt)
       })
       .then(url => dispatch(changeUserInfo({photoURL: url})))
   }
