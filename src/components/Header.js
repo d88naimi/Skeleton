@@ -2,13 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {Userbox} from "./Userbox";
 import Notification from "./Notification";
 import {logout} from "../actions/auth";
 import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang'
 import './Header.scss';
 import LanguagesSelect from "./LanguagesSelect";
+import favicon from '../../public/favicon.png';
 
 class Header extends React.Component {
 
@@ -20,7 +20,7 @@ class Header extends React.Component {
       <header className="navbar-fixed">
         <nav className="darken-4">
           <div className="container nav-wrapper">
-            <NavLink to="/" className="brand-logo left navLogo"><img src="./favicon.png" width="70px" height="70px" alt="LOGO"/></NavLink>
+            <NavLink to="/" className="brand-logo left navLogo"><img src={favicon} width="70px" height="70px" alt="LOGO"/></NavLink>
 
             <ul className="right hide-on-small-only">
               <Notification />
