@@ -32,7 +32,12 @@ class Header extends React.Component {
                   </NavLink>
                 </li>}
               {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong>{user.name}</strong></li>}
-              {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+            {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+           
+         
+             
+              
+        
             </ul>
           </div>
         </nav>
