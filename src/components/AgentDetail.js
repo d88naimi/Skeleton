@@ -226,7 +226,6 @@ class AgentDetail extends React.Component {
                   </div>  
           </form>
         </div>
-
       </div>
     );
 
