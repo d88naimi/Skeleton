@@ -293,11 +293,10 @@ module.exports.me = (req, res, next) => {
       }
 
       if(user.myAgent) {
-        user.populate('myAgent', '_id photoURL name', function (err, user) {
+        return user.populate('myAgent', '_id photoURL name', function (err, user) {
           return res.json(user);
         })
-      }
-      else return res.json(user);
+      } else return res.json(user);
     })
     .catch(err => next(err));
 };

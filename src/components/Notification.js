@@ -8,19 +8,22 @@ class Notification extends React.Component {
   componentWillReceiveProps(newProps) {
     if(newProps.user && this.props.user === null) {
       newProps.getRooms();
-      const socket = io();
+      this.socket = io();
 
-      socket.emit('chatroom', newProps.user._id);
+      this.socket.emit('chatroom', newProps.user._id);
 
-      socket.on('receiveMsg', function(msg) {
-        console.info(msg);
+      this.socket.on('receiveMsg', function(msg) {
         newProps.receiveMessage(msg);
       });
 
-      socket.on('roomCreated', function(room) {
-        console.info(room);
+      this.socket.on('roomCreated', function(room) {
         newProps.loadRoom(room, newProps.user._id);
-      })
+      });
+    }
+
+    if(this.props.user && !newProps.user) {
+      //this is logout event
+      this.socket.emit('pleaseDisconnect');
     }
   }
 
