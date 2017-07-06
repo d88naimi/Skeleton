@@ -14,6 +14,7 @@ export default class Agents extends React.Component {
   }
 
   render() {
+    const {agent} = this.props;
     return (
 
       
@@ -23,12 +24,12 @@ export default class Agents extends React.Component {
       <img className="activator" img src={photo}></img>
     </div>
     <div className="card-content center-align">
-      <h4 className="card-title  grey-text text-darken-4">{this.props.name}</h4>
-      <p className=" grey-text text-darken-4">{this.props.city}</p>
-      {this.props.languages.map( (lang,index)=>{
+      <h4 className="card-title  grey-text text-darken-4">{agent.name}</h4>
+      <p className=" grey-text text-darken-4">{agent.city}</p>
+      {agent.languages.map( (lang,index)=>{
         return <p key-={index}> -{lang}</p> 
       })}
-      <span className="card-title activator grey-text text-darken-4"><Link to={'/agents/' + this.props.id}> AGENT DETAILS</Link> </span>
+      <span className="card-title activator grey-text text-darken-4"><Link to={'/agents/' + agent._id}> AGENT DETAILS</Link> </span>
  
       <Rating
               empty="fa fa-star-o fa-2x"

@@ -131,54 +131,7 @@ class AgentDetail extends React.Component {
           <h5>Agent Details </h5>
           <hr/>
 
-      <div className=" col s12 m12 l12 right-align selectButtonContainer">
-        <button className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>
-      </div>
-
-      {agent && this.renderAgent()}
-       
-
-      <div className="col s12 m9 l9 container commentContainer">
-        <h5>Comments on this agent</h5>
-        <hr/>
-       {agent.comments && agent.comments.map( (comment,index)=>{
-          return <AgentComment key={index} comment={comment.text} created={comment.createdAt}/>
-       })}
-      </div>
-
-
-      <div className="col s12 m9 l9  offset-m3 offset-l3 container addCommentContainer">
-        <form onSubmit={this.handleSubmit}>
-                <div>
-
-                <div onChange={this.getRadioValue}>
-                  <span>Rate this Agent</span>
-                  <hr/>
-                  <input name="group1" type="radio" id="test1" value="1"/>
-                  <label className="stars" htmlFor="test1">&#x2605;</label>
-                  <br/>
-                  <input name="group1" type="radio" id="test2" value="2"/>
-                  <label className="stars" htmlFor="test2">&#x2605; &#x2605;</label>
-                  <br/>
-                  <input name="group1" type="radio" id="test3" value="3"/>
-                  <label className="stars" htmlFor="test3">&#x2605; &#x2605; &#x2605;</label>
-                  <br/>
-                  <input name="group1" type="radio" id="test4" value="4"/>
-                  <label className="stars" htmlFor="test4">&#x2605; &#x2605; &#x2605; &#x2605;</label>
-                  <br/>
-                  <input name="group1" type="radio" id="test5" value="5"/>
-                  <label className="stars" htmlFor="test5">&#x2605; &#x2605; &#x2605; &#x2605; &#x2605;</label>
-                  <br/>
-                </div>
-
-                  <div className="input-field">
-                    <i className="material-icons prefix">mode_edit</i>
-                    <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
-                    <label htmlFor="icon_prefix2">Write a Comment</label>
-                  </div>
-                </div>  
-        </form>
-      </div>
+      
 
 
         <div className="right-align selectButtonContainer">

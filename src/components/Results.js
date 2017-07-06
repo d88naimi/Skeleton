@@ -42,16 +42,7 @@ class Results extends React.Component {
           <div className="container flexParent" >
             {agents && agents.map( (agent,index) =>{
                 return <Agents
-                id={agent._id}
-                key={index} 
-                role={agent.role}
-                name={agent.name}
-                languages={agent.languages }
-                city={agent.location}
-                email={agent.email}
-                phone={agent.phone}
-                text={agent.text}
-                avgRate={agent.avgRate}
+                agent= {agent}
               
                 
                 />
