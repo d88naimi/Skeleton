@@ -21,8 +21,8 @@ class Home extends React.Component {
       	</div>
         <div className="container">
 	      	<hr/>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
+          <button className="btn langButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
+          <button className="btn langButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
           
 	      	<h4 className="blueFont">
             <FormattedMessage id="app.home.intro"/>

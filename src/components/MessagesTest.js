@@ -16,20 +16,21 @@ class MessagesTest extends React.Component {
   render() {
     const {rooms, user, match} = this.props;
     return (
-      <div className="container">
+      <div className="container" style={{backgroundColor: "#f2f2f2"}}>
         <div className="row">
-          <div className="col s4">
-            <ul className="collection">
+          <div className="col s4 chatRoomsBox center-align">
+            <ul className="collection center-align">
               { rooms.map((room, idx) =>
                 (<li key={idx} className="collection-item" style={{marginBottom: '3px', backgroundColor: room.hasNewMsg ? '#b1dcfb': '#fff' }}>
                   <Link to={match.path + '/' + room._id}>
-                    <div className="row"  style={{marginBottom: 0}}>
-                      <div className="col s2">
-                        <img src={room.user1._id === user._id ? room.user2.photoURL : room.user1.photoURL} className="circle responsive-img"/>
+                    <div className="container"  style={{marginBottom: 0}}>
+                      <div className="">
+                        <img src={room.user1._id === user._id ? room.user2.photoURL : room.user1.photoURL} className="ChatBoxPicture"/>
+                        <br/>
                       </div>
-                      <div style={{fontWeight: room.hasNewMsg ? 'bold': 'normal'}} className="col s10">
-                        <span>{room.user1._id === user._id ? room.user2.name : room.user1.name}</span>
-                        <div>{room.latestMessage}</div>
+                      <div style={{fontWeight: room.hasNewMsg ? 'bold': 'normal'}} className="">
+                        <span><b>{room.user1._id === user._id ? room.user2.name : room.user1.name}</b></span>
+                        <div className="msgPreview">{room.latestMessage}</div>
                       </div>
                     </div>
                   </Link>
