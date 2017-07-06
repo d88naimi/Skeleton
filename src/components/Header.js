@@ -8,6 +8,8 @@ import {logout} from "../actions/auth";
 import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang'
 import './Header.scss';
+import LanguagesSelect from "./LanguagesSelect";
+
 class Header extends React.Component {
 
   render() {
@@ -32,7 +34,8 @@ class Header extends React.Component {
                   </NavLink>
                 </li>}
               {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong id="userName">{user.name}</strong></li>}
-              {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+            {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+            <li> <LanguagesSelect /> </li>
             </ul>
           </div>
         </nav>

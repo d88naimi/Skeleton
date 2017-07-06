@@ -30,8 +30,8 @@ class Home extends React.Component {
               <Search/>
           <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
           <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
-          
-               <p><em><FormattedDate value={time} /></em></p>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Korean</button>
+               <h4><em><FormattedDate value={time} /></em></h4>
             </div>
       	</div>
 
