@@ -26,7 +26,7 @@ export default class About extends React.Component {
       			<tr>
       				<td>
       					<h5> <FormattedMessage id="app.faqs.q1" /></h5><br/>
-      					<p><i>TransUnited</i> 
+      					<p><i>AmericanLife</i> 
                 <FormattedMessage id="app.faqs.a1" />
                 </p>
       				</td>
