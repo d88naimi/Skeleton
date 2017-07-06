@@ -23,6 +23,7 @@ $Main-DarkGray: #333333;
   border: $Main-Red 2px solid;
   &:hover{
   	border: white 2px solid;
+  	background-color: transparent;
   }
 }
 
@@ -51,14 +52,14 @@ nav{
 	color: white;
 	border: 2px solid white;
 	text-decoration: none;
-}
-
-
-.logoutButton:hover{
+	border-radius: 20px;
+	&:hover{
 	background-color: rgba(206,13,13,.8);
 	color: white;
 	border: 2px solid red;
 	text-decoration: none;	
+	}
+
 }
 /*header align with main container*/
 nav ul a.btn {
@@ -68,4 +69,6 @@ nav ul a.btn {
 #userName {
 	text-transform: capitalize;
 }
+
+
 

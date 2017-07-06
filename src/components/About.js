@@ -16,7 +16,7 @@ export default class About extends React.Component {
       <div className="container">
 
         <div className="col s2 m2 l2">
-		    <h2 className="header">TransUnited</h2>
+		    <h2 className="header">American Life</h2>
 		    <div className="card horizontal">
 		      <div className="card-image">
 		        <img id="cardImage" src="./logo.png" alt="TransUnited logo"></img>
@@ -66,7 +66,8 @@ export default class About extends React.Component {
 		        	<h5>
 		          	<FormattedMessage id="app.about.link2" />
 		          	</h5>
-		          <p> Something About you </p>
+		          <p> Web developer with front-end and back-end development experience. Experience in Node environments, database management and RESTful API development and communication. Started my career in graphic design and illustration applying my eye for design on every app built. My interests evolved and went into web development as I became more interested in building web applications. Nothing beats the feeling of seeing something you worked on being used all over the world! Always eager to learn new technologies! </p>
+		          <a href="https://www.linkedin.com/in/marco-alvarado-cano/" target="_blank">Add me on LinkedIn</a>
 		        </div>
 		        <div className="card-action">
 		          <a href="https://github.com/d88naimi/Skeleton" target="_blank">Github</a>

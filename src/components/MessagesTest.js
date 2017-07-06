@@ -3,51 +3,44 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router';
 import ChatBox from "./ChatBox";
 import { Link } from 'react-router-dom'
-import "./Messages.scss";
+import {getChatRoomList} from '../reducers/chat';
+import {unselectChatroom} from '../actions/chat';
 
-
+//TODO: Lifecycle (leave) => selected: null
 class MessagesTest extends React.Component {
+  componentWillUnmount() {
+    const {unselectChatroom} = this.props;
+    unselectChatroom();
+  }
 
   render() {
-    const {messages, user, match} = this.props;
-    console.log(match);
-    const ids = Object.keys(messages);
+    const {rooms, user, match} = this.props;
     return (
-      <div className="container grey lighten-5">
-        <div id="messagingContainer" className="row">
-          <section className="col s5">
-          <div className="row">
-              <div className="col s12 m12">
-                <div className="card row">
-                  <h3 className="col s8">Messaging</h3>
-                  <a className="col s4" href="#"><i className="medium material-icons">chat_bubble_outline</i></a>
-                </div>
-              </div>
-              <div className="col s12 m12">
-                <div className="card row">
-                  <ul className="collection">
-                    { ids.map((id, idx) =>
-                      (<li key={idx} className="collection-item" style={{marginBottom: '3px'}}>
-                        <Link to={match.path + '/' + id}><div className="row"  style={{marginBottom: 0}}>
-                          <div className="col s2">
-                            <img src={messages[id][0].to._id === user._id ? messages[id][0].from.photoURL : messages[id][0].to.photoURL} className="circle responsive-img"/>
-                          </div>
-                          <div className="col s10">
-                            <span><strong>{messages[id][0].to._id === user._id ? messages[id][0].from.name : messages[id][0].to.name}</strong></span>
-                            <div>{messages[id][messages[id].length -1].text}</div>
-                          </div>
-                        </div></Link>
-                      </li>)
-                    )}
-                  </ul>
-                </div>
-              </div>
+      <div className="container">
+        <div className="row">
+          <div className="col s4">
+            <ul className="collection">
+              { rooms.map((room, idx) =>
+                (<li key={idx} className="collection-item" style={{marginBottom: '3px', backgroundColor: room.hasNewMsg ? '#b1dcfb': '#fff' }}>
+                  <Link to={match.path + '/' + room._id}>
+                    <div className="row"  style={{marginBottom: 0}}>
+                      <div className="col s2">
+                        <img src={room.user1._id === user._id ? room.user2.photoURL : room.user1.photoURL} className="circle responsive-img"/>
+                      </div>
+                      <div style={{fontWeight: room.hasNewMsg ? 'bold': 'normal'}} className="col s10">
+                        <span>{room.user1._id === user._id ? room.user2.name : room.user1.name}</span>
+                        <div>{room.latestMessage}</div>
+                      </div>
+                    </div>
+                  </Link>
+                </li>)
+              )}
+            </ul>
           </div>
-          </section>
 
-          <section className="col s7">
-            <Route path={match.path + '/:opponent'} component={ChatBox} />
-          </section>
+          <div className="col s8">
+            <Route path={match.path + '/:roomId'} component={ChatBox} />
+          </div>
 
         </div>
       </div>
@@ -56,5 +49,7 @@ class MessagesTest extends React.Component {
 }
 
 export default connect(
-  ({auth, msg}) => ({ user: auth.user, messages: msg.messages }),
+  ({auth, chat}) => ({ user: auth.user, rooms: getChatRoomList(chat) }),
+  {unselectChatroom}
 )(MessagesTest)
+

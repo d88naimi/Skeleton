@@ -4,15 +4,19 @@ const mongoose  = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const MessageSchema = new mongoose.Schema({
-  to: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User',
-    required: true,
-    index: true
-  },
   from: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
+    required: true
+  },
+  to: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  room: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Chatroom',
     required: true,
     index: true
   },

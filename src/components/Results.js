@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {searchAgents} from '../actions/agent'
 import {getAgentList} from '../reducers';
+import Search from './Search';
+
+
 class Results extends React.Component {
 
 
@@ -18,7 +21,6 @@ class Results extends React.Component {
     if(this.props.location.search === '') searchAgents({});
     else {
       let search = this.props.location.search.split('?')[1]; // ?language=Korean&location=San%20Diego&
-      console.log(search.split('&'));
       const queryParams = search.split('&').reduce((acc, text) => {
         if(text) {
           acc[text.split('=')[0]] = text.split('=')[1];
@@ -31,9 +33,11 @@ class Results extends React.Component {
 
   render() {
     const {agents} = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="container row">
+      
+      <Search />
         {agents && agents.map( (agent,index) =>{
             return <Agents
             id={agent._id}
@@ -46,8 +50,11 @@ class Results extends React.Component {
             phone={agent.phone}
              text={agent.text}
             avgRate={agent.avgRate}
+          
+            
             />
         })}
+        
     </div>
     );
   }

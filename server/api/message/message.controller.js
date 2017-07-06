@@ -1,8 +1,8 @@
 'use strict';
 
-const jsonpatch = require('fast-json-patch')
 const Message = require('./message.model');
 const User = require('../user/user.model');
+const Chatroom = require('../chatroom/chatroom.model');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -14,40 +14,6 @@ function respondWithResult(res, statusCode) {
   };
 }
 
-function patchUpdates(patches) {
-  return function(entity) {
-    try {
-      // eslint-disable-next-line prefer-reflect
-      jsonpatch.apply(entity, patches, /*validate*/ true);
-    } catch(err) {
-      return Promise.reject(err);
-    }
-
-    return entity.save();
-  };
-}
-
-function removeEntity(res) {
-  return function(entity) {
-    if(entity) {
-      return entity.remove()
-        .then(() => {
-          res.status(204).end();
-        });
-    }
-  };
-}
-
-function handleEntityNotFound(res) {
-  return function(entity) {
-    if(!entity) {
-      res.status(404).end();
-      return null;
-    }
-    return entity;
-  };
-}
-
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
@@ -56,25 +22,23 @@ function handleError(res, statusCode) {
   };
 }
 
+
+
+
 /**
- * @api {get} /api/messages Request all messages of user (restriction: authenticated)
- * @apiName GetAllMessagesReceived
+ * @api {get} /api/messages/:roomId Request messages with a specific user
+ * @apiName GetMessagesOfRoom
  * @apiGroup Message
+ *
+ * @apiParam (route params) {String} roomId Unique ID of chat room.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     [{
- *       "to": {
- *          _id: "59483862c27e982e0e67f987",
- *          name: "Jack Cat",
- *          photoURL: "https://www.google.com/images/image.jpg"
- *       },
- *       "from": {
- *          _id: "59483862c27e982e0e67f987",
- *          name: "Jane Cow",
- *          photoURL: "https://www.google.com/images/image.jpg"
- *       },
+ *       "from": "59483862c27e982e0e67f987",
+ *       "to": "59483862c27e982e0e67f987",
  *       "text": "Hello",
+ *       "room": "59483862c27e982e0e67f987",
  *       createdAt:
  *       updatedAt:
  *     },
@@ -85,55 +49,12 @@ function handleError(res, statusCode) {
  *     }]
  *
  */
-module.exports.showAllMyMessages = (req, res) => {
-  const user = req.user;
-
-  return Message.find({$or:[ {to: user._id},{from: user._id} ]})
-    .populate('from', '_id name photoURL')
-    .populate('to', '_id name photoURL')
-    .exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-};
-
-
-/**
- * @api {get} /api/messages/:with Request messages with a specific user
- * @apiName GetMessagesWith
- * @apiGroup Message
- *
- * @apiParam (route params) {String} with Unique ID of opponent.
- *
- * @apiSuccessExample Success-Response:
- *     HTTP/1.1 200 OK
- *     [{
- *       "to": {
- *          _id: "59483862c27e982e0e67f987",
- *          name: "Jack Cat",
- *          photoURL: "https://www.google.com/images/image.jpg"
- *       },
- *       "from": {
- *          _id: "59483862c27e982e0e67f987",
- *          name: "Jane Cow",
- *          photoURL: "https://www.google.com/images/image.jpg"
- *       },
- *       "text": "Hello",
- *       createdAt:
- *       updatedAt:
- *     },
- *     ...
- *     ...
- *     {
- *       ...
- *     }]
- *
- */
-module.exports.showMessagesWith = (req, res) => {
-  const user = req.user;
-
-  return Message.find({$or: [{to: user._id, from: req.params.from}, {from: user._id, to: req.params.from}]})
-    .populate('from', '_id name photoURL')
-    .populate('to', '_id name photoURL')
+module.exports.showMessagesOfRoom = (req, res) => {
+  // const user = req.user;
+  const roomId = req.params.roomId;
+  //TODO: check if the user is a member of this room
+  return Message.find({room: roomId})
+    .lean()
     .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -142,7 +63,7 @@ module.exports.showMessagesWith = (req, res) => {
 
 
 /**
- * @api {post} /api/messages Send a message (restriction: authenticated)
+ * @api {post} /api/messages/:roomId Send a message (restriction: authenticated)
  * @apiName SendMessage
  * @apiGroup Message
  *
@@ -152,34 +73,29 @@ module.exports.showMessagesWith = (req, res) => {
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 201 OK
  *     {
- *       "to": {
- *          _id: "59483862c27e982e0e67f987",
- *          name: "Jack Cat",
- *          photoURL: "https://www.google.com/images/image.jpg"
- *       },
- *       "from": {
- *          _id: "59483862c27e982e0e67f987",
- *          name: "Jane Cow",
- *          photoURL: "https://www.google.com/images/image.jpg"
- *       },
+ *       "from": "59483862c27e982e0e67f987",
+ *       "to": "59483862c27e982e0e67f987",
  *       text: "Hello. This is an example comment",
+ *       room: "59483862c27e982e0e67f987",
  *       createdAt:
  *       updatedAt:
  *     }
  */
 // Send a Message
 module.exports.create = (req, res) => {
-  const from = req.user._id;
-  req.body.from = from;
+  req.body.from = req.user._id;
+  req.body.room = req.params.roomId;
 
   return Message.create(req.body)
     .then(message => {
-      message
-        .populate('from', '_id name photoURL')
-        .populate('to', '_id name photoURL', (err, msg) => {
-          res.io.sockets.in(msg.to._id).emit('receiveMsg', msg);
-          res.status(201).json(msg);
+      res.io.sockets.in(message.to).emit('receiveMsg', message);
+      Chatroom.findById(message.room)
+        .exec()
+        .then(room => {
+          room.latestMessage = message.text;
+          room.save();
         });
+      res.status(201).json(message);
     })
-    .catch(handleError(res)); 
+    .catch(handleError(res));
 };
