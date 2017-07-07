@@ -17,7 +17,8 @@ class AgentDetail extends React.Component {
     super(props);
     this.state={
       newComment: "",
-      newRating: ""
+      newRating: "",
+      submitMSG:''
     }
     const { selectAgent } = this.props;
     const id = this.props.match.params.id;
@@ -92,7 +93,15 @@ class AgentDetail extends React.Component {
       text: this.state.newComment,
       rate: this.state.newRating
     };
-    axios.post('/api/comments/'+agent._id, postComment);
+    axios.post('/api/comments/'+agent._id, postComment).then( res=>{
+      this.setState({
+        submitMSG: "Post Successful"
+      })
+    }).catch(err=>{
+      this.setState({
+        submitMSG: "Failed to Post"
+      })
+    })
 
   }
 
@@ -178,6 +187,8 @@ class AgentDetail extends React.Component {
                       <label htmlFor="icon_prefix2">Write a Comment</label>
                     </div>
                   </div>  
+                  <button type='submit' className="btn themeButton">Submit</button><br/>
+                  <span style={{color: this.state.submitMSG === "Post Successful" ? 'green': 'red'}}>{this.state.submitMSG}</span>
           </form>
         </div>
       </div>

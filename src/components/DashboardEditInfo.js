@@ -203,7 +203,7 @@ class DashboardEditInfo extends React.Component {
 					<form className="col s12">
 						<div className="row">
 
-							<div className="input-field col s12">
+							<div className="input-field col s10">
 								<i className="material-icons prefix">account_circle</i>
 								<input id="icon_prefix" type="text" className="validate" onChange={this.getName}/>
 			          <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.name" /></label>
