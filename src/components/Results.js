@@ -36,7 +36,7 @@ class Results extends React.Component {
     // console.log(this.props);
     return (
       <div className="container center-align">
-         <div className="col s12 m12 l12 xl12 whiteBack">
+         <div className="col s12 m12 l12 xl12 whiteBack white">
               <Search/>
               </div>
             

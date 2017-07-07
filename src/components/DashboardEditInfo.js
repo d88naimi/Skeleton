@@ -20,16 +20,12 @@ class DashboardEditInfo extends React.Component {
     	password:'',
     	languages: [],
     	msg: '',
-    	passMSG:'',
-    	temppassword:''
     }
     this.handleUserSubmit = this.handleUserSubmit.bind(this);
     this.handleAgentSubmit = this.handleAgentSubmit.bind(this);
     this.getName = this.getName.bind(this);
     this.getEmail = this.getEmail.bind(this);
     this.getLocation = this.getLocation.bind(this);
-    this.getPassword = this.getPassword.bind(this);
-    this.getPasswordConfirm = this.getPasswordConfirm.bind(this);
     this.getEnglish = this.getEnglish.bind(this);
     this.getSpanish = this.getSpanish.bind(this);
     this.getKorean = this.getKorean.bind(this);
@@ -59,34 +55,6 @@ class DashboardEditInfo extends React.Component {
     		location: location
     	});
     }
-
-    getPassword(e){
-    	
-    	let temppassword= e.target.value.trim();
-    	this.setState({
-    		temppassword: temppassword
-    	});
-    }
-
-    getPasswordConfirm(e){
-    	
-    	let password= e.target.value.trim();
-
-    	if(this.state.temppassword === password){
-    		this.setState({
-    		password: password,
-    		passMSG:"Passwords Match"
-    		});
-    		
-    	}else{
-    		this.setState({
-    			passMSG:"Passwords Must Match"
-    		})
-    	}
-
-    	
-    }
-
 
     getEnglish(e){
 
@@ -199,42 +167,30 @@ class DashboardEditInfo extends React.Component {
 					</form>
 					<button onClick={this.handleUpload.bind(this)} className="uploadButton">Upload</button>
 				</div>
-				<div className="row">
+				{user && <div className="row">
 					<form className="col s12">
 						<div className="row">
 
-							<div className="input-field col s12">
+							<div className="input-field col s10">
 								<i className="material-icons prefix">account_circle</i>
-								<input id="icon_prefix" type="text" className="validate" onChange={this.getName}/>
-			          <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.name" /></label>
+								<input id="icon_prefix" type="text" defaultValue={user ? user.name : ''} className="validate" onChange={this.getName}/>
+			          <label className="active" htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.name" /></label>
 							</div>
 
 							<div className="input-field col s6">
 								<i className="material-icons prefix">email</i>
-								<input id="icon_telephone" type="tel" className="validate" onChange={this.getEmail}/>
-			          <label htmlFor="icon_telephone"><FormattedMessage id="app.dashboardEdit.email" /></label>
+								<input disabled id="email" type="tel" className="validate" defaultValue={user.email}/>
+			          <label className="active"  htmlFor="email"><FormattedMessage id="app.dashboardEdit.email" /></label>
 							</div>
 
 							<div className="input-field col s6">
 								<i className="material-icons prefix">my_location</i>
-								<input id="icon_prefix" type="text" className="validate" onChange={this.getLocation}/>
-			          <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.location" /></label>
+								<input id="icon_prefix" type="text" defaultValue={user.location} className="validate" onChange={this.getLocation}/>
+			          <label className="active"  htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.location" /></label>
 							</div>
 
 							<div className="input-field col s12 center-align">
 								<h5 style={{color: this.state.passMSG === "Passwords Match" ? "green": "red"}}>{this.state.passMSG}</h5>
-							</div>
-
-							<div className="input-field col s6">
-								<i className="material-icons prefix">vpn_key</i>
-								<input id="icon_prefix" type="password" className="validate" onChange={this.getPassword}/>
-								<label htmlFor="icon_prefix">Password</label>
-							</div>
-
-							<div className="input-field col s6">
-								<i className="material-icons prefix">vpn_key</i>
-								<input id="icon_prefix" type="password" className="validate" onChange={this.getPasswordConfirm}/>
-								<label htmlFor="icon_prefix">Verify Password</label>
 							</div>
 
 							<div className="col s6 container">
@@ -259,7 +215,7 @@ class DashboardEditInfo extends React.Component {
 							</div>
 						</div>
 					</form>
-				</div>
+				</div>}
 			</div>
 
 
@@ -268,7 +224,6 @@ class DashboardEditInfo extends React.Component {
 }
 
 export default connect(
-  ({auth}) => {
-    return ({ user: auth.user })
-  }, {uploadImage}
+  ({auth, lang}) => ({ user: auth.user, language: lang.language }),
+  {uploadImage}
 )(DashboardEditInfo)

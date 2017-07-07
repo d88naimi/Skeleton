@@ -9,16 +9,17 @@ import AgentSingle from './AgentSingle';
 import './Agent.scss';
 import axios from "axios";
 import {moveToMessageRoute} from '../actions/chat';
-var Rating = require('react-rating');
+const Rating = require('react-rating');
 
 class AgentDetail extends React.Component {
 
   constructor(props) {
     super(props);
     this.state={
-      newComment: "",
-      newRating: ""
-    }
+      text: "",
+      rate: 0,
+      submitMSG:''
+    };
     const { selectAgent } = this.props;
     const id = this.props.match.params.id;
     selectAgent(id);
@@ -31,31 +32,18 @@ class AgentDetail extends React.Component {
   renderAgent(){
     const {agent} = this.props;
     return(
-      
-        <AgentSingle className="col s12 m3 l3"
-          name={agent.name}
-          photo={agent.photoURL}
-          rating ={agent.avgRate}
-          email={agent.email}
-          phone={agent.phone}
-          languages={agent.languages}
-          description={agent.text}
-          
-        />
-      )
-  }
 
-  handleSubmit(event){
+      <AgentSingle className="col s12 m3 l3"
+                   name={agent.name}
+                   photo={agent.photoURL}
+                   rating ={agent.avgRate}
+                   email={agent.email}
+                   phone={agent.phone}
+                   languages={agent.languages}
+                   description={agent.text}
 
-    event.preventDefault();
-    const {agent} = this.props;
-
-    let postComment ={
-      text: this.state.newComment,
-      rate: this.state.newRating
-    }
-    axios.post('/api/comments/'+agent._id, postComment);
-
+      />
+    )
   }
 
   getComment(event){
@@ -64,23 +52,10 @@ class AgentDetail extends React.Component {
     //console.log(inputComment);
 
     this.setState({
-      newComment: inputComment
+      text: inputComment
     });
 
   }
-
-  getRadioValue(event){
-
-    let inputRadio = event.target.value;
-    //console.log(inputRadio);
-
-    this.setState({
-      newRating: inputRadio
-    });
-
-  }
-
-          
 
   handleSubmit(event){
 
@@ -89,31 +64,38 @@ class AgentDetail extends React.Component {
     //console.log(agent);
 
     let postComment ={
-      text: this.state.newComment,
-      rate: this.state.newRating
+      text: this.state.text,
+      rate: this.state.rate
     };
-    axios.post('/api/comments/'+agent._id, postComment);
+    axios.post('/api/comments/'+agent._id, postComment).then( res=>{
+      this.setState({
+        submitMSG: "Post Successful"
+      })
+    })
+      .catch(err => {
+        if(err && err.response && err.response.data && err.response.data.message) {
+          console.log(err.response.data.message);
+          this.setState({
+            submitMSG: err.response.data.message
+          });
+        } else {
+          this.setState({
+            submitMSG: "Failed to Post"
+          });
+        }
+
+      });
 
   }
 
-  getComment(event){
 
-    let inputComment = event.target.value.trim();
-    //console.log(inputComment);
+  getRadioValue(rate){
 
-    this.setState({
-      newComment: inputComment
-    });
-
-  }
-
-  getRadioValue(event){
-
-    let inputRadio = event.target.value;
+    console.log(rate);
     //console.log(inputRadio);
 
     this.setState({
-      newRating: inputRadio
+      rate: rate
     });
 
   }
@@ -129,10 +111,10 @@ class AgentDetail extends React.Component {
     return (
       <div className="container themeAgent row">
 
-          <h5>Agent Details </h5>
-          <hr/>
+        <h5>Agent Details </h5>
+        <hr/>
 
-          {user && user.myAgent && agent._id === user.myAgent._id && <div className="container center-align myAgentBox"><h4> My Agent</h4></div>}
+        {user && user.myAgent && agent._id === user.myAgent._id && <div className="container center-align myAgentBox"><h4> My Agent</h4></div>}
 
         <div className="right-align selectButtonContainer">
           {user && user.myAgent && agent._id !== user.myAgent._id && <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>}
@@ -143,41 +125,32 @@ class AgentDetail extends React.Component {
         {agent && this.renderAgent()}
 
         <div className="container commentContainer">
-         {agent.comments && agent.comments.map( (comment,index)=>{
+          {agent.comments && agent.comments.map( (comment,index)=>{
             return <AgentComment key={index} comment={comment.text} created={comment.createdAt} authorName={comment.author.name} authorPhotoURL={comment.author.photoURL}/>
-         })}
+          })}
         </div>
 
         <div className="container addCommentContainer">
+          <Rating
+            initialRate={this.state.rate}
+            empty="fa fa-star-o fa-2x"
+            full={['fa fa-star fa-2x rateColor']}
+            fractions={2}
+            onClick={this.getRadioValue}
+          />
           <form onSubmit={this.handleSubmit}>
-                  <div>
+            <div>
 
-                  <div onChange={this.getRadioValue}>
-                    <span>Rate this Agent</span>
-                    <hr/>
-                    <input name="group1" type="radio" id="test1" value="1"/>
-                    <label className="stars" htmlFor="test1">&#x2605;</label>
-                    <br/>
-                    <input name="group1" type="radio" id="test2" value="2"/>
-                    <label className="stars" htmlFor="test2">&#x2605;x2</label>
-                    <br/>
-                    <input name="group1" type="radio" id="test3" value="3"/>
-                    <label className="stars" htmlFor="test3">&#x2605;x3</label>
-                    <br/>
-                    <input name="group1" type="radio" id="test4" value="4"/>
-                    <label className="stars" htmlFor="test4">&#x2605;x4</label>
-                    <br/>
-                    <input name="group1" type="radio" id="test5" value="5"/>
-                    <label className="stars" htmlFor="test5">&#x2605;x5</label>
-                    <br/>
-                  </div>
 
-                    <div className="input-field">
-                      <i className="material-icons prefix">mode_edit</i>
-                      <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
-                      <label htmlFor="icon_prefix2">Write a Comment</label>
-                    </div>
-                  </div>  
+
+              <div className="input-field">
+                <i className="material-icons prefix">mode_edit</i>
+                <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
+                <label htmlFor="icon_prefix2">Write a Comment</label>
+              </div>
+            </div>
+            <div style={{textAlign: 'center', color: this.state.submitMSG === "Post Successful" ? 'green': 'red'}}>{this.state.submitMSG}</div>
+            <button type='submit' className="btn themeButton">Submit</button><br/>
           </form>
         </div>
       </div>
