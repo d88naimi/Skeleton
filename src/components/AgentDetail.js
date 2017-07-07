@@ -122,8 +122,9 @@ class AgentDetail extends React.Component {
 
   render() {
 
-    const {agent, selectAsMyAgent, moveToMessageRoute} = this.props;
-    // console.log(this.props);
+    const {user, agent, selectAsMyAgent, moveToMessageRoute} = this.props;
+
+    // console.log("MYAGENT ID",user.myAgent._id);
 
     return (
       <div className="container themeAgent row">
@@ -131,11 +132,11 @@ class AgentDetail extends React.Component {
           <h5>Agent Details </h5>
           <hr/>
 
-      
-
+          {user && user.myAgent && agent._id === user.myAgent._id && <div className="container center-align myAgentBox"><h4> My Agent</h4></div>}
 
         <div className="right-align selectButtonContainer">
-          <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button><br/>
+          {agent._id !== user.myAgent._id && <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>}
+          <br/>
           <button onClick={moveToMessageRoute.bind(null, agent._id)} className="btn themeButton"><i className="material-icons left">send</i>Send a Message</button>
         </div>
 
