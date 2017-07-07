@@ -23,7 +23,18 @@ class LanguagesDropdown extends React.Component {
     const { loadLanguage} = this.props;
     const languages = [
       "Korean",
-      "Spanish"
+      "Chinese",
+      "Spanish",
+      "Hindi",
+      "Bengali",
+      "Punjabi",
+      "Telgu",
+      "Arabic",
+      "German",
+      "Russian",
+      "Indonesian",
+      "Portuguese",
+      "English"
     ]
     return (
       <div>

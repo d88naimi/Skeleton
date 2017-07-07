@@ -9,7 +9,6 @@ class CityDropdown extends React.Component {
   constructor(props) {
     super(props);
   }
-
   handleSelectChange(event) {
         const target = event.target;
         const value = target.value;
@@ -21,18 +20,29 @@ class CityDropdown extends React.Component {
   render() {
     // console.log(this.props);
     const { loadLanguage} = this.props;
+    const languages = [
+      "Anaheim",
+      "San Diego",
+      "San Francisco",
+      "Palo Alto",
+      "Santa Monica ",
+      "Sacramento",
+      "Malibu",
+      "Santa Barbara",
+      "San Jose",
+      "Oakland",
+      "Beverly Hills",
+      "Irvine",
+      "Beverly Hills",
+      "Monterey",
+      "Long Beach"
+    ]
     return (
       <div>
             <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="en" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
                   <option value="" disabled >Choose your City</option>
-                  <option value="en">San Diego</option>
-                  <option value="es">San Francisco </option>
-                  <option value="kr">Los Angeles </option>
-                  <option value="kr">Oakland </option>
-                  <option value="kr">Sacramento </option>
-                  <option value="kr">San Jose </option>
-                  <option value="kr">Beverly Hills </option>
-                  <option value="kr">Santa Barbara  </option>
+                  {languages.map(l => (<option value={l}>{l}</option>))}
+              
             </select>
        </div>     
     );
