@@ -22,6 +22,11 @@ class Home extends React.Component {
             <FormattedMessage id="app.home.intro"/>
           </h5>
            <hr/>
+           <div className="container center-align">
+            <Search/>
+           </div>
+           <div className="col s12 m12 l12 divider">
+          </div>
            <iframe className="col s12 m12 l12" height="360px" src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" frameBorder="0"  allowFullScreen></iframe>      
           </div>
           <div className="col s12 m12 l12 divider">
