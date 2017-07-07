@@ -8,6 +8,8 @@ import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang'
 import './Header.scss';
 import LanguagesSelect from "./LanguagesSelect";
+import LanguagesDropdown from "./LanguagesDropdown";
+import CityDropdown from "./CityDropdown";
 import favicon from '../../public/favicon.png';
 
 class Header extends React.Component {
@@ -36,6 +38,8 @@ class Header extends React.Component {
               {user && <li><span style={{color:"gray"}}><FormattedMessage id="app.header.hi" /></span>  <strong id="userName"> {user.name}</strong></li>}
               {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}><FormattedMessage id="app.dashboardSB.logout" /></a></li>}
             <li> <LanguagesSelect /> </li>
+            <li> <LanguagesDropdown /> </li>
+            <li> <CityDropdown /> </li>
             </ul>
           </div>
         </nav>
