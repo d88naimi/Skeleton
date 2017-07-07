@@ -65,6 +65,7 @@ export const en = {
   "app.dashboardSB.myagent": "My Agent",
   "app.dashboardSB.payment": "Payments",
   "app.dashboardSB.editInfo": "Edit Info",
+  "app.dashboardSB.password": "Change Password",
   "app.dashboardSB.logout": "Log Out",
 
   "app.dashboardPay.header": "Submit a Payment",
@@ -155,6 +156,7 @@ export const es = {
   "app.dashboardSB.myagent": "Mi agente",
   "app.dashboardSB.payment": "Realizar un pago",
   "app.dashboardSB.editInfo": "Editar su información",
+  "app.dashboardSB.password": "Cambia la contraseña",
   "app.dashboardSB.logout": "Salir",
 
   "app.dashboardPay.header": "Realizar un pago",

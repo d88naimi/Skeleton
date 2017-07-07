@@ -7,6 +7,7 @@ import DashboardDefault from './DashboardDefault';
 import DashboardAgents from './DashboardAgents';
 import { NavLink } from 'react-router-dom'
 import './Dashboard.scss';
+import DashboardPassword from "./DashboardPassword";
 
 
 export class Dashboard extends React.Component {
@@ -28,6 +29,7 @@ export class Dashboard extends React.Component {
 	      {this.props.location.pathname === "/dashboard/edit-info" && <DashboardEditInfo/>}
 	      {this.props.location.pathname === "/dashboard/payments" && <DashboardPayment/>}
 	      {this.props.location.pathname === "/dashboard/my-agents" && <DashboardAgents/>}
+	      {this.props.location.pathname === "/dashboard/password" && <DashboardPassword />}
       </div>
     );
   }

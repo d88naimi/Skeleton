@@ -163,7 +163,7 @@ module.exports.create = (req, res) => {
 
   return Comment.findOne({'author._id': author._id})
     .then(comment => {
-      if(comment) return handleError(res, 400)(new Error("You've already written a comment"));
+      if(comment) return res.status(400).json({message: 'You\'ve already written a comment'});
       return Comment.create(req.body)
         .then(comment => {
           return User.findById(agentId).exec()

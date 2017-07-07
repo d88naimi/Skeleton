@@ -59,8 +59,9 @@ export class Login extends React.Component {
 
 	getPassword(event){
 		let inputPassword= event.target.value.trim();
+    const {pathname} = this.props.location;
 
-		if(!validatePassword(inputPassword)) {
+		if(pathname === '/signup' && !validatePassword(inputPassword)) {
 			return this.setState({
 				passwordError: true,
 				passwordValidation: "validate invalid required"
@@ -77,7 +78,8 @@ export class Login extends React.Component {
 
 	getName(event){
 		let inputName= event.target.value.trim();
-		if(!validateName(inputName)) {
+
+    if(!validateName(inputName)) {
 			return this.setState({
 				nameError: true,
 				nameValidation: "validate invalid required"
@@ -100,6 +102,7 @@ export class Login extends React.Component {
 	}
 
 	renderSignupForm(){
+
 		return(
 			<div className="row">
 					<div className="input-field col s12">
@@ -213,15 +216,17 @@ export class Login extends React.Component {
 					<div>
 						<div className="row">
 							<div className="input-field col s12">
-								<input
+								{pathname === '/signup' && <input
 									pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
 									id="password" 
 									type="password" 
 									className={this.state.passwordValidation} 
-									onChange={this.getPassword} />
-								<label id="password" data-error="Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number" htmlFor="Password">
+									onChange={this.getPassword} />}
+								{pathname === '/login' && <input id="password" type="password" className={this.state.passwordValidation} onChange={this.getPassword}/>}
+								{pathname === '/signup' && <label id="password" data-error="Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number" htmlFor="Password">
 									<FormattedMessage id="app.login.password" />
-								</label>
+								</label>}
+								{pathname === '/login' && <label id="password" data-success="" htmlFor="Password"><FormattedMessage id="app.login.password" /></label>}
 							</div>
 						</div>
 					</div>
