@@ -7,6 +7,24 @@ $Main-DarkGray: #333333;
 	color: $Main-Blue;
 }
 
+.homePic{
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.divider{
+	border-radius: 20px;
+	height: 10px;
+	margin: 10px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#356aa0+0,356aa0+100;Blue+Flat */
+	background: rgb(53,106,160); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(53,106,160,1) 0%, rgba(53,106,160,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  rgba(53,106,160,1) 0%,rgba(53,106,160,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  rgba(53,106,160,1) 0%,rgba(53,106,160,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#356aa0', endColorstr='#356aa0',GradientType=0 ); /* IE6-9 */
+
+}
+
 .langButton{
 	background-color: transparent;
 	color: $Main-DarkGray;
