@@ -23,7 +23,7 @@ class Home extends React.Component {
         <div className="container">
 	      	<hr/>
           
-	      	<h4 className="blueFont center-align">
+	      	<h5 className="blueFont center-align">
             <FormattedMessage id="app.home.intro"/>
           </h5>
           <div className="container">
