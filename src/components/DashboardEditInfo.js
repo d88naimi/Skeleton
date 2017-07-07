@@ -181,8 +181,8 @@ class DashboardEditInfo extends React.Component {
     const {user} = this.props;
     return (
 			<div className="col s12 m9 l9 editProfileInfoBox" >
-				{user.role === "user" && <h5><b>User:</b> Profile Edit</h5>}
-				{user.role === "agent" && <h5><b>Agent:</b> Profile Edit</h5>}
+				{user && user.role === "user" && <h5><b>User:</b> Profile Edit</h5>}
+				{user && user.role === "agent" && <h5><b>Agent:</b> Profile Edit</h5>}
 				<hr/>
 				<div className="row center-align" style={{'padding': "0px 100px"}}>
           {user && <img className="photo" src={user.photoURL} style={{'width': "100px"}} alt="profile picture transUnited"/>}
@@ -252,8 +252,8 @@ class DashboardEditInfo extends React.Component {
 							<div className="col s12 center-align">
 								<hr/>
 								<br/>
-								{user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton">Save User Info</button>}
-								{user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton">Save Agent Info</button>}
+								{user && user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton">Save User Info</button>}
+								{user &&user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton">Save Agent Info</button>}
 								<hr/>
 								<h5 style={{color: this.state.msg === "Update Successful" ? "green": "red"}}>{this.state.msg}</h5>
 							</div>

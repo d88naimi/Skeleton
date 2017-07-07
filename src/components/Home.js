@@ -17,26 +17,14 @@ class Home extends React.Component {
     const {time, loadLanguage} = this.props;
     return (
       <div className="container homeBackground whiteBackground">
-      	<div className="center-align">
-          <iframe src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" width="640" height="360" frameBorder="0"  allowFullScreen></iframe>
-      	</div>
-        <div className="container">
-	      	<hr/>
-          
-	      	<h5 className="blueFont center-align">
+          <div className='col s12 m12 l12 row'>
+           <h5 className="blueFont center-align">
             <FormattedMessage id="app.home.intro"/>
           </h5>
-          <div className="container">
-            <Search/>
+           <hr/>
+           <iframe className="col s12 m12 l12" height="360px" src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" frameBorder="0"  allowFullScreen></iframe>      
           </div>
           <div className="col s12 m12 l12 divider">
-          </div>
-          <div className='col s12 m12 l12'>
-          <h5>Meet American Life™</h5>
-          <hr/>
-          </div>
-          <iframe style={{backgroundColor: 'white', margin:'20px'}} className="col s12" height="360px" src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" frameBorder="0"  allowFullScreen></iframe>      
-        <div className="col s12 m12 l12 divider">
           </div>
         <div className="col s12 m12 l12 row center-align">
           <hr/>
@@ -59,15 +47,7 @@ class Home extends React.Component {
             <img className="homePic" src='./agent.jpg' width='100%' alt="americanlife home image"/>
           </div>
 
-	       <div className="container  center-align">
-               <div className="col s12 m12 l12 xl12 ">
-              <Search/>
-              </div>
-               <h4><em><FormattedDate value={time} /></em></h4>
-            </div>
       	</div>
-
-        </div>
       
       </div>
     );
