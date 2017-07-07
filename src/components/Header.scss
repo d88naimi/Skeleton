@@ -32,16 +32,22 @@ nav{
 }
 
 .themeButton{
-	background-color: rgba(0,0,0,.2);
+	background-color: rgba(0,0,0,.4);
 	color: white;
 	border: 1px solid white;
 	text-decoration: none;
 	border-radius: 20px;
 	&:hover{
-		background-color: rgba(0,0,0,.3);
+		background-color: rgba(0,0,0,.7);
 		color: white;
 		border: 1px solid white;
 		text-decoration: none;	
+	}
+	&:focus{
+		background-color: rgba(0,0,0,1);
+		color: white;
+		border: 1px solid white;
+		text-decoration: none;
 	}
 
 }
