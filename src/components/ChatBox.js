@@ -51,13 +51,16 @@ class ChatBox extends React.Component {
               { selected &&
               <div className="chat-box">
                 {messages.map((msg, idx) => (
-                  <div key={idx} className="row" style={{marginBottom: 0}}>
-                    <div className="col s2">
+
+                  <div key={idx} className="row userMSG" style={{float: msg.from === user._id ? "left": "right", backgroundColor: msg.from === user._id ? "#e2e2e2": "#b5d3f0" }}>
+                    <div className="chatIMG" style={{float: msg.from === user._id ? "left": "right"}}>
                       <img src={ entities[roomId][msg.from].photoURL } className="circle responsive-img"/>
                     </div>
-                    <div className="col s10">
-                      <div>{msg.text}</div>
-                      <div><i>{msg.updatedAt}</i></div>
+
+                    <div className="col s10 ">
+                      <p >{msg.text}</p>
+                      <br/>
+                      <div className="chatTimestamp"><i>{msg.updatedAt}</i></div>
                     </div>
                   </div>
                 ))}

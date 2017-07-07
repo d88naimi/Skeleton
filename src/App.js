@@ -6,6 +6,7 @@ import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import ContactUs from './components/ContactUs';
+import ErrorMsg from './components/ErrorMsg';
 
 import Results from './components/Results';
 
@@ -53,6 +54,7 @@ class App extends React.Component{
           <Header />
           <main>
             <Drawer />
+            <ErrorMsg />
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Login} />
