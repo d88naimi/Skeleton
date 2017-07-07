@@ -33,8 +33,8 @@ class Header extends React.Component {
                     <img id="profilePhoto"  src={user.photoURL} />
                   </NavLink>
                 </li>}
-              {user && <li><span style={{color:"gray"}}>Hi!</span>  <strong id="userName">{user.name}</strong></li>}
-            {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}>Log Out</a></li>}
+              {user && <li><span style={{color:"gray"}}><FormattedMessage id="app.header.hi" /></span>  <strong id="userName"> {user.name}</strong></li>}
+              {user && <li><a className="btn logoutButton" onClick={logout} style={{cursor: 'pointer'}}><FormattedMessage id="app.dashboardSB.logout" /></a></li>}
             <li> <LanguagesSelect /> </li>
             </ul>
           </div>
