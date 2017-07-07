@@ -347,6 +347,10 @@ module.exports.me = (req, res, next) => {
  */
 
 module.exports.editAgent = (req, res, next) => {
+
+
+
+
   const agentId = req.user._id;
   return User.findOne({_id: agentId, role: 'agent'}).exec()
     .then(agent => {  
