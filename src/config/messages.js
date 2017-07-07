@@ -1,5 +1,5 @@
 export const en = {
-  "app.home.intro": "Hello, AmericanLife!",
+  "app.home.intro": "Welcome!",
   "app.search.language": "Search by language",
   "app.search.location": "Search by City",
   "app.search.searchBtn": "Search for Agents", 
@@ -89,7 +89,7 @@ export const en = {
 }
 
 export const es = {
-  "app.home.intro": "¡Hola, AmericanLife!",
+  "app.home.intro": "Bienvenido de nuevo!",
   "app.search.language": "Búsqueda por idioma",
   "app.search.location": "Búsqueda por ciudad",
   "app.search.searchBtn": "Búsqueda de agentes",

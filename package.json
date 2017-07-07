@@ -24,6 +24,7 @@
     "cookie-parser": "^1.4.3",
     "crypto": "0.0.3",
     "dotenv": "^4.0.0",
+    "dummy-json": "^2.0.0",
     "errorhandler": "^1.4.3",
     "express": "^4.14.0",
     "express-jwt": "^5.3.0",
