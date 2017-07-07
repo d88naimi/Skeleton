@@ -35,12 +35,12 @@ export class DashboardPayment extends React.Component {
 		      <div className="row">
 		        <div className="input-field col s6">
 		          <input id="first_name" type="text" className="validate"></input>
-		          <label htmlFor="first_name">First Name</label>
+		          <label htmlFor="first_name"><FormattedMessage id="app.dashboardPay.fn" /></label>
 		        </div>
 
 		        <div className="input-field col s6">
 		          <input id="last_name" type="text" className="validate"></input>
-		          <label htmlFor="last_name">Last Name</label>
+		          <label htmlFor="last_name"><FormattedMessage id="app.dashboardPay.ln" /></label>
 		        </div>
 		      </div>
 
@@ -50,31 +50,31 @@ export class DashboardPayment extends React.Component {
 			        <div className="input-field col s12">
 			          <i className="material-icons prefix">credit_card</i>
 			          <input type="text" className="validate"></input>
-			          <label htmlFor="icon_prefix2">Credit Card Number</label>
+			          <label htmlFor="icon_prefix2"><FormattedMessage id="app.dashboardPay.cn" /></label>
 			        </div>
 			      </div>
 			    </div>
 			  </div>
 
 			  <div className="row">
-			    <div className="col s3">
+			    <div className="col s5">
 			      <div className="row">
 			        <div className="input-field col s12">
 			          <i className="material-icons prefix">credit_card</i>
 			          <input placeholder="MMYY" type="text" className="validate"></input>
-			          <label htmlFor="icon_prefix2">Expiration Date</label>
+			          <label htmlFor="icon_prefix2"><FormattedMessage id="app.dashboardPay.ed" /></label>
 			        </div>
 			      </div>
 			    </div>
 			  </div>
 
 			   <div className="row">
-			    <div className="col s3">
+			    <div className="col s5">
 			      <div className="row">
 			        <div className="input-field col s12">
 			          <i className="material-icons prefix">credit_card</i>
 			          <input placeholder="###" type="password" className="validate"></input>
-			          <label htmlFor="icon_prefix2">CVC</label>
+			          <label htmlFor="icon_prefix2"><FormattedMessage id="app.dashboardPay.cvc" /></label>
 			        </div>
 			      </div>
 			    </div>
@@ -85,7 +85,7 @@ export class DashboardPayment extends React.Component {
 		    <div className="col s12 center-align">
 				<hr/>
 				<br/>
-				<button type="button" className="btn themeButton">Send Payment</button>
+				<button type="button" className="btn themeButton"><FormattedMessage id="app.dashboardPay.sendBtn" /></button>
 				<br/>
 			</div>
 
