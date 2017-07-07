@@ -231,15 +231,6 @@ class DashboardEditInfo extends React.Component {
 								<label htmlFor="icon_prefix">Verify Password</label>
 							</div>
 
-							{/*<div className="input-field col s6">
-								<select className="browser-default col s12" defaultValue="English" onChange={this.Languages}>
-									<option value="" disabled>Languages</option>
-									<option value="English">English</option>
-									<option value="Spanish">Español</option>
-									<option value="Korean">한국어</option>
-								</select>
-							</div>*/}
-
 							<div className="col s6 container">
 						      <input type="checkbox" id="eng" value="english" onChange={this.getEnglish}/>
 						      <label htmlFor="eng">English</label>
@@ -260,6 +251,10 @@ class DashboardEditInfo extends React.Component {
 								<hr/>
 								<h5 style={{color: this.state.msg === "Update Successful" ? "green": "red"}}>{this.state.msg}</h5>
 							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 
 
     );
