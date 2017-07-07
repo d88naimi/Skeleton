@@ -31,6 +31,7 @@ class Results extends React.Component {
     }
   }
 
+
   render() {
     const {agents} = this.props;
     // console.log(this.props);
@@ -43,9 +44,8 @@ class Results extends React.Component {
           <div className="container flexParent " >
             {agents && agents.map( (agent,index) =>{
                 return <Agents
-                agent= {agent}
-              
-                
+                 key={index}
+                 agent= {agent}
                 />
             })}
           </div> 

@@ -21,19 +21,27 @@ export default class Agents extends React.Component {
     <div className="card flexChild ">
     
     <div className="card-image waves-effect waves-block waves-light">
-      <img className="activator" img src={photo}></img>
+      <img className="activator" img src={agent.photoURL} alt="agent resut AmericanLife"></img>
     </div>
     <div className="card-content center-align">
       <h4 className="card-title  grey-text text-darken-4">{agent.name}</h4>
-      <p className=" grey-text text-darken-4">{agent.city}</p>
+      {agent.avgRate !== 0 &&<Rating
+        className="resultStars"
+        empty="fa fa-star-o" 
+        full="fa fa-star" 
+        initialRate={agent.avgRate}
+        readonly= "true"
+      /> }
+      {agent.avgRate === 0 && <p>No Rating</p>}
+      <hr/>
+      <p className=" grey-text text-darken-4"><b>{agent.location}</b></p>
+      <hr/>
       {agent.languages.map( (lang,index)=>{
-        return <p key-={index}> -{lang}</p> 
+        return <p key={index}> - {lang}</p> 
       })}
-      <span className="card-title activator grey-text text-darken-4"><Link to={'/agents/' + agent._id}> AGENT DETAILS</Link> </span>
- 
-      <Rating
-              empty="fa fa-star-o fa-2x"
-              full="fa fa-star fa-2x" />
+      <Link className="btn langButton" to={'/agents/' + agent._id}>MORE</Link>
+      <br/>
+      
     
     </div>
    

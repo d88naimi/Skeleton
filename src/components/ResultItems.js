@@ -17,13 +17,14 @@ export class ResultItems extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
       
         <div className="col s12 m4 l3 xl3 offset-xl1">
       <div className="card">
         <div className="card-image">
-          <img src={photo}></img>
+          <img src={this.props.photoURL} alt="result agent AmericanLife"></img>
           <span className="card-title">{this.props.name}</span>
           <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
         </div>
@@ -37,10 +38,11 @@ export class ResultItems extends React.Component {
             <li><em>{this.props.phone}</em></li>
             <li><em>{this.props.avgRate}</em></li>
             <Rating
-  empty="fa fa-star-o fa-2x"
-  full="fa fa-star fa-2x"
-  fractions={2}
-/>
+              empty="fa fa-star-o fa-2x"
+              full="fa fa-star fa-2x"
+              fractions={2}
+              stop={this.props.rate}
+            />
             
           </ul>
         </div>
