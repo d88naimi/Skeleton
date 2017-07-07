@@ -5,7 +5,8 @@
 'use strict';
 
 const express = require('express');
-const shrinkRay = require('shrink-ray');
+const compress= require('compression');
+// const shrinkRay = require('shrink-ray');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
@@ -33,7 +34,7 @@ module.exports = function(app) {
   // app.use(express.static(path.join(config.root, 'public')));
   app.use(morgan('dev'));
 
-  app.use(shrinkRay());
+  app.use(compress());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(methodOverride());
