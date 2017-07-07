@@ -8,7 +8,8 @@ module.exports.setup = (User, config) => {
     callbackURL: config.facebook.callbackURL,
     profileFields: [
       'displayName',
-      'emails'
+      'emails',
+      'picture.type(large)'
     ]
   },
   function(accessToken, refreshToken, profile, done) {
@@ -40,7 +41,8 @@ module.exports.setup = (User, config) => {
       callbackURL: config.facebook.callbackURLForAgent,
       profileFields: [
         'displayName',
-        'emails'
+        'emails',
+        'picture.type(large)'
       ]
     },
     function(accessToken, refreshToken, profile, done) {
