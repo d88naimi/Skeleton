@@ -5,7 +5,6 @@
 'use strict';
 
 const express = require('express');
-// const favicon = require('serve-favicon');
 const shrinkRay = require('shrink-ray');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
