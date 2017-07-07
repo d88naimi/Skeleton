@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import Search from './Search';
 import './Home.scss';
 import {FormattedMessage, FormattedDate} from 'react-intl';
-import { loadLanguage } from '../actions/lang'
-import { Link } from 'react-router-dom'
+import { loadLanguage } from '../actions/lang';
+import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -17,26 +19,19 @@ class Home extends React.Component {
     const {time, loadLanguage} = this.props;
     return (
       <div className="container homeBackground whiteBackground">
-      	<div className="center-align">
-          <iframe src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" width="640" height="360" frameBorder="0"  allowFullScreen></iframe>
-      	</div>
-        <div className="container">
-	      	<hr/>
-          
-	      	<h5 className="blueFont center-align">
+          <div className='col s12 m12 l12 row'>
+           <h5 className="blueFont center-align">
             <FormattedMessage id="app.home.intro"/>
           </h5>
-          <div className="container">
+           <hr/>
+           <div className="container center-align">
             <Search/>
+           </div>
+           <div className="col s12 m12 l12 divider">
+          </div>
+           <iframe className="col s12 m12 l12" height="360px" src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" frameBorder="0"  allowFullScreen></iframe>      
           </div>
           <div className="col s12 m12 l12 divider">
-          </div>
-          <div className='col s12 m12 l12'>
-          <h5>Meet American Life™</h5>
-          <hr/>
-          </div>
-          <iframe style={{backgroundColor: 'white', margin:'20px'}} className="col s12" height="360px" src="https://player.vimeo.com/video/224391868?title=0&byline=0&portrait=0" frameBorder="0"  allowFullScreen></iframe>      
-        <div className="col s12 m12 l12 divider">
           </div>
         <div className="col s12 m12 l12 row center-align">
           <hr/>
@@ -46,28 +41,22 @@ class Home extends React.Component {
           <div className="col s12 m6 l8">
             <h5>What is American Life™?</h5>
             <hr/>
-            <p>Lorem Ipsum is simply dummy text of the printing and typambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            <p>American Life™ is a service helps the thousands of immigrants make the transition to the United States smoother by connecting them to a selection of agents handpicked that can offer them a number of services to assist them with their transfer. Services can include translation, helping opening a bank account, finding a car, finding a place to live in, etc. Our app is easy to use and it can be displayed in other languages for easy access and peace of mind so you know you’re contacting the right agent.</p>
           </div>
           <div className="col s12 m12 l12 divider">
           </div>
           <div className="col s12 m6 l8">
-            <h5>People helping people</h5>
+            <h5>Our Experts Are Here To Help</h5>
             <hr/>
-            <p>Lorem Ipsum is simply dummy type and scrambled it to make a1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+            <p>Our handpicked list of agents will make the transfer process a breeze.  Our agents can help you take the stress away from the long and complicated process of applying, filling out tons of paperwork and choosing the right places when you're in another country.</p>
+            <p>Check out our different plans and get started today!</p>
+            <NavLink className="btn langButton" to="/plans">Plans</NavLink>
           </div>
            <div className="col s12 m6 l4 ">
             <img className="homePic" src='./agent.jpg' width='100%' alt="americanlife home image"/>
           </div>
 
-	       <div className="container  center-align">
-               <div className="col s12 m12 l12 xl12 ">
-              <Search/>
-              </div>
-               <h4><em><FormattedDate value={time} /></em></h4>
-            </div>
       	</div>
-
-        </div>
       
       </div>
     );

@@ -21,10 +21,10 @@ export class DashboardAgents extends React.Component {
     //console.log("USER", user);
 
     if (user) {
-      axios.put('/api/users/' + user._id, {myAgent: "5957cefb34852a0efc3cc5ec"}).then(res => {
+      axios.get('/api/users/agent/' + user.myAgent._id).then(res => {
         //console.log("response", res);
         this.setState({
-          agentInfo: res.data.myAgent
+          agentInfo: res.data
         });
       });
     }
@@ -42,7 +42,7 @@ export class DashboardAgents extends React.Component {
           {!user && <h5>You must be signed in to see agent info</h5>}
           {user && <img className="photo" width="100px" src={this.state.agentInfo.photoURL} alt="agent photo"/> }
           {user && <h5>{this.state.agentInfo.name}</h5>}
-          {user && <NavLink className="btn langButton" to={'/agents/'+this.state.agentInfo._id}>Profile</NavLink>}
+          {user && <NavLink className="btn langButton" to={'/agents/'+this.state.agentInfo._id}> To Agent Profile</NavLink>}
 
         </div>
 

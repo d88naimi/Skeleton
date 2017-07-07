@@ -90,25 +90,31 @@ class DashboardEditInfo extends React.Component {
 
     getEnglish(e){
 
-    	let inputCheckbox = event.target.checked;
+    	let inputCheckbox = e.target.checked;
     	if(inputCheckbox){
-    		this.state.languages.push('english');
+    		this.state.languages = [...this.state.languages, 'English'];
+    		
     	}
     }
 
     getSpanish(e){
 
-    	let inputCheckbox = event.target.checked;
+    	let inputCheckbox = e.target.checked;
+    		console.warn(inputCheckbox);
     	if(inputCheckbox){
-    		this.state.languages.push('spanish');
+    		this.state.languages = [...this.state.languages, 'Spanish'];
+    		// this.setState({
+    		// 	languages: this.state.languages.push('Spanish')
+    		// })
     	}
     }
 
     getKorean(e){
 
-    	let inputCheckbox = event.target.checked;
+    	let inputCheckbox = e.target.checked;
     	if(inputCheckbox){
-    		this.state.languages.push('korean');
+    		this.state.languages = [...this.state.languages, 'Korean'];
+    		
     	}
     }
 
@@ -130,7 +136,7 @@ class DashboardEditInfo extends React.Component {
 			INFO['location']= this.state.location;
 		}
 		if(this.state.languages){
-			INFO['languages']= this.state.languages;
+			INFO['languages']= JSON.stringify(this.state.languages)
 		}
 
 		return INFO;
@@ -175,8 +181,8 @@ class DashboardEditInfo extends React.Component {
     const {user} = this.props;
     return (
 			<div className="col s12 m9 l9 editProfileInfoBox" >
-				{user.role === "user" && <h5><b>User:</b> Profile Edit</h5>}
-				{user.role === "agent" && <h5><b>Agent:</b> Profile Edit</h5>}
+				{user && user.role === "user" && <h5><b>User:</b> Profile Edit</h5>}
+				{user && user.role === "agent" && <h5><b>Agent:</b> Profile Edit</h5>}
 				<hr/>
 				<div className="row center-align" style={{'padding': "0px 100px"}}>
           {user && <img className="photo" src={user.photoURL} style={{'width': "100px"}} alt="profile picture transUnited"/>}
@@ -246,8 +252,8 @@ class DashboardEditInfo extends React.Component {
 							<div className="col s12 center-align">
 								<hr/>
 								<br/>
-								{user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton">Save User Info</button>}
-								{user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton">Save Agent Info</button>}
+								{user && user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton">Save User Info</button>}
+								{user &&user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton">Save Agent Info</button>}
 								<hr/>
 								<h5 style={{color: this.state.msg === "Update Successful" ? "green": "red"}}>{this.state.msg}</h5>
 							</div>

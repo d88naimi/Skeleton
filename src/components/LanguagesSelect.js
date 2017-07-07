@@ -23,7 +23,7 @@ class LanguagesSelect extends React.Component {
     const { loadLanguage} = this.props;
     return (
       <div>
-            <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="es" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
+            <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="en" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
                   <option value="" disabled >Choose your option</option>
                   <option value="en">English</option>
                   <option value="es">Español </option>
