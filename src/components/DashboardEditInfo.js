@@ -90,25 +90,31 @@ class DashboardEditInfo extends React.Component {
 
     getEnglish(e){
 
-    	let inputCheckbox = event.target.checked;
+    	let inputCheckbox = e.target.checked;
     	if(inputCheckbox){
-    		this.state.languages.push('english');
+    		this.state.languages = [...this.state.languages, 'English'];
+    		
     	}
     }
 
     getSpanish(e){
 
-    	let inputCheckbox = event.target.checked;
+    	let inputCheckbox = e.target.checked;
+    		console.warn(inputCheckbox);
     	if(inputCheckbox){
-    		this.state.languages.push('spanish');
+    		this.state.languages = [...this.state.languages, 'Spanish'];
+    		// this.setState({
+    		// 	languages: this.state.languages.push('Spanish')
+    		// })
     	}
     }
 
     getKorean(e){
 
-    	let inputCheckbox = event.target.checked;
+    	let inputCheckbox = e.target.checked;
     	if(inputCheckbox){
-    		this.state.languages.push('korean');
+    		this.state.languages = [...this.state.languages, 'Korean'];
+    		
     	}
     }
 
@@ -130,7 +136,7 @@ class DashboardEditInfo extends React.Component {
 			INFO['location']= this.state.location;
 		}
 		if(this.state.languages){
-			INFO['languages']= this.state.languages;
+			INFO['languages']= JSON.stringify(this.state.languages)
 		}
 
 		return INFO;
