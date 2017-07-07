@@ -24,10 +24,24 @@ router
     scope: ['email', 'user_about_me'],
     failureRedirect: '/signup',
     session: false
-  }))
-  .get('/callback', passport.authenticate('facebook', {
+  }));
+
+router
+  .get('/agent', passport.authenticate('facebook-agent', {
+    scope: ['email', 'user_about_me'],
+    failureRedirect: '/signup',
+    session: false
+  }));
+
+
+router.get('/callback', passport.authenticate('facebook', {
     failureRedirect: '/signup',
     session: false
   }), setTokenCookie);
+
+router.get('/agent/callback', passport.authenticate('facebook-agent', {
+  failureRedirect: '/signup',
+  session: false
+}), setTokenCookie);
 
 module.exports = router;
