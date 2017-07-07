@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import './Dashboard.scss';
 import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
 
-
-
 export class DashboardDefault extends React.Component {
 
 
@@ -12,7 +10,10 @@ export class DashboardDefault extends React.Component {
     super(props);
   }
 
+
   render() {
+
+
     return (
       <div className="container col s12 m9 l9 center-align defaultBox">
 	      <h4>
