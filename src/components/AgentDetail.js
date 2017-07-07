@@ -135,9 +135,9 @@ class AgentDetail extends React.Component {
           {user && user.myAgent && agent._id === user.myAgent._id && <div className="container center-align myAgentBox"><h4> My Agent</h4></div>}
 
         <div className="right-align selectButtonContainer">
-          {agent._id !== user.myAgent._id && <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>}
+          {user && user.myAgent && agent._id !== user.myAgent._id && <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>}
           <br/>
-          <button onClick={moveToMessageRoute.bind(null, agent._id)} className="btn themeButton"><i className="material-icons left">send</i>Send a Message</button>
+          {user && <button onClick={moveToMessageRoute.bind(null, agent._id)} className="btn themeButton"><i className="material-icons left">send</i>Send a Message</button>}
         </div>
 
         {agent && this.renderAgent()}
