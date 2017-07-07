@@ -9,7 +9,8 @@ import * as fromAuth from '../actions/auth';
 
 const initialState = {
   user: null,
-  jwt: null
+  jwt: null,
+  errorMsg: ""
 
 };
 
@@ -33,6 +34,14 @@ export function reducer(state = initialState, action) {
 
     case fromAuth.EMPTY_AUTH: {
       return initialState;
+    }
+
+    case fromAuth.ERROR_MSG: {
+      return Object.assign({}, state, {errorMsg: action.payload});
+    }
+
+    case fromAuth.DELETE_ERROR_MSG: {
+      return Object.assign({}, state, {errorMsg: ""});
     }
 
     default:

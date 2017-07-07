@@ -21,15 +21,21 @@ class Home extends React.Component {
       	</div>
         <div className="container">
 	      	<hr/>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
-          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
+          <button className="btn langButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
+          <button className="btn langButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
           
 	      	<h4 className="blueFont">
+
             <FormattedMessage id="app.home.intro"/>
           </h4>
-          <p><em><FormattedDate value={time} /></em></p>
-          
-	      	<Search />
+
+	       <div className="container  center-align">
+              <Search/>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'en')}>English</button>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Español</button>
+          <button className="btn themeButton" onClick={loadLanguage.bind(null, 'es')}>Korean</button>
+               <h4><em><FormattedDate value={time} /></em></h4>
+            </div>
       	</div>
 
       </div>

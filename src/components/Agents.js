@@ -14,19 +14,22 @@ export default class Agents extends React.Component {
   }
 
   render() {
+    const {agent} = this.props;
     return (
 
       
-    <div className="card col xs12 s12 m5 offset-m1 l3 xl3 offset-xl1 ">
+    <div className="card flexChild ">
     
     <div className="card-image waves-effect waves-block waves-light">
       <img className="activator" img src={photo}></img>
     </div>
-    <div className="card-content ">
-      <span className="card-title activator grey-text text-darken-4">{this.props.name}</span>
-      <span className="card-title activator grey-text text-darken-4">{this.props.city}</span>
-      <span className="card-title activator grey-text text-darken-4">{this.props.languages.join('/')}</span>
-      <span className="card-title activator grey-text text-darken-4"><Link to={'/agents/' + this.props.id}> AGENT DETAILS</Link> </span>
+    <div className="card-content center-align">
+      <h4 className="card-title  grey-text text-darken-4">{agent.name}</h4>
+      <p className=" grey-text text-darken-4">{agent.city}</p>
+      {agent.languages.map( (lang,index)=>{
+        return <p key-={index}> -{lang}</p> 
+      })}
+      <span className="card-title activator grey-text text-darken-4"><Link to={'/agents/' + agent._id}> AGENT DETAILS</Link> </span>
  
       <Rating
               empty="fa fa-star-o fa-2x"

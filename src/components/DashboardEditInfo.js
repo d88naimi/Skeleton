@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
 
 
-export class DashboardEditInfo extends React.Component {
+class DashboardEditInfo extends React.Component {
   static propTypes = {
     name: PropTypes.string,
   };
@@ -15,8 +15,12 @@ export class DashboardEditInfo extends React.Component {
     super(props);
   }
 
+  handleUpload() {
+    this.props.uploadImage(this.fileUpload);
+	}
+
   render() {
-  	const {user, uploadImage} = this.props;
+    const {user} = this.props;
     return (
             <div className="col s12 m9 l9 editProfileInfoBox" >
             <h5><FormattedMessage id="app.dashboardEdit.header" /></h5>
@@ -77,11 +81,12 @@ export class DashboardEditInfo extends React.Component {
 			    </form>
 			  </div>
       	</div>
+
     );
   }
 }
 
-export default connect(  
+export default connect(
   ({auth}) => {
     return ({ user: auth.user })
   }, {uploadImage}
