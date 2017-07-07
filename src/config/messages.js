@@ -8,6 +8,7 @@ export const en = {
   "app.header.signup": "Sign Up",
   "app.header.results": "Results",
   "app.header.plans": "Plans",
+   "app.header.hi": "Hi!  ",
 
   "app.footer.faqs": "FAQ",
   "app.footer.about": "About Us",
@@ -58,7 +59,30 @@ export const en = {
   "app.plans.school": "School",
   "app.plans.citizenship": "Citizenship",
   "app.plans.car": "Vehicle",
-  "app.plans.selectBtn": "Select"
+  "app.plans.selectBtn": "Select",
+
+  "app.dashboard.default": "Welcome Back!",
+  "app.dashboardSB.myagent": "My Agent",
+  "app.dashboardSB.payment": "Payments",
+  "app.dashboardSB.editInfo": "Edit Info",
+  "app.dashboardSB.logout": "Log Out",
+
+  "app.dashboardPay.header": "Submit a Payment",
+  "app.dashboardPay.fn": "First Name",
+  "app.dashboardPay.ln": "Last Name",
+  "app.dashboardPay.cn": "Credit Card Number",
+  "app.dashboardPay.ed": "Expiration Date",
+  "app.dashboardPay.cvc": "CVC",
+  "app.dashboardPay.sendBtn": "Send Payment",
+
+  "app.dashboardEdit.header": "Edit Profile",
+  "app.dashboardEdit.photoChange": "Click to change Profile Photo",
+  "app.dashboardEdit.name": "Name",
+  "app.dashboardEdit.upload": "Upload",
+  "app.dashboardEdit.email": "Email",
+  "app.dashboardEdit.location": "Location",
+  "app.dashboardEdit.languages": "Languages",
+  "app.dashboardEdit.submitBtn": "Submit"
 
 
 
@@ -74,6 +98,7 @@ export const es = {
   "app.header.signup": "Regístrate",
   "app.header.results": "Resultados",
   "app.header.plans": "Planes",
+  "app.header.hi": "¡Hola!  ",
 
   "app.footer.faqs": "Preguntas frecuentes",
   "app.footer.about": "Sobre Nosotros",
@@ -124,7 +149,30 @@ export const es = {
   "app.plans.school": "Escuela",
   "app.plans.citizenship": "Ciudadanía",
   "app.plans.car": "Vehículo",
-  "app.plans.selectBtn": "Seleccionar"
+  "app.plans.selectBtn": "Seleccionar",
+
+  "app.dashboard.default": "Bienvenido de nuevo!",
+  "app.dashboardSB.myagent": "Mi agente",
+  "app.dashboardSB.payment": "Realizar un pago",
+  "app.dashboardSB.editInfo": "Editar su información",
+  "app.dashboardSB.logout": "Salir",
+
+  "app.dashboardPay.header": "Realizar un pago",
+  "app.dashboardPay.fn": "Primer nombre",
+  "app.dashboardPay.ln": "Apellido",
+  "app.dashboardPay.cn": "Número de tarjeta",
+  "app.dashboardPay.ed": "Fecha de expiración",
+  "app.dashboardPay.cvc": "Código de seguridad",
+  "app.dashboardPay.sendBtn": "Enviar pago",
+
+  "app.dashboardEdit.header": "Editar perfil",
+  "app.dashboardEdit.photoChange": "Cambiar foto de perfil",
+  "app.dashboardEdit.name": "Nombre",
+  "app.dashboardEdit.upload": "Subir foto",
+  "app.dashboardEdit.email": "Correo Electrónico",
+  "app.dashboardEdit.location": "Ubicación",
+  "app.dashboardEdit.languages": "Idiomas",
+  "app.dashboardEdit.submitBtn": "Someter"
 
 
 

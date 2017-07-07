@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom'
+import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
 
 export class DashboardAgents extends React.Component {
 
@@ -35,7 +36,7 @@ export class DashboardAgents extends React.Component {
 
     return (
       <div className="container col s12 m9 l9 center-align agents">
-        <h5>My Agent</h5>
+        <h5><FormattedMessage id="app.dashboardSB.myagent" /></h5>
         <hr/>
         <div className="container center-align" style={{padding:'60px'}}>
           {!user && <h5>You must be signed in to see agent info</h5>}

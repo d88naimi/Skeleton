@@ -4,6 +4,7 @@ import './Dashboard.scss';
 import {uploadImage} from '../actions/auth';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
 
 class DashboardEditInfo extends React.Component {
   static propTypes = {
@@ -188,7 +189,7 @@ class DashboardEditInfo extends React.Component {
 					<form>
 						<div className="file-field input-field">
 							<div className="uploadButton">
-								<span>Click to Change Profile Photo</span>
+								<span><FormattedMessage id="app.dashboardEdit.photoChange" /></span>
 								<input type="file" accept="image/*" ref={(ref) => this.fileUpload = ref} />
 							</div>
 							<div className="file-path-wrapper">
@@ -205,19 +206,19 @@ class DashboardEditInfo extends React.Component {
 							<div className="input-field col s12">
 								<i className="material-icons prefix">account_circle</i>
 								<input id="icon_prefix" type="text" className="validate" onChange={this.getName}/>
-								<label htmlFor="icon_prefix">Name</label>
+			          <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.name" /></label>
 							</div>
 
 							<div className="input-field col s6">
 								<i className="material-icons prefix">email</i>
 								<input id="icon_telephone" type="tel" className="validate" onChange={this.getEmail}/>
-								<label htmlFor="icon_telephone">E-mail</label>
+			          <label htmlFor="icon_telephone"><FormattedMessage id="app.dashboardEdit.email" /></label>
 							</div>
 
 							<div className="input-field col s6">
 								<i className="material-icons prefix">my_location</i>
 								<input id="icon_prefix" type="text" className="validate" onChange={this.getLocation}/>
-								<label htmlFor="icon_prefix">Location</label>
+			          <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardEdit.location" /></label>
 							</div>
 
 							<div className="input-field col s12 center-align">
@@ -235,15 +236,6 @@ class DashboardEditInfo extends React.Component {
 								<input id="icon_prefix" type="password" className="validate" onChange={this.getPasswordConfirm}/>
 								<label htmlFor="icon_prefix">Verify Password</label>
 							</div>
-
-							{/*<div className="input-field col s6">
-								<select className="browser-default col s12" defaultValue="English" onChange={this.Languages}>
-									<option value="" disabled>Languages</option>
-									<option value="English">English</option>
-									<option value="Spanish">Español</option>
-									<option value="Korean">한국어</option>
-								</select>
-							</div>*/}
 
 							<div className="col s6 container">
 						      <input type="checkbox" id="eng" value="english" onChange={this.getEnglish}/>
@@ -265,11 +257,12 @@ class DashboardEditInfo extends React.Component {
 								<hr/>
 								<h5 style={{color: this.state.msg === "Update Successful" ? "green": "red"}}>{this.state.msg}</h5>
 							</div>
-
 						</div>
 					</form>
 				</div>
 			</div>
+
+
     );
   }
 }

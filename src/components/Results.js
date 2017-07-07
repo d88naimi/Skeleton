@@ -36,10 +36,11 @@ class Results extends React.Component {
     // console.log(this.props);
     return (
       <div className="container center-align">
-          <div className="container whiteBack center-align">
+         <div className="col s12 m12 l12 xl12 whiteBack">
               <Search/>
-            </div>
-          <div className="container flexParent" >
+              </div>
+            
+          <div className="container flexParent " >
             {agents && agents.map( (agent,index) =>{
                 return <Agents
                 agent= {agent}
