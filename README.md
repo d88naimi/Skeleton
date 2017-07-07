@@ -1,4 +1,4 @@
-# TransUnited
+# American Life 
 
 [![TransUnited](public/logo.png)](https://nodesource.com/products/nsolid)
 
@@ -45,7 +45,7 @@ TransUnited uses a number of open source projects to work properly:
 
 ### Installation
 
-TransUnited requires [Node.js](https://nodejs.org/) to run.
+American Life requires [Node.js](https://nodejs.org/) to run.
 
 Install the dependencies and devDependencies and start the server.
 
