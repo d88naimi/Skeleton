@@ -90,7 +90,7 @@ class DashboardEditInfo extends React.Component {
       INFO['location']= this.state.location;
     }
     if(this.state.languages.length){
-      INFO['languages']= JSON.stringify(this.state.languages);
+      INFO['languages']= JSON.stringify(Array.from(new Set(this.state.languages)));
     }
     if(this.state.text) {
       INFO['text'] = this.state.text;

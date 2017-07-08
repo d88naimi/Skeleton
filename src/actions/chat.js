@@ -111,9 +111,11 @@ export function selectRoom (room) {
 }
 
 export function createRoom (opponentId) {
-  return function (dispatch) {
+  return function (dispatch, getState) {
+    const {auth} = getState();
+    const headers = { authorization: `Bearer ${auth.jwt}`};
     dispatch(startLoading());
-    axios.post('/api/chatrooms', {user2: opponentId})
+    axios.post('/api/chatrooms', {user2: opponentId}, {headers})
       .then(res => {
         dispatch(loadRoom(res.data));
         dispatch(selectRoom(res.data));
