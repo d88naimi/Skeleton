@@ -209,7 +209,7 @@ class DashboardEditInfo extends React.Component {
 								<hr/>
 								<br/>
 								{user && user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton"><FormattedMessage id="app.dashboardEdit.userBtn" /></button>}
-								{user &&user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton">Save Agent Info</button>}
+								{user &&user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton"><FormattedMessage id="app.dashboardEdit.agentBtn" /></button>}
 								<hr/>
 								<h5 style={{color: this.state.msg === "Update Successful" ? "green": "red"}}>{this.state.msg}</h5>
 							</div>
