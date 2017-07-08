@@ -3,7 +3,8 @@
  */
 import {push} from 'react-router-redux';
 import Cookies from 'universal-cookie';
-import axios from "axios"; // eslint-disable-next-line
+import axios from "axios";
+import {startLoading} from "./loading"; // eslint-disable-next-line
 
 /**
  * Action types
@@ -137,6 +138,7 @@ export function getUserInfo (jwt) {
   return function(dispatch) {
     // if we don't have jwt, it means user is not in logged-in state.
     if(!jwt) return Promise.resolve();
+    dispatch(startLoading());
     return fetchUserInfo(jwt)
       .then(res => dispatch(loadUserInfo(res.data)))
       .catch(err => dispatch(logout(err)))
@@ -173,8 +175,8 @@ export function changeUserInfo (update) {
 }
 
 export function uploadImage (fileUpload) {
-  console.log(fileUpload);
   return function (dispatch, getState) {
+    dispatch(startLoading());
     let file = fileUpload.files[0];
     const { auth } = getState();
 
@@ -190,6 +192,7 @@ export function uploadImage (fileUpload) {
 
 export function selectAsMyAgent (agentId) {
   return function (dispatch) {
+    dispatch(startLoading());
     dispatch(changeUserInfo({myAgent: agentId}));
   }
 }
