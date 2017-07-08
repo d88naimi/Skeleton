@@ -56,6 +56,6 @@ class Results extends React.Component {
 }
 
 export default connect(
-  state => ({agents: getAgentList(state)}),
+  ({state, lang}) => ({agents: getAgentList(state), language: lang.language}),
   { searchAgents } 
 )(Results);

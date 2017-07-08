@@ -9,6 +9,7 @@ import AgentSingle from './AgentSingle';
 import './Agent.scss';
 import axios from "axios";
 import {moveToMessageRoute} from '../actions/chat';
+import {FormattedMessage, FormattedDate} from 'react-intl';
 const Rating = require('react-rating');
 
 class AgentDetail extends React.Component {

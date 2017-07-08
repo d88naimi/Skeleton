@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendMessage, getMessages} from "../actions/chat";
+import {FormattedMessage, FormattedDate} from 'react-intl';
+
 
 class ChatBox extends React.Component {
 
@@ -47,7 +49,7 @@ class ChatBox extends React.Component {
         <div className="col s12 m12">
           <div className="card">
             <div className="card-content">
-              { selected && <span className="card-title">Chat with {entities[roomId].user1._id === user._id ? entities[roomId].user2.name : entities[roomId].user1.name}</span>}
+              { selected && <span className="card-title"><FormattedMessage id="app.chat.chatWith"/> {entities[roomId].user1._id === user._id ? entities[roomId].user2.name : entities[roomId].user1.name}</span>}
               { selected &&
               <div className="chat-box">
                 {messages.map((msg, idx) => (
@@ -81,6 +83,6 @@ class ChatBox extends React.Component {
 }
 
 export default connect(
-  ({auth, chat}) => ({ user: auth.user, selected: chat.selected, messages: chat.messages, entities: chat.entities}),
+  ({auth, chat, lang}) => ({ user: auth.user, selected: chat.selected, messages: chat.messages, entities: chat.entities, language: lang.language}),
   { getMessages, sendMessage }
 )(ChatBox)

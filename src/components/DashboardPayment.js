@@ -95,4 +95,6 @@ export class DashboardPayment extends React.Component {
   }
 }
 
-export default connect()(DashboardPayment)
+export default connect(
+	({lang}) => ({ language: lang.language }
+))(DashboardPayment)

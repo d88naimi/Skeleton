@@ -114,7 +114,7 @@ export default class About extends React.Component {
 		        <div className="card-content">
 
 		          <h5>
-					  <FormattedMessage id="app.about.link2" />
+					<FormattedMessage id="app.about.link2" />
 		          </h5>
 		          <p> 
 		          	<FormattedMessage id="app.about.david" /> 

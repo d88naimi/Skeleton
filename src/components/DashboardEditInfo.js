@@ -149,8 +149,8 @@ class DashboardEditInfo extends React.Component {
     const {user} = this.props;
     return (
 			<div className="col s12 m9 l9 editProfileInfoBox" >
-				{user && user.role === "user" && <h5><b>User:</b> Profile Edit</h5>}
-				{user && user.role === "agent" && <h5><b>Agent:</b> Profile Edit</h5>}
+				{user && user.role === "user" && <h5><b>User:</b><FormattedMessage id="app.dashboardEdit.header" /></h5>}
+				{user && user.role === "agent" && <h5><b>Agent:</b><FormattedMessage id="app.dashboardEdit.header" /></h5>}
 				<hr/>
 				<div className="row center-align" style={{'padding': "0px 100px"}}>
           {user && <img className="photo" src={user.photoURL} style={{'width': "100px"}} alt="profile picture transUnited"/>}
@@ -165,7 +165,7 @@ class DashboardEditInfo extends React.Component {
 							</div>
 						</div>
 					</form>
-					<button onClick={this.handleUpload.bind(this)} className="uploadButton">Upload</button>
+					<button onClick={this.handleUpload.bind(this)} className="uploadButton"><FormattedMessage id="app.dashboardEdit.upload" /></button>
 				</div>
 				{user && <div className="row">
 					<form className="col s12">
@@ -208,7 +208,7 @@ class DashboardEditInfo extends React.Component {
 							<div className="col s12 center-align">
 								<hr/>
 								<br/>
-								{user && user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton">Save User Info</button>}
+								{user && user.role === "user" && <button type="button" onClick={this.handleUserSubmit} className="btn themeButton"><FormattedMessage id="app.dashboardEdit.userBtn" /></button>}
 								{user &&user.role === "agent" && <button type="button" onClick={this.handleAgentSubmit} className="btn themeButton">Save Agent Info</button>}
 								<hr/>
 								<h5 style={{color: this.state.msg === "Update Successful" ? "green": "red"}}>{this.state.msg}</h5>
