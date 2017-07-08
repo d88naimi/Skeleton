@@ -43,6 +43,7 @@ class LanguagesDropdown extends React.Component {
                   {languages.map(l => (<option value={l}>{l}</option>))}
               
             </select>
+            
        </div>     
     );
   }

@@ -46,6 +46,7 @@ class Search extends React.Component {
       <div>
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
+          
             <div className="input-field col s6">
               <input
                 name="language"
