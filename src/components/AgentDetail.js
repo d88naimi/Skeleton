@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectAsMyAgent } from '../actions/auth'
+import { selectAsMyAgent, loadError } from '../actions/auth'
 import { selectAgent } from '../actions/agent';
 import {getSelectedAgent} from '../reducers';
 import AgentComment from './AgentComment';
@@ -60,8 +60,8 @@ class AgentDetail extends React.Component {
   handleSubmit(event){
 
     event.preventDefault();
-    const {agent} = this.props;
-    //console.log(agent);
+    const {agent, user, loadError} = this.props;
+    if(!user) return loadError("You should login to post a comment.");
 
     let postComment ={
       text: this.state.text,
@@ -164,5 +164,5 @@ export default connect(
     user: state.auth.user,
     agent: getSelectedAgent(state)
   }),
-  { selectAsMyAgent, selectAgent, moveToMessageRoute }
+  { selectAsMyAgent, selectAgent, moveToMessageRoute, loadError }
 )(AgentDetail);
