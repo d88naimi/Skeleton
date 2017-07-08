@@ -2,6 +2,7 @@ import React from 'react';
 import photo from '../assets/images/cafe2.jpg';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import {FormattedMessage, FormattedDate} from 'react-intl';
 var Rating = require('react-rating');
 
 
@@ -42,6 +43,7 @@ export default class Agents extends React.Component {
         </div>
         </div>
       </div>
+
     );
   }
 }

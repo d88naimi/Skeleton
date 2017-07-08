@@ -33,11 +33,10 @@ export function fetchComments (agentId) {
  * Actions
  */
 export function moveToSearchResult ({language, location, page}) {
-  console.log({language, location, page});
   return function (dispatch) {
     let path = '/results?';
-    if(language) path += `language=${language}&`;
-    if(location) path += `location=${location}&`;
+    if(language && language !== "All") path += `language=${language}&`;
+    if(location && location !=='All') path += `location=${location}&`;
     if(page) path += `page=${page}`;
     dispatch(push(path));
   }

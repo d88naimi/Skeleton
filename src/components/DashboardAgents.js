@@ -42,7 +42,7 @@ export class DashboardAgents extends React.Component {
           {!user && <h5>You must be signed in to see agent info</h5>}
           {user && <img className="photo" width="100px" src={this.state.agentInfo.photoURL} alt="agent photo"/> }
           {user && <h5>{this.state.agentInfo.name}</h5>}
-          {user && <NavLink className="btn langButton" to={'/agents/'+this.state.agentInfo._id}> To Agent Profile</NavLink>}
+          {user && <NavLink className="btn langButton" to={'/agents/'+this.state.agentInfo._id}><FormattedMessage id="app.dashboard.aProfile" /></NavLink>}
 
         </div>
 
@@ -56,7 +56,7 @@ DashboardAgents.propTypes = {
 };
 
 export default connect(
-  ({auth}) => ({ user: auth.user}),
+  ({auth, lang}) => ({ user: auth.user, language: lang.language }),
 // Implement map dispatch to props
 )(DashboardAgents)
 
