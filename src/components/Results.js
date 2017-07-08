@@ -11,6 +11,7 @@ import "./Results.scss";
 class Results extends React.Component {
 
 
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -53,12 +54,14 @@ class Results extends React.Component {
     const {agents} = this.props;
     // console.log(this.props);
     return (
-      <div className="container center-align">
-        <div className="col s12 m12 l12 xl12 whiteBack white">
+      <div className="container center-align row white">
+        <div className="col s12 m12 l12 xl12 white searchContainer">
           <Search/>
         </div>
+        <div className="col s12 m12 l12 divider">
+        </div>
 
-        <div className="container flexParent " >
+        <div className="col s12 m12 l12 xl12 row container">
           {agents && agents.map( (agent,index) =>{
             return <Agents
               key={index}
