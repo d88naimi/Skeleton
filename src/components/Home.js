@@ -6,8 +6,6 @@ import {FormattedMessage, FormattedDate} from 'react-intl';
 import { loadLanguage } from '../actions/lang';
 import { Link } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import LanguagesDropdown from "./LanguagesDropdown";
-import CityDropdown from "./CityDropdown";
 
 class Home extends React.Component {
 
@@ -28,9 +26,7 @@ class Home extends React.Component {
            <hr/>
            <div className="container center-align">
             <Search/>
-            <li> <LanguagesDropdown /> </li>
-            <li> <CityDropdown /> </li>
-            
+
            </div>
            <div className="col s12 m12 l12 divider">
           </div>
