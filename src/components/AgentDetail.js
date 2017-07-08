@@ -112,15 +112,15 @@ class AgentDetail extends React.Component {
     return (
       <div className="container themeAgent row">
 
-        <h5>Agent Details </h5>
+        <h5><FormattedMessage id="app.agentDetail.details" /></h5>
         <hr/>
 
-        {user && user.myAgent && agent._id === user.myAgent._id && <div className="container center-align myAgentBox"><h4> My Agent</h4></div>}
+        {user && user.myAgent && agent._id === user.myAgent._id && <div className="container center-align myAgentBox"><h4><FormattedMessage id="app.agentDetail.agent" /></h4></div>}
 
         <div className="right-align selectButtonContainer">
-          {user && user.myAgent && agent._id !== user.myAgent._id && <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i>Select as my Agent</button>}
+          {user && user.myAgent && agent._id !== user.myAgent._id && <button onClick={selectAsMyAgent.bind(null, agent)} className="btn themeButton"><i className="material-icons left">done</i><FormattedMessage id="app.agentDetail.select"/></button>}
           <br/>
-          {user && <button onClick={moveToMessageRoute.bind(null, agent._id)} className="btn themeButton"><i className="material-icons left">send</i>Send a Message</button>}
+          {user && <button onClick={moveToMessageRoute.bind(null, agent._id)} className="btn themeButton"><i className="material-icons left">send</i><FormattedMessage id="app.agentDetail.send" /></button>}
         </div>
 
         {agent && this.renderAgent()}
@@ -147,11 +147,11 @@ class AgentDetail extends React.Component {
               <div className="input-field">
                 <i className="material-icons prefix">mode_edit</i>
                 <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
-                <label htmlFor="icon_prefix2">Write a Comment</label>
+                <label htmlFor="icon_prefix2"><FormattedMessage id="app.agentDetail.comment" /></label>
               </div>
             </div>
             <div style={{textAlign: 'center', color: this.state.submitMSG === "Post Successful" ? 'green': 'red'}}>{this.state.submitMSG}</div>
-            <button type='submit' className="btn themeButton">Submit</button><br/>
+            <button type='submit' className="btn themeButton"><FormattedMessage id="app.agentDetail.submitBtn" /></button><br/>
           </form>
         </div>
       </div>

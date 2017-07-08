@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendMessage, getMessages} from "../actions/chat";
-import {FormattedMessage, FormattedDate} from 'react-intl';
+import {FormattedMessage, FormattedDate, FormattedTime} from 'react-intl';
 
 
 class ChatBox extends React.Component {
@@ -62,7 +62,19 @@ class ChatBox extends React.Component {
                     <div className="col s10 ">
                       <p >{msg.text}</p>
                       <br/>
-                      <div className="chatTimestamp"><i>{msg.updatedAt}</i></div>
+                      <div className="chatTimestamp"><i>
+                        <FormattedDate 
+                          value={new Date(msg.updatedAt)} 
+                          year= 'numeric'
+                          month= 'long'
+                          day= '2-digit'
+                        />, &nbsp;
+                        <FormattedTime 
+                          value={new Date(msg.updatedAt)}
+                          hour= 'numeric'
+                          minute= 'numeric'
+                          />
+                      </i></div>
                     </div>
                   </div>
                 ))}

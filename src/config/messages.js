@@ -49,9 +49,11 @@ export const en = {
   "app.login.name": "Name",
   "app.login.loginHeader": "Sign in with email",
   "app.login.signupHeader": "Create Account",
-  "app.login.signupBtn": "Sign Up",
+  "app.login.signupBtn": "Sign Up with ",
+  "app.login.loginBtns": "Log In with",
   "app.login.loginBtn": "Log In",
   "app.login.passwordMessage": "Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number",
+  "app.login.or": "or",
 
   "app.plans.silverHeader": "Package Silver",
   "app.plans.goldheader": "Package Gold",
@@ -101,7 +103,20 @@ export const en = {
   "app.chat.chatWith": "Chat with ",
 
   "app.agents.more": "MORE",
-   "app.agents.rating": "No Rating"
+   "app.agents.rating": "No Rating",
+
+  "app.agentDetail.agent": "My Agent",
+  "app.agentDetail.select": "Select as my Agent",
+  "app.agentDetail.send": "Send a Message",
+  "app.agentDetail.details": "Agent Details",
+  "app.agentDetail.comment": "Write a comment",
+  "app.agentDetail.submitBtn": "Submit",
+
+  "app.agentSingle.rating": "Rating",
+  "app.agentSingle.languages": "Languages",
+  "app.agentSingle.about": "About Me",
+
+  "app.notifications.messages": "Messages"
 
 
 
@@ -161,7 +176,9 @@ export const es = {
   "app.login.signupHeader": "Por favor llene esto",
   "app.login.signupBtn": "Regístrate con",
   "app.login.loginBtn": "Iniciar Sesión",
+  "app.login.loginBtns": "Iniciar Sesión con",
    "app.login.passwordMessage": "Password requires: 6 characters, 1 uppercase character, 1 lowercase character, 1 number",
+   "app.login.or": "o",
 
   "app.plans.silverHeader": "Paquete Plata",
   "app.plans.goldheader": "Paquete Oro",
@@ -208,10 +225,24 @@ export const es = {
   "app.dashboardPayment.changeBtn": "Actualiza contraseña",
   "app.dashboardPayment.error": "Las contraseñas deben coincidir",
 
-  "app.chat.chatWith": "Charlar con ",
+  "app.chat.chatWith": "Conversar con ",
 
   "app.agents.more": "MAS",
-  "app.agents.rating": "Sin clasificación"
+  "app.agents.rating": "Sin clasificación",
+
+  "app.agentDetail.agent": "Mi Agente",
+  "app.agentDetail.select": "Select as my Agent",
+  "app.agentDetail.send": "Enviar un mensaje",
+  "app.agentDetail.details": "Detalles del Agente",
+  "app.agentDetail.comment": "Comentar",
+  "app.agentDetail.submitBtn": "Someter" ,
+
+  "app.agentSingle.rating": "Clasificación",
+  "app.agentSingle.languages": "Idiomas",
+  "app.agentSingle.about": "Acerca de mí",
+
+  "app.notifications.messages": "Mensajes"
+
 
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import io from 'socket.io-client';
+import {FormattedMessage, FormattedDate, injectIntl} from 'react-intl';
 import {receiveMessage, getRooms, loadRoom} from '../actions/chat'
 class Notification extends React.Component {
 
@@ -33,7 +34,7 @@ class Notification extends React.Component {
       <li>
         { user && numOfChatRoom > 0 &&
         <NavLink to="/messages">
-          Messages {totalNewMsgCounter > 0 && <span className="new badge blue">{totalNewMsgCounter}</span>}
+          <FormattedMessage id="app.notifications.messages" /> {totalNewMsgCounter > 0 && <span className="new badge blue">{totalNewMsgCounter}</span>}
         </NavLink>}
       </li>
     );
