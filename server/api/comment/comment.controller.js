@@ -161,9 +161,9 @@ module.exports.create = (req, res) => {
   const agentId = req.params.agentId;
   req.body.agentId = agentId;
 
-  return Comment.findOne({'author._id': author._id})
+  return Comment.findOne({'author._id': author._id, agentId})
     .then(comment => {
-      if(comment) return res.status(400).json({message: 'You\'ve already written a comment'});
+      if(comment) return res.status(400).json({message: 'You\'ve already written a comment for this agent'});
       return Comment.create(req.body)
         .then(comment => {
           return User.findById(agentId).exec()

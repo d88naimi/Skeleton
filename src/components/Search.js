@@ -31,12 +31,13 @@ class Search extends React.Component {
   }
 
   render() {
+    const {selectedLang, selectedLoc} = this.props;
     return (
       <div>
           <br/>
           <div className="row">
             <div className="input-field col s6 m6 l6">
-              <select className="" name="location" defaultValue='All' ref={(ref) => this.locationSelect = ref}>
+              <select className="" name="location" defaultValue={selectedLoc} ref={(ref) => this.locationSelect = ref}>
                 <option value="All">All</option>
                 {cities.map((c, idx) => (<option key={idx} value={c}>{c}</option> ))}
               </select>
@@ -46,7 +47,7 @@ class Search extends React.Component {
             </div>
 
             <div className="input-field col s6 m6 l6">
-              <select className="" name="languages" defaultValue="All" ref={(ref) => this.languageSelect = ref}>
+              <select className="" name="languages" defaultValue={selectedLang} ref={(ref) => this.languageSelect = ref}>
                 <option value="All">All</option>
                 {languageData.map((l, idx) => (<option key={idx} value={l}>{l}</option> ))}
               </select>

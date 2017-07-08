@@ -2,14 +2,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectAsMyAgent, loadError } from '../actions/auth'
-import { selectAgent } from '../actions/agent';
+import {selectAgent, sendComment} from '../actions/agent';
 import {getSelectedAgent} from '../reducers';
 import AgentComment from './AgentComment';
 import AgentSingle from './AgentSingle';
 import './Agent.scss';
-import axios from "axios";
 import {moveToMessageRoute} from '../actions/chat';
-import {FormattedMessage, FormattedDate} from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 const Rating = require('react-rating');
 
 class AgentDetail extends React.Component {
@@ -18,8 +17,7 @@ class AgentDetail extends React.Component {
     super(props);
     this.state={
       text: "",
-      rate: 0,
-      submitMSG:''
+      rate: 0
     };
     const { selectAgent } = this.props;
     const id = this.props.match.params.id;
@@ -59,49 +57,29 @@ class AgentDetail extends React.Component {
   }
 
   handleSubmit(event){
-
     event.preventDefault();
-    const {agent, user, loadError} = this.props;
+    const {agent, user, loadError, sendComment} = this.props;
     if(!user) return loadError("You should login to post a comment.");
 
     let postComment ={
       text: this.state.text,
       rate: this.state.rate
     };
-    axios.post('/api/comments/'+agent._id, postComment).then( res=>{
-      this.setState({
-        submitMSG: "Post Successful"
-      })
-    })
-      .catch(err => {
-        if(err && err.response && err.response.data && err.response.data.message) {
-          console.log(err.response.data.message);
-          this.setState({
-            submitMSG: err.response.data.message
-          });
-        } else {
-          this.setState({
-            submitMSG: "Failed to Post"
-          });
-        }
-
-      });
+    sendComment({comment: postComment, agentId: agent._id});
+    this.setState({
+      rate: 0,
+      text: ""
+    });
+    $("#icon_prefix2").val(''); //clear text input
 
   }
 
-
   getRadioValue(rate){
-
-    console.log(rate);
-    //console.log(inputRadio);
 
     this.setState({
       rate: rate
     });
-
   }
-
-
 
   render() {
 
@@ -127,7 +105,7 @@ class AgentDetail extends React.Component {
 
         <div className="container commentContainer">
           {agent.comments && agent.comments.map( (comment,index)=>{
-            return <AgentComment key={index} comment={comment.text} created={comment.createdAt} authorName={comment.author.name} authorPhotoURL={comment.author.photoURL}/>
+            return <AgentComment key={index} comment={comment.text} created={comment.createdAt} authorName={comment.author.name} authorPhotoURL={comment.author.photoURL} rate={comment.rate}/>
           })}
         </div>
 
@@ -141,16 +119,12 @@ class AgentDetail extends React.Component {
           />
           <form onSubmit={this.handleSubmit}>
             <div>
-
-
-
               <div className="input-field">
                 <i className="material-icons prefix">mode_edit</i>
-                <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}></input>
+                <input type="text" id="icon_prefix2" className="materialize-textarea" onChange={this.getComment}/>
                 <label htmlFor="icon_prefix2"><FormattedMessage id="app.agentDetail.comment" /></label>
               </div>
             </div>
-            <div style={{textAlign: 'center', color: this.state.submitMSG === "Post Successful" ? 'green': 'red'}}>{this.state.submitMSG}</div>
             <button type='submit' className="btn themeButton"><FormattedMessage id="app.agentDetail.submitBtn" /></button><br/>
           </form>
         </div>
@@ -165,5 +139,5 @@ export default connect(
     user: state.auth.user,
     agent: getSelectedAgent(state)
   }),
-  { selectAsMyAgent, selectAgent, moveToMessageRoute, loadError }
+  { selectAsMyAgent, selectAgent, moveToMessageRoute, loadError, sendComment }
 )(AgentDetail);

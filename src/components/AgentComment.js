@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Agent.scss';
-import {FormattedMessage, FormattedDate, FormattedNumber} from 'react-intl';
+import {FormattedDate} from 'react-intl';
+import "./Results.scss";
+const Rating = require('react-rating');
 
 export class AgentComment extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -26,6 +27,14 @@ export class AgentComment extends React.Component {
         <div className="col s10 m10 l10">
       	 <p>{this.props.comment}</p>
         </div>
+        <Rating
+          className="resultStars"
+          empty="fa fa-star-o"
+          full={['fa fa-star rateColor']}
+          fractions={2}
+          initialRate={this.props.rate}
+          readonly={true}
+        />
       </div>
     );
   }

@@ -25,7 +25,7 @@ class Home extends React.Component {
           </h5>
            <hr/>
            <div className="container center-align">
-            <Search/>
+            <Search selectedLang="All" selectedLoc="All"/>
 
            </div>
            <div className="col s12 m12 l12 divider">

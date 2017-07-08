@@ -1,8 +1,6 @@
 import React from 'react';
-import photo from '../assets/images/cafe.jpg';
 import Agents from './Agents';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import {searchAgents} from '../actions/agent'
 import {getAgentList} from '../reducers';
 import Search from './Search';
@@ -27,6 +25,7 @@ class Results extends React.Component {
       return acc;
     }, {});
     this.state.language = queryParams.language;
+    this.state.location = queryParams.location;
     searchAgents(queryParams);
   }
 
@@ -56,7 +55,7 @@ class Results extends React.Component {
     return (
       <div className="container center-align row white">
         <div className="col s12 m12 l12 xl12 white searchContainer">
-          <Search/>
+          <Search selectedLang={decodeURI(this.state.language)} selectedLoc={decodeURI(this.state.location)}/>
         </div>
         <div className="col s12 m12 l12 divider">
         </div>
