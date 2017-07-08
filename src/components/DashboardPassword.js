@@ -93,26 +93,26 @@ class DashboardPassword extends React.Component {
               <div className="input-field col s12">
                 <i className="material-icons prefix">vpn_key</i>
                 <input id="icon_prefix" type="password" className="validate" onChange={this.getOldPassword}/>
-                <label htmlFor="icon_prefix">Old Password</label>
+                <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardPayment.oldPW" /></label>
               </div>
 
               <div className="input-field col s12">
                 <i className="material-icons prefix">vpn_key</i>
                 <input id="icon_prefix" type="password" className="validate" onChange={this.getPassword}/>
-                <label htmlFor="icon_prefix">New Password</label>
+                <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardPayment.newPW" /></label>
               </div>
 
               <div className="input-field col s12">
                 <i className="material-icons prefix">vpn_key</i>
                 <input id="icon_prefix" type="password" className="validate" onChange={this.getPasswordConfirm}/>
-                <label htmlFor="icon_prefix">Verify Password</label>
+                <label htmlFor="icon_prefix"><FormattedMessage id="app.dashboardPayment.verifyPW" /></label>
               </div>
 
               <p style={{color: this.state.msg === "Password changed" ? "green": "red", textAlign: 'center'}}>{this.state.msg}</p>
               <p style={{color: "red", textAlign: 'center'}}>{this.state.passMSG}</p>
               <div className="col s12 center-align">
                 <br/>
-                <button disabled={!this.state.newPassword || this.state.passMSG} type="button" onClick={this.handleSubmit} className="btn themeButton">Change Password</button>
+                <button disabled={!this.state.newPassword || this.state.passMSG} type="button" onClick={this.handleSubmit} className="btn themeButton"><FormattedMessage id="app.dashboardPayment.changeBtn" /></button>
                 <br/>
               </div>
             </div>

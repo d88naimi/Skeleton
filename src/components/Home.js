@@ -40,18 +40,26 @@ class Home extends React.Component {
             <img className="homePic" src='./sfBridge.jpg' width='100%' alt="americanlife home image"/>
           </div>
           <div className="col s12 m6 l8">
-            <h5>What is American Life™?</h5>
+            <h5><FormattedMessage id="app.faqs.q1" /></h5>
             <hr/>
-            <p>American Life™ is a service helps the thousands of immigrants make the transition to the United States smoother by connecting them to a selection of agents handpicked that can offer them a number of services to assist them with their transfer. Services can include translation, helping opening a bank account, finding a car, finding a place to live in, etc. Our app is easy to use and it can be displayed in other languages for easy access and peace of mind so you know you’re contacting the right agent.</p>
+            <p>
+              <FormattedMessage id="app.faqs.a1" />
+            </p>
           </div>
           <div className="col s12 m12 l12 divider">
           </div>
           <div className="col s12 m6 l8">
-            <h5>Our Experts Are Here To Help</h5>
+            <h5><FormattedMessage id="app.faqs.q5" /></h5>
             <hr/>
-            <p>Our handpicked list of agents will make the transfer process a breeze.  Our agents can help you take the stress away from the long and complicated process of applying, filling out tons of paperwork and choosing the right places when you're in another country.</p>
-            <p>Check out our different plans and get started today!</p>
-            <NavLink className="btn langButton" to="/plans">Plans</NavLink>
+            <p>
+              <FormattedMessage id="app.faqs.a8" />
+            </p>
+            <p>
+              <FormattedMessage id="app.faqs.a9" />
+            </p>
+            <NavLink className="btn langButton" to="/plans">
+              <FormattedMessage id="app.faqs.aTen" />
+            </NavLink>
           </div>
            <div className="col s12 m6 l4 ">
             <img className="homePic" src='./agent.jpg' width='100%' alt="americanlife home image"/>

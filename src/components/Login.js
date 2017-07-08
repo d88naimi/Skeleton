@@ -138,7 +138,9 @@ export class Login extends React.Component {
 		const {formatMessage} = this.props.intl;
 		const {pathname} = this.props.location;
 		const headerTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupHeader' : 'app.login.loginHeader'});
-    const signBtnTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupBtn' : 'app.login.loginBtn'});
+    	const signBtnTitle = formatMessage({id: pathname === "/signup" ? 'app.login.signupBtn' : 'app.login.loginBtns'});
+        const BtnTitle = formatMessage({id: pathname === "/signup" ? 'app.header.signup' : 'app.login.loginBtn'});
+
 		return (
 			<div className="container center-align themeContainer" >
 
@@ -153,22 +155,22 @@ export class Login extends React.Component {
 				</div>}
 				
 				<div className="container buttonContainer">
-					<h4>{signBtnTitle + ' with'}</h4>
+					<h4>{signBtnTitle}</h4>
 					{ this.state.role === "user" && 
 						<div>
 							<div className="loginButton">
 								<a href='/auth/google' className="waves-effect waves-light btn-large social google col s12">
-									<i className="fa fa-google"></i> {signBtnTitle} with google
+									<i className="fa fa-google"></i> {signBtnTitle} google
 								</a>							
 							</div>
 							<div className="loginButton">
 							<a href='/auth/facebook' className="waves-effect waves-light btn-large social facebook col s12">
-								<i className="fa fa-facebook"></i> {signBtnTitle} with facebook
+								<i className="fa fa-facebook"></i> {signBtnTitle} facebook
 							</a>
 							</div>
 							<div className="loginButton">
 								<a href='/auth/twitter' className="waves-effect waves-light btn-large social twitter col s12">
-									<i className="fa fa-twitter"></i> {signBtnTitle} with twitter
+									<i className="fa fa-twitter"></i> {signBtnTitle} twitter
 								</a>
 							</div>
 						</div>
@@ -178,24 +180,24 @@ export class Login extends React.Component {
 						<div>
 							<div className="loginButton">
 								<a href='/auth/google/agent' className="waves-effect waves-light btn-large social google col s12">
-									<i className="fa fa-google"></i> {signBtnTitle} with google
+									<i className="fa fa-google"></i> {signBtnTitle} google
 								</a>							
 							</div>
 							<div className="loginButton">
 							<a href='/auth/facebook/agent' className="waves-effect waves-light btn-large social facebook col s12">
-								<i className="fa fa-facebook"></i> {signBtnTitle} with facebook
+								<i className="fa fa-facebook"></i> {signBtnTitle} facebook
 							</a>
 							</div>
 							<div className="loginButton">
 								<a href='/auth/twitter/agent' className="waves-effect waves-light btn-large social twitter col s12">
-									<i className="fa fa-twitter"></i> {signBtnTitle} with twitter
+									<i className="fa fa-twitter"></i> {signBtnTitle} twitter
 								</a>
 							</div>
 						</div>
 					}
 				</div>
 				<br/>
-				<h5>or</h5>
+				<h5><FormattedMessage id="app.login.or" /></h5>
 				<br/>
 				<h4>{ headerTitle }</h4>
 				<form onSubmit={this.handleSubmit.bind(this)}>
@@ -231,7 +233,7 @@ export class Login extends React.Component {
 						</div>
 					</div>
 					<button className="btn waves-effect waves-light themeButton" type="submit" name="action">
-						{ signBtnTitle }
+						{BtnTitle}
 						<i className="material-icons right">send</i>
 					</button>
 				</form>

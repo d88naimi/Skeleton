@@ -71,7 +71,7 @@ class Search extends React.Component {
 }
 
 export default connect(
-  null,
+  ({lang}) => ({ language: lang.language }),
   { moveToSearchResult }
 )(Search)
 

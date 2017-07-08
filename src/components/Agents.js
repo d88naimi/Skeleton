@@ -2,6 +2,7 @@ import React from 'react';
 import photo from '../assets/images/cafe2.jpg';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import {FormattedMessage, FormattedDate} from 'react-intl';
 var Rating = require('react-rating');
 
 
@@ -33,14 +34,16 @@ export default class Agents extends React.Component {
         initialRate={agent.avgRate}
         readonly={true}
       /> }
-      {agent.avgRate === 0 && <p>No Rating</p>}
+      {agent.avgRate === 0 && <p><FormattedMessage id="app.agents.rating" /></p>}
       <hr/>
       <p className=" grey-text text-darken-4"><b>{agent.location}</b></p>
       <hr/>
       {agent.languages.map( (lang,index)=>{
         return <p key={index} style={{color: selectedLang === lang ? 'red' : 'inherit'}}> - {lang}</p>
       })}
-      <Link className="btn langButton" to={'/agents/' + agent._id}>MORE</Link>
+      <Link className="btn langButton" to={'/agents/' + agent._id}>
+        <FormattedMessage id="app.agents.more" />
+      </Link>
       <br/>
       
     
