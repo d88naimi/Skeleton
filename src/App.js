@@ -53,7 +53,6 @@ class App extends React.Component{
         <div className='root'>
           <Header />
           <main>
-            <Drawer />
             <ErrorMsg />
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
