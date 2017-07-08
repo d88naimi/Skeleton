@@ -5,6 +5,8 @@ import 'materialize-css/dist/css/materialize.css';
 import 'jquery';
 import 'materialize-css/dist/js/materialize';
 import './styles/main.scss'
+// window.jQuery = window.$ = require('jquery');
+// window.$.velocity = require('velocity-animate/velocity.js')
 injectTapEventPlugin();
 
 
