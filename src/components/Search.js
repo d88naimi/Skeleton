@@ -44,33 +44,58 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <form className="col s12" onSubmit={this.handleSubmit}>
+        <form className="col s6" onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="input-field col s6">
-              <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="en" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
-                  <option value="" disabled >Choose your Language</option> 
-                  map.( (language,index) =>{ return <option key ={index} > {language} </option> } )
-             
-
-            </select>
-                <label htmlFor="by_language"><i className="material-icons">search</i>
-                 <FormattedMessage id="app.search.language" />
+             <select name="location" value={option.value} onChange={this.getQuery}>
+                 <option value="A">Anaheim</option>
+                 <option value="SD">San Diego</option>
+                 <option value="SF">San Francisco</option>
+                 <option value="PA">Palo Alto</option>
+                 <option value="SM">Santa Monica </option>
+                 <option value="S">Sacramento</option>
+                 <option value="M">Malibu</option>
+                 <option value="SB">Santa Barbara</option>
+                 <option value="SJ">San Jose</option>
+                 <option value="O">Oakland</option>
+                 <option value="BH">Beverly Hills"</option>
+                 <option value="I">Irvine</option>
+                  <option value="M">Monterey</option>
+                  <option value="LB">Long Beach</option>
+                </select>
+                <label htmlFor="by_location"><i className="material-icons">search</i>
+                 <FormattedMessage id="app.search.location" />
                 </label>
             </div>
 
-            <div className="input-field col s6">
-             <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="en" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
-                  <option value="" disabled >Choose your Location</option>
-                  map.( (location,index) =>{ return <option key ={index} > {location} </option> } )
-              
-            </select>
-                <label htmlFor="by_location"><i className="material-icons">location_on</i>
-                  <FormattedMessage id="app.search.location" />
+               <select name="languages" value={option.value} onChange={this.getQuery}>
+                 <option value="A">Korean</option>
+                 <option value="SD">Chinese</option>
+                 <option value="SF">Spanish</option>
+                 <option value="PA">Palo Alto</option>
+                 <option value="SM">Hindi </option>
+                 <option value="S">Sacramento</option>
+                 <option value="M">Bengali</option>
+                 <option value="SB">Punjabi</option>
+                 <option value="SJ">Telgu</option>
+                 <option value="O">Arabic</option>
+                 <option value="BH">German"</option>
+                 <option value="I">Russian</option>
+                  <option value="M">Indonesian</option>
+                  <option value="LB"> Portuguese</option>
+                  <option value="LB"> English</option>
+                </select>
+                <label htmlFor="by_languages"><i className="material-icons">search</i>
+                 <FormattedMessage id="app.search.languages" />
+                </label>
+            
+                <label htmlFor="by_languages"><i className="material-icons">languages_on</i>
+                  <FormattedMessage id="app.search.languages" />
                 </label>
             </div>
 
 
-          </div>
+          
         <button 
           className="btn waves-effect waves-light themeButton" 
           type="submit" 
@@ -87,3 +112,6 @@ export default connect(
   null,
   { moveToSearchResult }
 )(Search)
+
+
+
