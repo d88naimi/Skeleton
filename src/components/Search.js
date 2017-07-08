@@ -46,26 +46,24 @@ class Search extends React.Component {
       <div>
         <form className="col s12" onSubmit={this.handleSubmit}>
           <div className="row">
-          
             <div className="input-field col s6">
-              <input
-                name="language"
-                type="text" 
-                className="validate" 
-                onChange={this.getQuery}
-                />
+              <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="en" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
+                  <option value="" disabled >Choose your Language</option> 
+                  map.( (language,index) =>{ return <option key ={index} > {language} </option> } )
+             
+
+            </select>
                 <label htmlFor="by_language"><i className="material-icons">search</i>
                  <FormattedMessage id="app.search.language" />
                 </label>
             </div>
 
             <div className="input-field col s6">
-              <input 
-                name="location"
-                type="text" 
-                className="validate" 
-                onChange={this.getQuery}
-                />
+             <select onChange={this.handleSelectChange.bind(this)} className="browser-default" defaultValue="en" style={{color:'lightgrey', backgroundColor: '#323232', border:'none', marginTop:'9px'}}>
+                  <option value="" disabled >Choose your Location</option>
+                  map.( (location,index) =>{ return <option key ={index} > {location} </option> } )
+              
+            </select>
                 <label htmlFor="by_location"><i className="material-icons">location_on</i>
                   <FormattedMessage id="app.search.location" />
                 </label>
