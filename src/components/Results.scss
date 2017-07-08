@@ -1,39 +1,31 @@
-.flexParent{
-    
-    display: flex;
-    flex-wrap: wrap;
-}
 
-.flexChild{ 
-    align-items: center;
-    flex: 1;
-    flex-basis: 20%;
-    margin: 20px;
-    justify-content: space-between;
-    border-radius: 20px;
-    opacity: .9;
-    &:hover{
-        
-        opacity: 1;
-    }
-
-}
-
-.card-image{
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-.whiteBack {
-    background-color: #f2f2f2;
-    padding:40px;
-    margin: 20px;
-    border-radius: 50%px;
-}
 
 .resultStars{
 
     text-shadow: 0px 0px 3px lightblue;
     color:#323232;
 
+}
+
+.agentCard{
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 3px 3px 6px #323232;
+}
+
+.searchContainer{
+    margin: 20px;
+}
+
+.cardContainer{
+    margin-bottom: 10px;
+}
+
+.resultPhoto{
+    width: 50%;
+    border-radius: 100%;
+    padding: 5px;
+    box-shadow: 3px 3px 3px #323232;
 }

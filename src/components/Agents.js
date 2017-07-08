@@ -14,47 +14,35 @@ export default class Agents extends React.Component {
     // console.log(this.props);
   }
 
+
   render() {
     const {agent, selectedLang} = this.props;
-    return (
-
-      
-    <div className="card flexChild ">
-    
-    <div className="card-image waves-effect waves-block waves-light">
-      <img className="activator" src={agent.photoURL} alt="agent resut AmericanLife"></img>
-    </div>
-    <div className="card-content center-align">
-      <h4 className="card-title  grey-text text-darken-4">{agent.name}</h4>
-      {agent.avgRate !== 0 &&<Rating
-        className="resultStars"
-        empty="fa fa-star-o"
-        full={['fa fa-star rateColor']}
-        fractions={2}
-        initialRate={agent.avgRate}
-        readonly={true}
-      /> }
-      {agent.avgRate === 0 && <p><FormattedMessage id="app.agents.rating" /></p>}
-      <hr/>
-      <p className=" grey-text text-darken-4"><b>{agent.location}</b></p>
-      <hr/>
-      {agent.languages.map( (lang,index)=>{
-        return <p key={index} style={{color: selectedLang === lang ? 'red' : 'inherit'}}> - {lang}</p>
-      })}
-      <Link className="btn langButton" to={'/agents/' + agent._id}>
-        <FormattedMessage id="app.agents.more" />
-      </Link>
-      <br/>
-      
-    
-    </div>
-   
-  </div>
- 
-  
-  
-
-
+    return (     
+      <div className="col s12 m6 l4 xl3 center-align cardContainer">
+        <div className="agentCard">
+        <img className="resultPhoto" src={agent.photoURL} alt="agent resut AmericanLife"></img>
+        <div className="center-align">
+          <h4 className="flow-text">{agent.name}</h4>
+          {agent.avgRate !== 0 &&<Rating
+            className="resultStars"
+            empty="fa fa-star-o"
+            full={['fa fa-star rateColor']}
+            fractions={2}
+            initialRate={agent.avgRate}
+            readonly={true}
+          /> }
+          {agent.avgRate === 0 && <p>No Rating</p>}
+          <hr/>
+          <p className=" grey-text text-darken-4"><b>{agent.location}</b></p>
+          <hr/>
+          {agent.languages.map( (lang,index)=>{
+            return <p key={index} style={{color: selectedLang === lang ? 'red' : 'inherit'}}> - {lang}</p>
+          })}
+          <Link className="btn langButton" to={'/agents/' + agent._id}>MORE</Link>
+          <br/>
+        </div>
+        </div>
+      </div>
 
     );
   }
