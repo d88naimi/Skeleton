@@ -19,7 +19,7 @@ export default function configureStore() {
       applyMiddleware(
         thunk,
         routerMiddleware(history),
-        logger
+        // logger
       )
     )
   );

@@ -13,7 +13,7 @@ class LanguagesSelect extends React.Component {
   handleSelectChange(event) {
         const target = event.target;
         const value = target.value;
-        console.log(value);
+        // console.log(value);
         const { loadLanguage} = this.props;
         loadLanguage(value);
   }
