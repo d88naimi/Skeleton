@@ -30,6 +30,14 @@ export function reducer(state = initialState, action) {
       return Object.assign({}, state, {selected});
     }
 
+    case fromAgent.LOAD_COMMENT: {
+      const selected = {
+        agentId: action.payload.agentId,
+        comments: [...state.selected.comments, action.payload.comment]
+      };
+      return Object.assign({}, state, {selected});
+    }
+
     default:
       return state;
   }

@@ -165,12 +165,16 @@ export function loadUserPhoto (url) {
 export function changeUserInfo (update) {
   return function (dispatch, getState) {
     const { auth } = getState();
+    dispatch(startLoading());
     axios.put(`/api/users/${auth.user._id}`, update, {
       headers: {
         authorization: `Bearer ${auth.jwt}`
       }
     })
-      .then(res => dispatch(loadUserInfo(res.data)))
+      .then(res => {
+        dispatch(loadUserInfo(res.data));
+        dispatch(loadError("Your information was successfully updated!"));
+      })
   }
 }
 

@@ -1,12 +1,14 @@
-import {push} from 'react-router-redux';
-import axios from "axios";
-import {startLoading} from "./loading";
 /**
  * Action types
  */
+import {push} from 'react-router-redux';
+import axios from "axios";
+import {startLoading} from "./loading";
+import {loadError} from "./auth";
 export const LOAD_AGENTS = 'LOAD_AGENTS';
 export const SELECT_AGENT = 'SELECT_AGENT';
 export const FETCH_AGENT = 'FETCH_AGENT';
+export const LOAD_COMMENT = 'LOAD_COMMENT';
 
 
 /**
@@ -27,6 +29,10 @@ export function fetchAgent(agentId) {
 
 export function fetchComments (agentId) {
   return axios.get(`/api/comments/agent/${agentId}`);
+}
+export function postComment (agentId, comment, jwt) {
+  const headers = { authorization: `Bearer ${jwt}`};
+  return axios.post(`/api/comments/${agentId}`, comment, { headers });
 }
 
 /**
@@ -57,6 +63,29 @@ export function loadAgents (agents) {
   };
 }
 
+export function sendComment ({comment, agentId}) {
+  return function (dispatch, getState) {
+    const { auth } = getState();
+    dispatch(startLoading());
+    postComment(agentId, comment, auth.jwt)
+      .then(res => dispatch(loadComment({agentId, comment: res.data})))
+      .catch(err => {
+        if(err.response && err.response.data && err.response.data.message) {
+          return dispatch(loadError(err.response.data.message))
+        } else dispatch(loadError("Fail to post a comment"));
+      })
+  }
+}
+
+export function loadComment ({comment, agentId}) {
+  return {
+    type: LOAD_COMMENT,
+    payload: {
+      comment,
+      agentId
+    }
+  }
+}
 export function selectAgent (agentId) {
   return function(dispatch, getState) {
     const { agents } = getState();

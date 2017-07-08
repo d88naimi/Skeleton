@@ -18,8 +18,11 @@ export function reducer(state = initialState, action) {
     }
 
     case fromAgent.LOAD_AGENTS:
+    case fromAgent.SELECT_AGENT:
+    case fromAgent.LOAD_COMMENT:
     case fromAuth.LOAD_USER_INFO:
     case fromAuth.LOAD_USER_PHOTO:
+    case fromAuth.ERROR_MSG:
     case fromChat.LOAD_ROOMS:
     case fromChat.LOAD_MESSAGES:
     case fromChat.LOAD_ROOM:
