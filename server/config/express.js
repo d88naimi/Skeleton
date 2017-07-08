@@ -80,18 +80,18 @@ module.exports = function(app) {
   }
   const User = require('../api/user/user.model');
   const agents = require('./environment/seed');
-  const Comment = require('../api/comment')
+  const Comment = require('../api/comment');
   if(env === 'development') {
     // console.log("DEVELOPMENT!!!");
     // agents.forEach(agent => {
-    //   User.findOne({email: agent.email}).exec()
-    //     .then(user => {
-    //       if(!user) {
-    //         agent.photoURL = `https://gravatar.com/avatar/${md5(agent.email)}?s=200&d=retro`
-    //         agent.languages = JSON.parse(agent.languages);
-    //         (new User(agent)).save();
-    //       }
-    //     });
+      // User.findOne({email: agent.email}).exec()
+      //   .then(user => {
+      //     if(!user) {
+            // agent.photoURL = `https://gravatar.com/avatar/${md5(agent.email)}?s=200&d=retro`
+            // agent.languages = JSON.parse(agent.languages);
+            // (new User(agent)).save();
+          // }
+        // });
     // });
     // const comment = new Comment({
     //   text: "This is comment " + (i+1),

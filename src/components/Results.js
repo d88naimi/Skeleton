@@ -13,21 +13,38 @@ class Results extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {};
+  }
+
+  search(props) {
+    const {searchAgents} = props;
+    let search = props.location.search.split('?')[1]; // ?language=Korean&location=San%20Diego&
+    const queryParams = search.split('&').reduce((acc, text) => {
+      if(text) {
+        acc[text.split('=')[0]] = text.split('=')[1];
+      }
+      return acc;
+    }, {});
+    this.state.language = queryParams.language;
+    searchAgents(queryParams);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const {searchAgents} = this.props;
+    if(this.props.location.search !== nextProps.location.search) {
+      if(nextProps.location.search === '') searchAgents({});
+      else {
+        this.search(nextProps);
+      }
+    }
+
   }
 
   componentDidMount() {
-   const {searchAgents} = this.props;
-    
+    const {searchAgents} = this.props;
     if(this.props.location.search === '') searchAgents({});
     else {
-      let search = this.props.location.search.split('?')[1]; // ?language=Korean&location=San%20Diego&
-      const queryParams = search.split('&').reduce((acc, text) => {
-        if(text) {
-          acc[text.split('=')[0]] = text.split('=')[1];
-        }
-        return acc;
-      }, {});
-      searchAgents(queryParams);
+      this.search(this.props);
     }
   }
 
@@ -37,25 +54,26 @@ class Results extends React.Component {
     // console.log(this.props);
     return (
       <div className="container center-align">
-         <div className="col s12 m12 l12 xl12 whiteBack white">
-              <Search/>
-              </div>
-            
-          <div className="container flexParent " >
-            {agents && agents.map( (agent,index) =>{
-                return <Agents
-                 key={index}
-                 agent= {agent}
-                />
-            })}
-          </div> 
+        <div className="col s12 m12 l12 xl12 whiteBack white">
+          <Search/>
+        </div>
 
-    </div>
+        <div className="container flexParent " >
+          {agents && agents.map( (agent,index) =>{
+            return <Agents
+              key={index}
+              agent= {agent}
+              selectedLang={this.state.language}
+            />
+          })}
+        </div>
+
+      </div>
     );
   }
 }
 
 export default connect(
   state => ({agents: getAgentList(state)}),
-  { searchAgents } 
+  { searchAgents }
 )(Results);

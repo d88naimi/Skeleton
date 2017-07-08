@@ -1,7 +1,6 @@
 import {push} from 'react-router-redux';
-import axios from "axios"; // eslint-disable-next-line
-// import fs from "fs";
-// import dummyjson from "dummy-json";
+import axios from "axios";
+import {startLoading} from "./loading";
 /**
  * Action types
  */
@@ -34,6 +33,7 @@ export function fetchComments (agentId) {
  * Actions
  */
 export function moveToSearchResult ({language, location, page}) {
+  console.log({language, location, page});
   return function (dispatch) {
     let path = '/results?';
     if(language) path += `language=${language}&`;
@@ -45,6 +45,7 @@ export function moveToSearchResult ({language, location, page}) {
 
 export function searchAgents ({language, location, page}) {
   return function (dispatch, getState) {
+    dispatch(startLoading());
     fetchAgents({language, location, page})
       .then(res => dispatch(loadAgents(res.data)));
   } 
@@ -61,6 +62,7 @@ export function selectAgent (agentId) {
   return function(dispatch, getState) {
     const { agents } = getState();
     if(agents.entities[agentId]) {
+      dispatch(startLoading());
       fetchComments(agentId)
         .then(res => dispatch({
           type: SELECT_AGENT,
@@ -74,6 +76,7 @@ export function selectAgent (agentId) {
       
     }
     else {
+      dispatch(startLoading());
       Promise.all([fetchAgent(agentId), fetchComments(agentId)])
         .then(([res1,res2]) => {
           dispatch(loadAgents([res1.data]));

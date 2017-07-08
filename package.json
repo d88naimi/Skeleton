@@ -36,7 +36,7 @@
     "jsonwebtoken": "^7.4.1",
     "lodash": "^4.17.4",
     "lusca": "^1.4.1",
-    "materialize-css": "^0.98.2",
+    "materialize-css": "https://github.com/ZiperRom1/materialize/tarball/884b152cac7da763fd11bb4e8a8c4d3eedb2475e",
     "md5": "^2.2.1",
     "method-override": "^2.3.5",
     "mockaroo": "^0.1.7",

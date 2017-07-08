@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types'
-// components imports
 import Header from './components/Header';
-import Drawer from './components/Drawer';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import ContactUs from './components/ContactUs';
@@ -14,18 +12,11 @@ import FAQ from './components/FAQ';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
 import PhotoTest from './components/PhotoTest';
-
-//import AgentResults 
-import AgentResults from './components/AgentResults';
-import AgentGrid from './components/AgentGrid';
 import AgentDetail from './components/AgentDetail';
-// import Agents from "./components/Agent/Agent";
-import Agents from './components/Agents';
 import Plans from './components/Plans';
 
 import {checkLoginStatus} from './actions/auth';
 import { connect } from 'react-redux';
-import Search from "./components/Search";
 import Home from "./components/Home";
 import { Route, IndexRoute } from 'react-router';
 
@@ -34,6 +25,7 @@ import en from 'react-intl/locale-data/en';
 import fr from 'react-intl/locale-data/fr';
 import es from 'react-intl/locale-data/es';
 import MessagesTest from "./components/MessagesTest";
+import Spinner from "./components/Spinner";
 addLocaleData([...en, ...fr, ...es]);
 
 class App extends React.Component{
@@ -53,8 +45,8 @@ class App extends React.Component{
         <div className='root'>
           <Header />
           <main>
-            <Drawer />
             <ErrorMsg />
+            <Spinner/>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Login} />

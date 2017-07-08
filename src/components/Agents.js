@@ -14,30 +14,31 @@ export default class Agents extends React.Component {
   }
 
   render() {
-    const {agent} = this.props;
+    const {agent, selectedLang} = this.props;
     return (
 
       
     <div className="card flexChild ">
     
     <div className="card-image waves-effect waves-block waves-light">
-      <img className="activator" img src={agent.photoURL} alt="agent resut AmericanLife"></img>
+      <img className="activator" src={agent.photoURL} alt="agent resut AmericanLife"></img>
     </div>
     <div className="card-content center-align">
       <h4 className="card-title  grey-text text-darken-4">{agent.name}</h4>
       {agent.avgRate !== 0 &&<Rating
         className="resultStars"
-        empty="fa fa-star-o" 
-        full="fa fa-star" 
+        empty="fa fa-star-o"
+        full={['fa fa-star rateColor']}
+        fractions={2}
         initialRate={agent.avgRate}
-        readonly= "true"
+        readonly={true}
       /> }
       {agent.avgRate === 0 && <p>No Rating</p>}
       <hr/>
       <p className=" grey-text text-darken-4"><b>{agent.location}</b></p>
       <hr/>
       {agent.languages.map( (lang,index)=>{
-        return <p key={index}> - {lang}</p> 
+        return <p key={index} style={{color: selectedLang === lang ? 'red' : 'inherit'}}> - {lang}</p>
       })}
       <Link className="btn langButton" to={'/agents/' + agent._id}>MORE</Link>
       <br/>

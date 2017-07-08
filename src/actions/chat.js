@@ -1,5 +1,6 @@
 import {push} from 'react-router-redux';
-import axios from "axios"; // eslint-disable-next-line
+import axios from "axios";
+import {startLoading} from "./loading"; // eslint-disable-next-line
 /**
  * Action types
  */
@@ -38,6 +39,7 @@ export function postMessage(message, roomId, jwt) {
 
 export function getRooms () {
   return function(dispatch, getState) {
+    dispatch(startLoading());
     const { auth } = getState();
     fetchRooms(auth.jwt)
       .then(res => dispatch(loadRooms(res.data, auth.user._id)))
@@ -66,6 +68,7 @@ export function loadRoom (room, userId) {
 
 export function enterRoom (roomId) {
   return function(dispatch, getState) {
+    dispatch(startLoading());
     const { auth } = getState();
     fetchMessages(roomId, auth.jwt)
       .then(res => dispatch(loadMessages(res.data, roomId)))
@@ -75,6 +78,7 @@ export function enterRoom (roomId) {
 
 export function getMessages (roomId) {
   return function(dispatch, getState) {
+    dispatch(startLoading());
     const { auth } = getState();
     fetchMessages(roomId, auth.jwt)
       .then(res => dispatch(loadMessages(res.data, roomId)))
@@ -108,6 +112,7 @@ export function selectRoom (room) {
 
 export function createRoom (opponentId) {
   return function (dispatch) {
+    dispatch(startLoading());
     axios.post('/api/chatrooms', {user2: opponentId})
       .then(res => {
         dispatch(loadRoom(res.data));
@@ -133,6 +138,7 @@ export function openChatRoom (opponentId) {
 export function sendMessage ({message, roomId}) {
   return function (dispatch, getState) {
     const {auth} = getState();
+    dispatch(startLoading());
     postMessage(message, roomId, auth.jwt)
       .then(res => dispatch(loadMessage(res.data)));
   }

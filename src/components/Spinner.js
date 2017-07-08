@@ -2,30 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './Spinner.scss';
 
-function mapStateToProps(state) {
-  return {
-
-  };
-}
-
-export class Spinner extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
+const Spinner = ({isLoading}) => (
+  <div>
+    { isLoading &&
       <div className="spinnerBox">
         <div className="loader">
-        Loading...
+          Loading...
         </div>
       </div>
-    );
-  }
-}
-
+    }
+  </div>
+);
 export default connect(
-  mapStateToProps,
-// Implement map dispatch to props
+  ({isLoading}) => ({isLoading})
 )(Spinner)
